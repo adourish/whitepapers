@@ -154,6 +154,30 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Est. Cost / Dev / Mo** | **$100/mo (Max 5x — recommended)** or $20–200+ (API, usage-based) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$60–100+/mo (custom quote required) |
 | **Weighted Score** *(see matrix below)* | **9.0 / 10** | **5.1 / 10** | **4.5 / 10** | **4.7 / 10** | **4.3 / 10** | **3.3 / 10** | **2.2 / 10** |
 
+---
+
+### Relativistic Cost Summary
+
+Normalizing all tools to a common unit exposes trade-offs that monthly price alone hides. Full breakdown in the [Credit Limits](#credit-limits-and-usage-caps) and [Relativistic Cost Analysis](#relativistic-cost-analysis) sections below.
+
+| **Tool** | **Plan** | **$/Mo** | **$/Working Day** | **Cost Index** | **Allotment** | **Reset** | **Top-Up** | **Est. $/Agentic Task** |
+|---|---|---|---|---|---|---|---|---|
+| Windsurf Pro | Pro | $15 | **$0.75** | **1.0× (baseline)** | 500 credits/mo | Monthly | ✅ $10/250 credits — no expiry | ~$0.30–0.60 |
+| GitHub Copilot | Individual | $19 | $0.95 | 1.3× | Unlimited completions | Monthly (soft) | N/A (flat sub) | ~$0 (flat) |
+| Amazon Q | Pro | $19 | $0.95 | 1.3× | Usage-limited | Monthly | Upgrade plan only | ~$0 (flat) |
+| Cursor | Pro | $20 | $1.00 | 1.3× | 500 fast requests/mo | Monthly | ❌ Graceful fallback | ~$0.12–0.20 |
+| Claude Code | Pro | $20 | $1.00 | 1.3× | Moderate weekly window | **Weekly** | ❌ No top-up | ~$0.67–1.00 |
+| Claude Code | API — Sonnet | Pay-per-use | ~$0.45/task | Varies | Unlimited | No reset | ✅ Raise spend ceiling anytime | ~$0.45* |
+| Claude Code | **Max 5x** *(recommended)* | $100 | $5.00 | 6.7× | 5× weekly window | **Weekly** | ❌ No top-up | ~$0.67–1.00 |
+| Windsurf FedRAMP | Enterprise | ~$60–100+ | ~$4.00 | ~5.3× | Contract-governed | Per contract | ❌ 4–8 wk procurement | High |
+| Devin | Seat | $500 | $25.00 | **33.3×** | ACU allotment (opaque) | Monthly | Add-on ACUs (expensive) | **~$25–50** |
+
+*\*API cost for ~100K input + 10K output tokens (Sonnet 4.6). A simple Q&A is ~$0.05; a deep multi-file refactor can be $2–5.*
+
+> **Bottom line:** Windsurf Pro delivers the best cost-per-task of any tool with meaningful agentic capability. Claude Code Max 5x costs 6.7× more per day but scores 9.0/10 vs Windsurf Pro's 4.7/10 — a legitimate premium for teams needing the full dev loop, subagents, and org-wide skill sharing. Devin at 33.3× the baseline is only justifiable for well-scoped autonomous task delegation. The **API path for Claude Code** undercuts Max 5x below ~200 tasks/month (~10 tasks/day).
+
+---
+
 ### Weighted Scoring Matrix
 
 Criteria are weighted by organizational impact. The ten ⭐ primary criteria account for **84%** of the total score. Cost/Value is included as a secondary criterion at 5% — scoring considers three factors: **(1) monthly plan price**, **(2) credit allotment adequacy** (how many credits/requests/tokens the plan provides for active agentic work before hitting limits), and **(3) top-up flexibility** (can you add credits instantly, or must you wait for reset or go through procurement). 10 = cheapest with sufficient allotment and flexible top-up; 1 = most expensive or most inflexible. Scores use each tool's recommended active-developer plan. See the Credit Limits section and Relativistic Cost Analysis for full per-unit breakdowns.
