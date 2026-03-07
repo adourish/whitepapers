@@ -138,6 +138,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **⭐ Subagents / Multi-Agent Orchestration** *(primary)* | ✅ Full — native Agent tool spawns parallel specialized subagents; each subagent gets its own toolset, permissions, and context; enables parallelized research, code review, and build delegation across a single session | ⚠️ Partial — single autonomous agent; can delegate sub-tasks internally but no formal parallel subagent spawning | ❌ None — single-context, no subagent spawning | ❌ None — single Cascade context; no subagent model | ❌ None — no multi-agent capability | ❌ None | ❌ None |
 | **⭐ Hooks & Lifecycle Customization** *(primary)* | ✅ Full — rich hook system: PreToolUse, PostToolUse, PostToolUseFailure, UserPromptSubmit, SessionStart/End, SubagentStart/Stop, PreCompact, PermissionRequest; enables audit logging, approval gates, custom workflow automation, and CI/CD integration at every lifecycle event | ⚠️ Minimal — webhook notifications for task completion only; no granular tool-lifecycle hooks | ❌ None — no hook system; no lifecycle event access | ❌ None — no hook system | ❌ None | ❌ None | ❌ None |
 | **⭐ Permission & Safety Model** *(primary)* | ✅ Full — granular per-session permission modes: plan (design before executing), acceptEdits (auto-approve file changes), dontAsk (CI/CD unattended), bypassPermissions (fully autonomous); per-tool allowlists via settings; CLAUDE.md safety rules per project | ⚠️ Partial — human-in-loop approval at task start and key decision points; limited granularity during mid-execution | ⚠️ Partial — file-level confirmation prompts; no structured permission modes or governance model | ⚠️ Partial — confirmation prompts for destructive edits; no structured permission framework | ⚠️ Partial — accept/reject suggestions; enterprise policy controls at org level; no agentic permission model | ⚠️ Partial — accept/reject; basic enterprise guardrails | ❌ Minimal — restricted environment limits configurability; no permission modes |
+| **Cost / Value** *(10 = best value; scored on recommended active-dev plan)* | 5/10 — Max 5x $100/mo recommended; Pro $20 limited for sustained agentic use | 1/10 — $500/seat/mo; 25–33× more expensive than peers | 9/10 — $20/mo flat; graceful throttle; strong value | 10/10 — $15/mo base; no-expiry top-ups; cheapest with meaningful agentic capability | 9/10 — $19/mo flat; unlimited completions; predictable | 9/10 — $19/mo or free tier; predictable flat cost | 4/10 — ~$60–100+/mo custom; inflexible procurement; no self-serve top-up |
 | **Performance** | 9/10 | 8/10 | 8/10 | 7/10 | 7/10 | 6/10 | 3/10 |
 | **Reliability** | 9/10 | 7/10 | 7/10 | 6/10 | 9/10 | 8/10 | 3/10 |
 | **Browser Automation** | 9/10 | 9/10 | 4/10 | 6/10 | 3/10 | 2/10 | 3/10 |
@@ -149,11 +150,11 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Pricing Model** | Subscription (Max plan) or API token-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
 | **Individual / Team** | Subscription: Pro $20/mo · **Max 5x $100/mo** · Max 20x $200/mo. API: $3/M Sonnet – $15/M Opus tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | Custom (Enterprise+ via Palantir FedStart) |
 | **Est. Cost / Dev / Mo** | **$100/mo (Max 5x — recommended)** or $20–200+ (API, usage-based) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$60–100+/mo (custom quote required) |
-| **Weighted Score** *(see matrix below)* | **9.2 / 10** | **5.5 / 10** | **4.4 / 10** | **4.5 / 10** | **4.2 / 10** | **3.0 / 10** | **2.1 / 10** |
+| **Weighted Score** *(see matrix below)* | **9.0 / 10** | **5.1 / 10** | **4.5 / 10** | **4.7 / 10** | **4.3 / 10** | **3.3 / 10** | **2.2 / 10** |
 
 ### Weighted Scoring Matrix
 
-Criteria are weighted by organizational impact. The ten ⭐ primary criteria account for **84%** of the total score. Skill Sharing carries the second-highest weight (12%) — just below Full Dev Loop (17%). Subagents, Hooks, and Permission Model are newly added ⭐ primary criteria that collectively account for 18% of the score, reflecting the value of advanced agentic orchestration and enterprise governance capability.
+Criteria are weighted by organizational impact. The ten ⭐ primary criteria account for **84%** of the total score. Cost/Value is included as a secondary criterion at 5% — lower cost scores higher (10 = cheapest with meaningful capability; 1 = most expensive). Scores use each tool's recommended active-developer plan.
 
 | **Criterion** | **Weight** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q** | **Windsurf FedRAMP** |
 |---|---|---|---|---|---|---|---|---|
@@ -165,16 +166,16 @@ Criteria are weighted by organizational impact. The ten ⭐ primary criteria acc
 | ⭐ Script Execution | 8% | 9 | 9 | 9 | 9 | 4 | 4 | 2 |
 | ⭐ Skills / Custom Workflows | 7% | 10 | 3 | 5 | 5 | 5 | 2 | 1 |
 | ⭐ **Hooks & Lifecycle Customization** | **6%** | **10** | **2** | **1** | **1** | **1** | **1** | **1** |
-| ⭐ Plans Support | 4% | 9 | 9 | 4 | 4 | 4 | 2 | 1 |
+| ⭐ Plans Support | 3% | 9 | 9 | 4 | 4 | 4 | 2 | 1 |
 | ⭐ **Permission & Safety Model** | **5%** | **10** | **5** | **4** | **4** | **4** | **3** | **3** |
-| Performance | 4% | 9 | 8 | 8 | 7 | 7 | 6 | 3 |
-| Reliability | 4% | 9 | 7 | 7 | 6 | 9 | 8 | 3 |
+| Performance | 3% | 9 | 8 | 8 | 7 | 7 | 6 | 3 |
+| Reliability | 3% | 9 | 7 | 7 | 6 | 9 | 8 | 3 |
 | FedRAMP Compliance | 5% | 3 | 1 | 1 | 1 | 9 | 9 | 8 |
-| Extension Ecosystem | 2% | 9 | 4 | 7 | 7 | 8 | 4 | 2 |
-| Mobile Access | 1% | 8 | 8 | 1 | 1 | 4 | 1 | 1 |
-| **Weighted Total** | **100%** | **9.2** | **5.5** | **4.4** | **4.5** | **4.2** | **3.0** | **2.1** |
+| **Cost / Value** | **5%** | **5** | **1** | **9** | **10** | **9** | **9** | **4** |
+| Extension Ecosystem | 1% | 9 | 4 | 7 | 7 | 8 | 4 | 2 |
+| **Weighted Total** | **100%** | **9.0** | **5.1** | **4.5** | **4.7** | **4.3** | **3.3** | **2.2** |
 
-> **Why Subagents (7%) and Hooks (6%) tighten the gap further:** Every tool except Claude Code scores 1–2/10 on both subagents and hooks — neither Cursor, Windsurf Pro, GitHub Copilot, nor Amazon Q has a multi-agent model or a tool lifecycle hook system. Devin earns a 4/10 on subagents (some internal delegation) and 2/10 on hooks (task-completion webhooks only). Claude Code's 10/10 on both, combined with 10/10 on Skill Sharing and Permission Model, creates a structural advantage no other tool in the field can match. The result: Claude Code (9.2) sits nearly 4 points above its nearest competitor (Devin at 5.5).
+> **How Cost/Value reshapes the rankings:** Windsurf Pro jumps from 4th to 2nd (tied) by scoring 10/10 on cost ($15/mo, top-up available). Cursor and GitHub Copilot both earn 9/10 on cost ($20 and $19/mo flat), lifting them slightly. Devin's 1/10 on cost ($500/mo) pushes it further down. Claude Code earns 5/10 — the Max 5x plan ($100/mo) is mid-range cost; the Pro plan ($20) is cheaper but undersized for active agentic work. Windsurf FedRAMP earns 4/10 — expensive, inflexible, and requires contract procurement to expand.
 
 ### Full Dev Loop — Tool Coverage
 
@@ -623,27 +624,27 @@ graph TD
 
 ## Scoring Summary
 
-*Scores are weighted across 15 criteria — ⭐ primary criteria account for 84% of the total. Skill Sharing (12%), Subagents (7%), Hooks (6%), and Permission Model (5%) are the differentiating factors that separate Claude Code from the field.*
+*Scores are weighted across 16 criteria — ⭐ primary criteria account for 84% of the total. Cost/Value (5%) scores lower cost higher. Scores use each tool's recommended active-developer plan.*
 
 ```mermaid
 graph TD
-    subgraph T1["Tier 1 — Recommended (9.2)"]
-        CC["Claude Code — 9.2\nFull dev loop + skill sharing + subagents\n+ hooks + permission model + org breadth"]
+    subgraph T1["Tier 1 — Recommended (9.0)"]
+        CC["Claude Code — 9.0\nFull dev loop + skill sharing + subagents\n+ hooks + permission model + org breadth"]
     end
 
-    subgraph T2["Tier 2 — Capable but Limited (4.4–5.5)"]
-        DV["Devin — 5.5\nStrong autonomy + CLI\nNo hooks/skills; high cost; no FedRAMP"]
-        WP["Windsurf Pro — 4.5\nCascade agent-first IDE\nNo subagents/hooks; dev-only"]
-        CU["Cursor — 4.4\nModel-flexible IDE\nNo subagents/hooks; dev-only"]
+    subgraph T2["Tier 2 — Capable but Limited (4.5–5.1)"]
+        DV["Devin — 5.1\nStrong autonomy + CLI\nNo hooks/skills; $500/mo; no FedRAMP"]
+        WP["Windsurf Pro — 4.7\nBest value — $15/mo + top-ups\nNo subagents/hooks; dev-only"]
+        CU["Cursor — 4.5\nModel-flexible IDE — $20/mo flat\nNo subagents/hooks; dev-only"]
     end
 
-    subgraph T3["Tier 3 — Situational (4.2)"]
-        GC["GitHub Copilot — 4.2\nFedRAMP via GHE — best compliant option\nNo agentic depth; partial skill sharing"]
+    subgraph T3["Tier 3 — Situational (4.3)"]
+        GC["GitHub Copilot — 4.3\nFedRAMP via GHE — best compliant option\n$19/mo flat; limited agentic depth"]
     end
 
-    subgraph T4["Tier 4 — Compliance / Niche (2.1–3.0)"]
-        AQ["Amazon Q Dev — 3.0\nFedRAMP via GovCloud\nAWS stacks only; no agentic depth"]
-        WF["Windsurf FedRAMP — 2.1\nFedRAMP last resort\nNo skill sharing/hooks; known folder bug"]
+    subgraph T4["Tier 4 — Compliance / Niche (2.2–3.3)"]
+        AQ["Amazon Q Dev — 3.3\nFedRAMP via GovCloud — $19/mo\nAWS stacks only; no agentic depth"]
+        WF["Windsurf FedRAMP — 2.2\nFedRAMP last resort — $60–100+/mo\nNo skill sharing/hooks; known folder bug"]
     end
 
     T1 --> T2
