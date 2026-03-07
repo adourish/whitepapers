@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-Seven AI coding assistant platforms were evaluated across performance, reliability, browser automation, FedRAMP compliance, agentic capability, and cost. The field splits cleanly into two decision contexts: **standard development environments** and **FedRAMP-regulated government networks**.
+Seven AI coding assistant platforms were evaluated across performance, reliability, browser automation, skill sharing, FedRAMP compliance, agentic capability, and cost. The field splits cleanly into two decision contexts: **standard development environments** and **FedRAMP-regulated government networks**.
 
 ### Key Takeaways
 
@@ -16,7 +16,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 2. **Script execution is the essential escape hatch for agentic AI.** The ability to write a Python, PowerShell, or Bash script and run it within a single agentic session is the key mechanism for tasks no MCP server covers — connecting to databases, calling proprietary APIs, one-off data transforms, or complex automation chains. Claude Code, Devin, Cursor, and Windsurf Pro all support full script execution autonomously. GitHub Copilot and Amazon Q can generate scripts but execution requires a manual step. Windsurf FedRAMP has severely restricted script execution in its government environment. Skills that combine script execution with AI context (e.g., CLAUDE.md skill docs + MCP tools) multiply this capability into repeatable, team-wide automation.
 
-3. **Claude Code has the strongest plans and skills support of any tool evaluated.** Native task planning via TodoWrite, CLAUDE.md skill docs, MCP tool-calling, and hooks enable fully customized, repeatable AI workflows. No other tool comes close for teams with established AI skill libraries.
+3. **Claude Code has the strongest plans and skills support of any tool evaluated.** Native task planning via TodoWrite, CLAUDE.md skill docs, MCP tool-calling, and hooks enable fully customized, repeatable AI workflows. Skills are plain markdown files stored in git — any skill authored by one team member is instantly shareable across all roles. No other tool comes close for teams with established AI skill libraries.
 
 4. **FedRAMP compliance eliminates most options.** Only GitHub Copilot (via GitHub Enterprise), Amazon Q Developer (via AWS GovCloud), and Windsurf FedRAMP hold FedRAMP authorization. Of these, GitHub Copilot offers the best capability trade-off. Windsurf FedRAMP is a last resort.
 
@@ -34,7 +34,9 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 11. **A cohesive AI ecosystem across all roles delivers more value than a developer-only tool.** Limiting AI tooling to developers leaves architects, PMs, BAs, and QA without AI productivity gains — and creates friction when teams need to collaborate around AI-generated work. Only **Claude Code** serves all roles from a single platform: developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP/skills design, Automation Engineers via pipeline scripting and E2E browser testing, and PMs/BAs via the Claude.ai desktop app and VS Code Extension (with mobile as a complement). Every other tool is developer-only (Cursor, Windsurf Pro) or developer-primary with partial exceptions (GitHub Copilot via github.com, Devin via Slack). **Selecting a tool that serves the whole organization, not just coders, compounds the productivity investment.**
 
-12. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
+12. **Skill sharing across roles is a premier force-multiplier — and only Claude Code makes it first-class.** A BA-trained document generation skill, a QC-trained Playwright test skill, or an architect-authored estimation workflow can all be committed as plain markdown CLAUDE.md files to a shared git repo and immediately pulled by any team member. This creates a living, version-controlled org skill library. No other tool evaluated provides a structured, cross-role skill sharing mechanism: Cursor shares .cursorrules per repo (code-only scope), Windsurf Pro shares workspace rules per project, Devin has no persistent skill library, and GitHub Copilot offers only Enterprise-wide custom instructions without versioned, role-specific docs. The ability to train a skill once and share it org-wide — across BA, dev, QC, architect, and automation roles — compounds every individual productivity gain into a team-wide capability.
+
+13. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
 
 ### Recommendations at a Glance
 
@@ -123,6 +125,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Criteria** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q Dev** | **Windsurf FedRAMP** |
 |---|---|---|---|---|---|---|---|
 | **⭐ Full Dev Loop** *(primary)* | ✅ 9/10 — Code → run API → open browser → inspect UI → fix, fully agentic | ✅ 8/10 — Autonomous end-to-end; harder to steer mid-loop | ⚠️ 4/10 — Code + terminal tests solid; CAN open browser via Playwright but unreliable, requires retries | ⚠️ 5/10 — Cascade + Playwright CAN open browser; unreliable, requires retries; code + terminal steps solid | ❌ 2/10 — No browser automation; testing is manual | ❌ 2/10 — No browser automation | ❌ 2/10 — Playwright available; frequently fails + folder bug contaminates environment |
+| **⭐ Skill Sharing & Team Knowledge Transfer** *(primary)* | ✅ Full — CLAUDE.md skill docs, MCP configs, and hooks are plain markdown files in git; a skill authored by a BA, QC, or architect is instantly shareable org-wide via a shared repo; entire teams pull from the same skill library across all roles | ❌ None — task instructions are per-session; no persistent, shareable skill library | ⚠️ Partial — .cursorrules files per repo committed to git; shareable within a codebase; not a structured cross-role library | ⚠️ Partial — workspace rules committable to git; project-scoped only; no cross-role skill distribution mechanism | ⚠️ Partial — Enterprise custom instructions shareable org-wide; no structured skill docs or versioned library | ❌ Minimal — limited customization; no team skill sharing | ❌ None (restricted environment; no persistent skill library) |
 | **⭐ Agentic CLI/Terminal** *(primary)* | ✅ Full (CLI + MCP) | ✅ Fully Autonomous | ✅ Composer/Agent | ✅ Full (Cascade agent) | ⚠️ Limited | ⚠️ Limited | ❌ Minimal |
 | **⭐ Plans Support** *(primary)* | ✅ Native (TodoWrite, multi-step plans) | ✅ Native (autonomous planning) | ⚠️ Partial (no persistent plan) | ⚠️ Partial (basic task flow) | ⚠️ Partial (Copilot Workspace; limited) | ❌ Minimal | ❌ None |
 | **⭐ Skills / Custom Workflows** *(primary)* | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only) | ⚠️ Partial (.cursorrules per repo) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions only) | ❌ Minimal | ❌ None (restricted) |
