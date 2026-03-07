@@ -34,6 +34,8 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 ### Recommendations at a Glance
 
+#### By Deployment Environment
+
 | Environment | Recommended Tool | Rationale |
 |---|---|---|
 | Standard development | **Claude Code** | 9/10 across all criteria; best agentic ecosystem |
@@ -43,6 +45,19 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | FedRAMP — general | **GitHub Copilot** (GHE) | Best capability/compliance balance |
 | FedRAMP — AWS stacks | **Amazon Q Developer** | GovCloud authorized, strong for AWS IaC |
 | FedRAMP — last resort | **Windsurf FedRAMP** | Only if GHE and Q are not viable |
+
+#### By Role — Who Uses What
+
+| Role | Primary Tool | Why | Secondary / Complement |
+|---|---|---|---|
+| **Technical Architect** | **Claude Code** | Full capability + MCP/skills design + compliance assessment + mobile | GitHub Copilot (FedRAMP strategy) |
+| **Principal Developer** | **Claude Code** | Highest model quality, full agentic loop (code → API → browser → fix), script execution | Cursor (IDE-native editing preference) / Devin (delegate isolated builds) |
+| **Junior Developer** | **Cursor** | Familiar VS Code fork, IDE-native guardrails, $20/mo, safe entry point | Claude Code VS Code Extension (after onboarding); GitHub Copilot (lowest friction) |
+| **QC / QA Engineer** | **Claude Code** | Only tool with reliable browser automation (Playwright MCP + Chrome Extension) for agentic test runs | Devin (autonomous regression execution) |
+| **Project Manager** | **Claude Code** (mobile) | iOS/Android app — review repos, discuss deliverables, manage plans without a laptop | Devin via Slack (assign autonomous tasks from phone) |
+| **Business Analyst** | **Claude Code** (mobile + Extension) | Natural language codebase Q&A, doc generation, requirements analysis on any device | GitHub Copilot via github.com (PR review context) |
+
+> **Key insight:** Claude Code is the only tool that serves every role — developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP and skill design, and non-coders (PMs, BAs) via the mobile Claude app. A cohesive org-wide AI ecosystem requires a tool that spans roles, not just coders.
 
 ---
 
