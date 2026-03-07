@@ -935,31 +935,51 @@ graph TD
 
 ## Credit Limits and Usage Caps
 
-Understanding how each tool meters usage is critical for cost governance and for avoiding mid-session interruptions in agentic workflows.
+Understanding how each tool meters usage — and how often limits reset — is critical for cost governance and for avoiding mid-session interruptions in agentic workflows.
 
-| **Tool** | **Credit / Usage Model** | **What Happens When You Hit the Limit** | **Add-On Options** |
+### Reset Period & Token Allotment by Plan
+
+| **Tool** | **Plan** | **Cost/Mo** | **Allotment** | **Reset Period** | **Top-Up / Overage** |
+|---|---|---|---|---|---|
+| **Claude Code** | Pro | $20 | Moderate usage window — hits limits quickly with sustained agentic work | **Weekly** (usage window resets weekly within the monthly billing cycle) | Upgrade to Max 5x; no per-session top-up |
+| **Claude Code** | Max 5x | $100 | 5× Pro usage window — recommended minimum for active developers | **Weekly** (same weekly window, 5× larger) | Upgrade to Max 20x |
+| **Claude Code** | Max 20x | $200 | 20× Pro usage window — for heavy/principal use | **Weekly** (same weekly window, 20× larger) | API path for unlimited usage |
+| **Claude Code** | API (Anthropic) | Pay-per-token | Unlimited — no cap; pay for what you use | No reset — continuous | Increase spend ceiling in Anthropic Console anytime |
+| **Windsurf Pro** | Pro | $15 | 500 credits/mo | **Monthly** (credits reset at billing anniversary) | **$10 per 250 credits — no expiry; roll over indefinitely** |
+| **Windsurf Pro** | Teams | $40/mo | 1,000 credits/mo pooled | **Monthly** | $10 per 250 credits (pooled) |
+| **Windsurf FedRAMP** | Enterprise (Palantir FedStart) | ~$60–100+/mo | Custom — governed by contract SLA | **Per contract terms** — typically monthly, but expansion requires procurement amendment | Contract amendment required; 4–8 week procurement cycle; no self-serve top-up |
+| **Devin** | Seat | $500 | ACUs (Agent Compute Units) — opaque | **Monthly** | Purchase additional ACUs from Cognition; expensive at scale |
+| **Cursor** | Pro | $20 | 500 fast requests/mo; unlimited slow requests | **Monthly** | No top-up — falls back to slow model gracefully |
+| **GitHub Copilot** | Individual | $19 | Completions: unlimited; agent chat: soft limits | **Monthly** (soft limits refresh) | Enterprise plan raises limits; no per-token cost |
+| **Amazon Q Dev** | Pro | $19 | Usage-limited — free tier hits daily caps fast | **Daily** (free tier) / **Monthly** (Pro) | Upgrade from free to Pro $19/mo |
+
+### Token Cost Comparison (Where Exposed)
+
+| **Tool / Model** | **Input $/1M tokens** | **Output $/1M tokens** | **Notes** |
 |---|---|---|---|
-| **Claude Code** | Two access paths: **(1) Claude.ai subscription** — Pro $20/mo (hits limits quickly with agentic use), **Max 5x $100/mo** (recommended for active developers), Max 20x $200/mo (heavy/principal use); **(2) Anthropic API** — pay-per-token, $3/M Sonnet tokens, $15/M Opus tokens | Subscription: pauses when usage limit hit, resets monthly. API: requests fail when budget ceiling reached | Subscription: upgrade to Max 5x ($100) or Max 20x ($200). API: increase spend limit in Anthropic Console anytime — no hard cap |
-| **Devin** | $500/seat/mo flat (ACUs — Agent Compute Units) | Task queue pauses; new tasks blocked until next cycle | Purchase additional ACUs from Cognition; expensive at scale |
-| **Cursor** | $20/seat/mo; 500 fast requests/mo (GPT-4o/Sonnet); unlimited slow requests | Drops to slower model (no interruption, just slower) | No hard block; premium model requests throttle gracefully |
-| **Windsurf Pro** | $15/seat/mo with 500 credits/mo; add-on credits available | Agent pauses / prompts to purchase credits | $10 for 250 credits (Pro); credits roll over — no expiry; Teams/Enterprise: $40 for 1,000 pooled credits |
-| **GitHub Copilot** | Subscription-based; completions unlimited; agent mode has soft limits | May throttle chat/agent responses at high volume | Enterprise plan has higher limits; no per-token cost |
-| **Amazon Q Developer** | Free tier: limited; $19/seat/mo Pro: higher limits | Free tier hits daily caps quickly on agent tasks | Upgrade to Pro for production use |
-| **Windsurf FedRAMP** | Custom Enterprise pricing (Palantir FedStart); credit model same as commercial Enterprise | Custom SLA terms; credits governed by contract | Requires contract amendment to expand; slow procurement cycle |
+| Claude Code API — Sonnet 4.6 | $3.00 | $15.00 | Direct API path; pay-per-token; no reset |
+| Claude Code API — Opus 4.6 | $5.00 | $25.00 | Highest quality; heavy agentic use ~$100–200+/mo |
+| Claude Code Subscription | Opaque (usage window) | Opaque (usage window) | Weekly window; exact tokens not exposed; Pro ≈ $20, Max 5x ≈ $100 |
+| Windsurf Pro credits | ~$0.02–0.03/credit (est.) | — | 1 credit ≈ 1 agentic step/call; Cascade model varies by complexity |
+| Cursor fast requests | Flat (500/mo included) | — | No per-token billing; fast request = premium model call |
+| GitHub Copilot | Flat subscription | — | No token-level billing; completions unlimited |
+| Amazon Q Pro | Flat $19/mo | — | No token-level billing |
 
 ### Key Insights
 
-- **Claude Code has two access paths — choose based on usage pattern:**
-  - **Claude.ai subscription (recommended for most developers):** Pro at $20/mo will hit usage limits quickly with any serious agentic work. **Max 5x at $100/mo is the recommended minimum for active developers** — provides 5x the Pro usage allowance and includes full Claude Code access with priority model access. Max 20x at $200/mo is for principal developers or architects doing sustained heavy use (complex multi-file refactors, long agentic sessions). Subscription resets monthly; unused allowance does not roll over.
-  - **Anthropic API (for teams with usage governance):** Pay-per-token — $3/M tokens for Sonnet 4.6, $15/M for Opus 4.6. No monthly cap; teams set their own budget ceiling in the Anthropic Console. Best for orgs that need per-developer cost visibility and budget enforcement. Heavy agentic use on Opus can reach $100–200+/month; lighter Sonnet use runs $20–50/month.
+- **Claude Code subscription resets weekly** (not monthly). The billing cycle is monthly, but the usage window within it resets every week — meaning you get a fresh allotment each week without waiting a full month. Pro ($20/mo) exhausts quickly with agentic work within a single weekly window. **Max 5x ($100/mo) is the recommended minimum** — gives 5× the weekly window, which covers active agentic use across a full work week without interruption.
 
-- **Windsurf Pro is the most flexible for individuals** — start at $15/month (500 credits), buy add-on 250-credit packs at $10 each as needed. Credits do not expire. For teams doing sustained agentic work, model to 1,500–2,000 credits/month per active developer.
+- **Claude Code API path has no reset** — pay-per-token via Anthropic Console with a self-set spending ceiling. Best for teams that need per-developer cost visibility and fine-grained budget control. Heavy Opus use can reach $100–200+/month; lighter Sonnet use runs $20–50/month.
 
-- **Windsurf FedRAMP pricing is custom and significantly higher** than commercial plans. The FedRAMP-authorized Enterprise tier is delivered via Palantir FedStart and requires a government procurement contract. Expect ~$60–100+/user/month at minimum; actual cost requires direct quote. Factor in FedRAMP overhead, compliance fees, and slow add-on procurement — budget unpredictability is a real operational concern.
+- **Windsurf Pro resets monthly, but unused credits roll over and top-ups never expire.** This is the most budget-friendly model for variable usage — a developer who uses less one month banks credits for the next, and top-up packs ($10 for 250 credits) are available anytime with no expiry. No risk of losing credits you've paid for.
 
-- **Cursor throttles gracefully** — when fast-request credits are exhausted, the tool falls back to slower model responses rather than blocking. This is the best end-user experience for credit exhaustion, though it can slow mid-session agentic tasks.
+- **Windsurf FedRAMP is the most inflexible for credit management.** The usage model is governed by a Palantir FedStart contract — there is no self-serve top-up, no instant expansion, and no rollover visibility. Expanding credit or seat limits requires a formal contract amendment with a typical 4–8 week procurement cycle. This makes it operationally brittle for sprint-intensive or deadline-driven projects.
 
-- **GitHub Copilot and Amazon Q** are subscription-flat with no per-token cost, making them the most predictable for finance, but their capability ceiling is fixed — you cannot spend more to get a better model or more throughput.
+- **Devin's ACU model is the most opaque and most expensive.** At $500/seat/month flat, Devin is 25–33× more expensive than Windsurf Pro or Cursor for the same billing cycle. ACU consumption is not surfaced transparently during task execution, making it difficult to forecast cost per feature.
+
+- **Cursor throttles gracefully** — when fast-request credits are exhausted, it falls back to slower model responses without blocking. Best end-user experience for credit exhaustion.
+
+- **GitHub Copilot and Amazon Q** are subscription-flat with no per-token cost, making them the most predictable for finance teams, but their capability ceiling is fixed — you cannot pay more to get a better model or more throughput.
 
 ---
 
