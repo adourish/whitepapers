@@ -12,7 +12,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 ### Key Takeaways
 
-1. **Claude Code is the clear leader for standard environments.** It scores 9/10 across performance, reliability, and browser automation. Three access modes — CLI (traditional), VS Code Extension (IDE-embedded), and Mobile (Claude app on iOS/Android with GitHub repo access) — make it the most flexible tool evaluated. The MCP ecosystem and Chrome extension provide the only complete agentic loop out of the box.
+1. **Full agentic capability is the primary selection criterion.** Only Claude Code, Devin, Cursor, and Windsurf Pro deliver a complete agentic loop — terminal execution, multi-file edits, and browser automation. GitHub Copilot and Amazon Q are limited; Windsurf FedRAMP is minimal. Tools without full agentic cannot support modern AI-assisted development workflows. **Claude Code leads** within the full-agentic tier: 9/10 across performance, reliability, and browser automation, with three access modes — CLI (traditional), VS Code Extension (IDE-embedded), and Mobile (Claude app on iOS/Android). The MCP ecosystem and Chrome extension provide the deepest automation stack of any tool evaluated.
 
 2. **Claude Code has the strongest plans and skills support of any tool evaluated.** Native task planning via TodoWrite, CLAUDE.md skill docs, MCP tool-calling, and hooks enable fully customized, repeatable AI workflows. No other tool comes close for teams with established AI skill libraries.
 
@@ -95,16 +95,16 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 | **Criteria** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q Dev** | **Windsurf FedRAMP** |
 |---|---|---|---|---|---|---|---|
+| **⭐ Agentic CLI/Terminal** *(primary)* | ✅ Full (CLI + MCP) | ✅ Fully Autonomous | ✅ Composer/Agent | ✅ Full (Cascade agent) | ⚠️ Limited | ⚠️ Limited | ❌ Minimal |
+| **⭐ Plans Support** *(primary)* | ✅ Native (TodoWrite, multi-step plans) | ✅ Native (autonomous planning) | ⚠️ Partial (no persistent plan) | ⚠️ Partial (basic task flow) | ⚠️ Partial (Copilot Workspace; limited) | ❌ Minimal | ❌ None |
+| **⭐ Skills / Custom Workflows** *(primary)* | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only) | ⚠️ Partial (.cursorrules per repo) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions only) | ❌ Minimal | ❌ None (restricted) |
 | **Performance** | 9/10 | 8/10 | 8/10 | 7/10 | 7/10 | 6/10 | 3/10 |
 | **Reliability** | 9/10 | 7/10 | 7/10 | 6/10 | 9/10 | 8/10 | 3/10 |
 | **Browser Automation** | 9/10 | 9/10 | 4/10 | 6/10 | 3/10 | 2/10 | 3/10 |
-| **FedRAMP Authorized** | ⚠️ Roadmap | ❌ No | ❌ No | ❌ No | ✅ Yes (GHE) | ✅ Yes (GovCloud) | ✅ Yes |
-| **Agentic CLI/Terminal** | ✅ Full | ✅ Fully Autonomous | ✅ Composer/Agent | ✅ Full (Cascade agent) | ⚠️ Limited | ⚠️ Limited | ❌ Minimal |
-| **Extension Ecosystem** | ✅ Rich (MCP) | ⚠️ Proprietary | ✅ Moderate | ✅ Moderate | ✅ Rich (GH ecosystem) | ⚠️ AWS-centric | ❌ Restricted |
 | **Model Quality** | ✅ Claude 4.x | ✅ Proprietary + Claude | ✅ Configurable (Claude/GPT) | ✅ Frontier models (Claude, GPT-4o) | ⚠️ GPT-4o only | ⚠️ Amazon models | ❌ Degraded |
 | **Mobile Access** | ✅ iOS/Android (Claude app + GitHub repos; CLI via SSH) | ✅ iOS/Android (Slack mobile + web UI task assignment) | ❌ Desktop only | ❌ Desktop only | ⚠️ Limited (github.com mobile; no code editing) | ❌ Desktop/IDE only | ❌ Desktop only |
-| **Plans Support** | ✅ Native (TodoWrite, task breakdown, multi-step plans) | ✅ Native (autonomous planning built-in) | ⚠️ Partial (Composer outlines steps; no persistent plan) | ⚠️ Partial (basic task flow; no formal plan tracking) | ⚠️ Partial (Copilot Workspace plan view; limited) | ❌ Minimal (no structured planning) | ❌ None |
-| **Skills / Custom Workflows** | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only; no custom skill docs) | ⚠️ Partial (.cursorrules per repo; no MCP equivalent) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions; no tool-calling skills) | ❌ Minimal (no custom skill framework) | ❌ None (restricted environment) |
+| **Extension Ecosystem** | ✅ Rich (MCP) | ⚠️ Proprietary | ✅ Moderate | ✅ Moderate | ✅ Rich (GH ecosystem) | ⚠️ AWS-centric | ❌ Restricted |
+| **FedRAMP Authorized** | ⚠️ Roadmap | ❌ No | ❌ No | ❌ No | ✅ Yes (GHE) | ✅ Yes (GovCloud) | ✅ Yes |
 | **Offline Capability** | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ⚠️ Limited |
 | **Pricing Model** | API usage-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
 | **Individual / Team** | $3/M (Sonnet) – $15/M (Opus) tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | ~$15/seat/mo + FedRAMP overhead |
