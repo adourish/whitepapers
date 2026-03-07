@@ -30,9 +30,11 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 9. **Browser automation via Chrome Extension bypasses federal government integration blockers.** Government networks frequently block external sites and APIs without a GFE (Government Furnished Equipment) browser session. The Claude Code Chrome Extension solves this by operating through an already-authenticated browser — the agent can be authorized for a session using the browser's existing credentials and cookies, allowing it to interact with blocked sites, authorized portals, and GFE-gated APIs that a direct API call or CLI cannot reach. This is a significant differentiator for government-adjacent work and a practical workaround for integration testing in restricted environments. Windsurf Pro and Cursor can open a browser via Playwright but cannot leverage an existing authenticated session the same way.
 
-10. **A cohesive AI ecosystem across all roles delivers more value than a developer-only tool.** Limiting AI tooling to developers leaves architects, PMs, BAs, and QA without AI productivity gains — and creates friction when teams need to collaborate around AI-generated work. Only **Claude Code** serves all roles from a single platform: developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP/skills design, Automation Engineers via pipeline scripting and E2E browser testing, and PMs/BAs via the Claude.ai desktop app and VS Code Extension (with mobile as a complement). Every other tool is developer-only (Cursor, Windsurf Pro) or developer-primary with partial exceptions (GitHub Copilot via github.com, Devin via Slack). **Selecting a tool that serves the whole organization, not just coders, compounds the productivity investment.**
+10. **No single AI tool is sufficient for every role — a layered ecosystem with backups is required.** Org-wide AI adoption means each role needs a primary tool and at least one viable backup. Claude Code is the platform of choice across most roles, but developers may prefer Windsurf Pro or Cursor for IDE-native workflows; QA needs a fallback when Playwright automation fails; Automation Engineers need Windsurf Pro as a script-execution backup when Claude Code is unavailable; and FedRAMP-constrained roles need a separate compliant tool stack entirely. A single-tool mandate creates risk: if the primary tool is unavailable, has a credit outage, or cannot operate in a restricted environment, teams have no fallback. The right org strategy is: **primary + backup + compliant option** for each role.
 
-11. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
+11. **A cohesive AI ecosystem across all roles delivers more value than a developer-only tool.** Limiting AI tooling to developers leaves architects, PMs, BAs, and QA without AI productivity gains — and creates friction when teams need to collaborate around AI-generated work. Only **Claude Code** serves all roles from a single platform: developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP/skills design, Automation Engineers via pipeline scripting and E2E browser testing, and PMs/BAs via the Claude.ai desktop app and VS Code Extension (with mobile as a complement). Every other tool is developer-only (Cursor, Windsurf Pro) or developer-primary with partial exceptions (GitHub Copilot via github.com, Devin via Slack). **Selecting a tool that serves the whole organization, not just coders, compounds the productivity investment.**
+
+12. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
 
 ### Recommendations at a Glance
 
@@ -622,6 +624,24 @@ graph TD
 ---
 
 ## Persona Guide
+
+### Tool Coverage Strategy — Primary, Backup, and Compliant
+
+No single tool covers every role, scenario, or compliance context. The recommended org strategy is **Primary + Backup + Compliant option** per role. This ensures continuity if a primary tool is unavailable (credit outage, access issue, model degradation) and covers FedRAMP-required environments.
+
+| **Role** | **Primary** | **Backup** | **FedRAMP / Compliant Option** |
+|---|---|---|---|
+| **Technical Architect** | Claude Code | Windsurf Pro | GitHub Copilot (GHE) |
+| **Principal Developer** | Claude Code | Windsurf Pro | GitHub Copilot (GHE) |
+| **Junior Developer** | Claude Code (VS Code Ext) or Windsurf Pro | Cursor | GitHub Copilot (GHE) |
+| **QC / QA Engineer** | Claude Code | Windsurf Pro (browser unreliable; retries required) | GitHub Copilot (manual testing fallback) |
+| **Project Manager** | Claude Code (desktop app) | Devin via Slack | GitHub Copilot via github.com |
+| **Business Analyst** | Claude Code (desktop app) | GitHub Copilot via github.com | GitHub Copilot via github.com |
+| **Automation Engineer** | Claude Code | Windsurf Pro | Windsurf FedRAMP (severely limited; last resort) |
+
+> **Org strategy:** Deploy Claude Code as the platform of record. License Windsurf Pro as the IDE-native backup for developers. Maintain GitHub Copilot (GHE) as the compliant fallback. This three-layer stack covers standard, preference-based, and regulated environments without gaps.
+
+---
 
 ### Persona Profiles
 
