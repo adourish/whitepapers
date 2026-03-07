@@ -1057,6 +1057,86 @@ Normalizing cost across all options on a common unit of measure makes trade-offs
 
 ---
 
+## Recommended MCP Servers
+
+MCP (Model Context Protocol) servers extend Claude Code with live tool integrations — databases, browsers, APIs, file systems, and external services — without writing custom code. The right MCP set eliminates most one-off Python scripts. Claude Code is the only tool in this evaluation with a mature MCP ecosystem.
+
+### Core MCP Stack (All Teams)
+
+| **MCP Server** | **Install** | **Use Case** | **Priority** |
+|---|---|---|---|
+| `@playwright/mcp` | `npx @playwright/mcp` | Browser automation — UI testing, portal access, web scraping, Chrome Extension integration | 🔴 Must-have |
+| `mcp-server-fetch` | `uvx mcp-server-fetch` | HTTP requests to REST APIs and internal services without spinning up a browser | 🔴 Must-have |
+| `@modelcontextprotocol/server-github` | `npx @modelcontextprotocol/server-github` | GitHub repos, PRs, issues, code search — essential for PR review workflows | 🔴 Must-have |
+| `@modelcontextprotocol/server-filesystem` | `npx @modelcontextprotocol/server-filesystem` | Structured file tree access; pairs with CLAUDE.md skill docs and G: Drive navigation | 🔴 Must-have |
+| `@modelcontextprotocol/server-brave-search` | `npx @modelcontextprotocol/server-brave-search` | Web search via Brave API — research tasks without Google OAuth setup | 🟡 Recommended |
+| `mcp-server-git` | `uvx mcp-server-git` | Local git log, diff, blame, branch inspection without shell calls | 🟡 Recommended |
+
+### Data & Database
+
+| **MCP Server** | **Install** | **Use Case** |
+|---|---|---|
+| `@modelcontextprotocol/server-sqlite` | `npx @modelcontextprotocol/server-sqlite` | Query local/embedded DBs directly; replaces one-off Python DB scripts |
+| `mcp-server-postgres` | `npx @modelcontextprotocol/server-postgres` | Direct PostgreSQL queries — useful for GEMS, analytics, or any Postgres stack |
+| `mcp-server-memory` | `npx @modelcontextprotocol/server-memory` | Persistent key-value memory across sessions — useful for stateful workflows |
+
+### Productivity & Collaboration
+
+| **MCP Server** | **Install** | **Use Case** |
+|---|---|---|
+| `@modelcontextprotocol/server-slack` | `npx @modelcontextprotocol/server-slack` | Read channels, post messages — pairs with Devin-via-Slack delegation workflow |
+| `mcp-server-google-drive` | `npx mcp-server-google-drive` | Access G: Drive files directly from Claude Code sessions |
+| `mcp-server-gmail` | `npx mcp-server-gmail` | Gmail read/search using existing OAuth token — connects to team email workflows |
+| `exa-mcp-server` | `npx exa-mcp-server` | Semantic/AI-native web search — better than keyword search for research and doc lookup |
+
+### Salesforce & Enterprise
+
+| **MCP Server** | **Notes** | **Use Case** |
+|---|---|---|
+| Community `mcp-salesforce` | Uses `sf` CLI under the hood; requires Salesforce CLI installed | SOQL queries, metadata pulls, org status checks — for read-heavy Salesforce work |
+| `mcp-server-fetch` + ADO PAT | No official Azure DevOps MCP; use Fetch + PAT against ADO REST API | PR status, pipeline triggers, work item queries — covers most ADO automation needs |
+
+> **Salesforce push/pull note:** For active Apex/LWC deployments (push/pull to orgs), the existing `sfsync.ps1` script via Claude Code's script execution is still the most reliable path. The `mcp-salesforce` community server is best for read-only org queries and SOQL-driven research tasks.
+
+### Starter Config (`~/.claude/config.json`)
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp"]
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_TOKEN": "<your-pat>" }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "G:/My Drive"]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-brave-search"],
+      "env": { "BRAVE_API_KEY": "<your-key>" }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-postgres", "postgresql://user:pass@host/db"]
+    }
+  }
+}
+```
+
+> **Security note:** Store API keys and connection strings in KeePass or individual credential files (`G:\My Drive\03_Areas\Keys\Environments\`), not hardcoded in the config. Use environment variables or a secrets MCP loader for team-wide deployments.
+
+---
+
 ## Questions for Discussion
 
 1. **Compliance Scope:** Which project environments require FedRAMP authorization?
