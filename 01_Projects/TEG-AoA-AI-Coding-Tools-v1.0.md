@@ -54,10 +54,10 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Principal Developer** | **Claude Code** | Highest model quality, full agentic loop (code → API → browser → fix), script execution | Cursor (IDE-native editing preference) / Devin (delegate isolated builds) |
 | **Junior Developer** | **Claude Code** (VS Code Ext) or **Windsurf Pro** | Full agentic support from day one — juniors benefit most from AI doing the heavy lifting; VS Code Extension or Cascade provides guided agentic in a familiar IDE | Cursor (model-flexible IDE alternative); GitHub Copilot (lowest friction if GHE is in place) |
 | **QC / QA Engineer** | **Claude Code** | Only tool with reliable browser automation (Playwright MCP + Chrome Extension) for agentic test runs | Devin (autonomous regression execution) |
-| **Project Manager** | **Claude Code** (mobile) | iOS/Android app — review repos, discuss deliverables, manage plans without a laptop | Devin via Slack (assign autonomous tasks from phone) |
-| **Business Analyst** | **Claude Code** (mobile + Extension) | Natural language codebase Q&A, doc generation, requirements analysis on any device | GitHub Copilot via github.com (PR review context) |
+| **Project Manager** | **Claude Code** (desktop app + VS Code Ext) | Claude.ai desktop for planning, doc review, and repo Q&A; VS Code Extension for codebase context; mobile as a complement on the go | Devin via Slack (assign autonomous tasks from phone) |
+| **Business Analyst** | **Claude Code** (desktop app + VS Code Ext) | Claude.ai desktop for requirements drafting, doc generation, and codebase Q&A; VS Code Extension for in-repo context; mobile as a complement | GitHub Copilot via github.com (PR review context) |
 
-> **Key insight:** Claude Code is the only tool that serves every role — developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP and skill design, and non-coders (PMs, BAs) via the mobile Claude app. A cohesive org-wide AI ecosystem requires a tool that spans roles, not just coders.
+> **Key insight:** Claude Code is the only tool that serves every role — developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP and skill design, and non-coders (PMs, BAs) via the Claude.ai desktop app and VS Code Extension, with mobile as a complement. A cohesive org-wide AI ecosystem requires a tool that spans roles, not just coders.
 
 ---
 
@@ -641,8 +641,8 @@ graph TD
 | **Principal Developer** | ✅ Primary — CLI + MCP + full agentic loop | ⚠️ Delegate isolated high-complexity builds | ✅ Complement — model-flexible IDE preference | ✅ Complement — Cascade agent-first preference | ⚠️ FedRAMP environments only | ❌ AWS-only value | ⚠️ FedRAMP only — last resort |
 | **Junior Developer** | ✅ Primary — VS Code Extension gives full agentic in a familiar IDE; juniors benefit most from AI doing the heavy lifting | ❌ Too autonomous — masks learning, no feedback loop | ✅ Strong — model-flexible IDE, Composer agentic; good alternative | ✅ Primary — Cascade agentic in IDE; guided, fast, $15/mo; excellent entry point | ✅ Complement — lowest adoption friction if GHE in place | ❌ Weak general-purpose model | ❌ Avoid — bugs + degraded model impedes learning |
 | **QC / QA Engineer** | ✅ Primary — best browser automation (Playwright MCP + Chrome ext) | ✅ Delegate autonomous test execution | ⚠️ Limited automation; use for test code authoring | ⚠️ Playwright available via Cascade; less seamless than CC | ❌ No browser automation | ❌ No browser automation | ❌ Unreliable automation + folder bug risk |
-| **Project Manager** | ✅ Mobile — review repos, plan via Claude app on iPhone/Android | ✅ Mobile — assign tasks via Slack from phone; monitor autonomously | ❌ Desktop only | ❌ Desktop only | ⚠️ GitHub Mobile — PR review only | ❌ No mobile | ❌ No mobile |
-| **Business Analyst** | ✅ Mobile + Extension — codebase Q&A, doc generation, requirements drafting | ❌ Too autonomous; no BA-facing interface | ⚠️ Code context chat; no BA-specific features | ⚠️ Code context chat via Cascade; no BA-specific features | ⚠️ github.com chat for codebase Q&A | ❌ No BA value | ❌ No BA value |
+| **Project Manager** | ✅ Desktop app + VS Code Ext — Claude.ai desktop for planning + doc review; VS Code Ext for repo context; mobile as complement | ✅ Slack desktop — assign tasks, monitor progress; mobile as complement | ❌ Developer tool only | ❌ Developer tool only | ⚠️ github.com — PR visibility; limited PM utility | ❌ No PM value | ❌ No PM value |
+| **Business Analyst** | ✅ Desktop app + VS Code Ext — Claude.ai desktop for doc gen, requirements drafting, codebase Q&A; mobile as complement | ❌ Too autonomous; no BA-facing interface | ⚠️ Code context chat; no BA-specific features | ⚠️ Code context chat via Cascade; no BA-specific features | ⚠️ github.com chat for codebase Q&A | ❌ No BA value | ❌ No BA value |
 
 **Legend:** ✅ Recommended · ⚠️ Situational / With Caveats · ❌ Not Recommended
 
@@ -677,12 +677,12 @@ graph TD
     end
 
     subgraph "Project Manager"
-        PM1["Claude Code\niOS / Android app\nRepo review + planning"]
-        PM2["Devin\nSlack mobile\nAssign tasks from phone"]
+        PM1["Claude Code\nDesktop app + VS Code Ext\nPlanning + doc review + repo Q&A"]
+        PM2["Devin\nSlack desktop + mobile\nAssign + monitor autonomous tasks"]
     end
 
     subgraph "Business Analyst"
-        BA1["Claude Code\nMobile + Extension\nDoc gen + codebase Q&A"]
+        BA1["Claude Code\nDesktop app + VS Code Ext\nDoc gen + requirements + codebase Q&A"]
         BA2["GitHub Copilot\ngithub.com chat\nPR review context"]
     end
 
@@ -729,14 +729,16 @@ graph TD
 - **Avoid:** GitHub Copilot, Amazon Q, Windsurf FedRAMP — all have weak or no browser automation
 
 #### Project Manager
-- **Primary:** Claude Code mobile (iOS/Android) — review GitHub repos, discuss deliverables, track plans via Claude app without a laptop
-- **Selective:** Devin via Slack mobile — assign autonomous coding tasks from phone; monitor completion asynchronously
-- **Note:** PMs do not need a desktop AI coding tool; mobile access is the differentiator
+- **Primary:** Claude Code desktop app (Claude.ai) + VS Code Extension — desktop is the main working surface for planning sessions, doc review, delivery status Q&A, and repo context; VS Code Extension for in-codebase discussions without requiring CLI knowledge
+- **Complement:** Mobile (Claude app on iOS/Android) — on-the-go access to continue desktop sessions, quick repo questions, or review AI-generated summaries between meetings
+- **Selective:** Devin via Slack — assign autonomous coding tasks and monitor completion from Slack desktop or mobile
+- **Note:** PMs work primarily on desktop; mobile is a complement, not the primary interface
 
 #### Business Analyst
-- **Primary:** Claude Code mobile + VS Code Extension — natural language codebase Q&A, requirements-to-doc generation, review GitHub repos on the go
-- **Complement:** GitHub Copilot via github.com — PR review context, issue summarization in browser
-- **Note:** BAs benefit most from Claude's conversational strengths; no need for full CLI agentic setup
+- **Primary:** Claude Code desktop app (Claude.ai) + VS Code Extension — desktop is the primary surface for requirements drafting, documentation generation, codebase Q&A, and stakeholder-facing doc creation; VS Code Extension for in-repo context (understanding code without writing it)
+- **Complement:** Mobile (Claude app on iOS/Android) — continue desktop sessions, capture quick requirements notes, review AI-drafted content on the go
+- **Complement:** GitHub Copilot via github.com — PR review context and issue summarization directly in the browser
+- **Note:** BAs benefit most from Claude's conversational and writing strengths; no CLI or coding required
 
 ---
 
