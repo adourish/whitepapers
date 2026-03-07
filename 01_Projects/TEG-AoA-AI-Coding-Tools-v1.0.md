@@ -12,7 +12,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 ### Key Takeaways
 
-1. **Full agentic capability is the primary selection criterion.** Only Claude Code, Devin, Cursor, and Windsurf Pro deliver a complete agentic loop — terminal execution, multi-file edits, and browser automation. GitHub Copilot and Amazon Q are limited; Windsurf FedRAMP is minimal. Tools without full agentic cannot support modern AI-assisted development workflows. **Claude Code leads** within the full-agentic tier: 9/10 across performance, reliability, and browser automation, with three access modes — CLI (traditional), VS Code Extension (IDE-embedded), and Mobile (Claude app on iOS/Android). The MCP ecosystem and Chrome extension provide the deepest automation stack of any tool evaluated.
+1. **The full dev loop is the primary selection criterion.** The ability to write code, run an API, open a browser, test the UI, identify issues, and fix them — all in a single uninterrupted agentic session — is the highest-value capability evaluated. Only **Claude Code** and **Devin** complete this loop autonomously. Cursor and Windsurf Pro handle the code + terminal testing steps but cannot visually inspect and interact with a browser in the agentic loop; testing still requires a manual handoff. GitHub Copilot, Amazon Q, and Windsurf FedRAMP have no browser automation and require fully manual testing. **Claude Code is the clear leader**: Playwright MCP + Chrome Extension + CLI gives it a 9/10 full dev loop score, three access modes (CLI, VS Code Extension, Mobile), and the deepest automation stack of any tool evaluated.
 
 2. **Claude Code has the strongest plans and skills support of any tool evaluated.** Native task planning via TodoWrite, CLAUDE.md skill docs, MCP tool-calling, and hooks enable fully customized, repeatable AI workflows. No other tool comes close for teams with established AI skill libraries.
 
@@ -95,6 +95,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 | **Criteria** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q Dev** | **Windsurf FedRAMP** |
 |---|---|---|---|---|---|---|---|
+| **⭐ Full Dev Loop** *(primary)* | ✅ 9/10 — Code → run API → open browser → inspect UI → fix, fully agentic | ✅ 8/10 — Autonomous end-to-end; harder to steer mid-loop | ⚠️ 4/10 — Codes + runs terminal tests; no visual browser interaction | ⚠️ 5/10 — Cascade runs Playwright tests; no visual browser inspection loop | ❌ 2/10 — No browser automation; testing is manual | ❌ 2/10 — No browser automation | ❌ 1/10 — Unreliable + folder bug contaminates dev environment |
 | **⭐ Agentic CLI/Terminal** *(primary)* | ✅ Full (CLI + MCP) | ✅ Fully Autonomous | ✅ Composer/Agent | ✅ Full (Cascade agent) | ⚠️ Limited | ⚠️ Limited | ❌ Minimal |
 | **⭐ Plans Support** *(primary)* | ✅ Native (TodoWrite, multi-step plans) | ✅ Native (autonomous planning) | ⚠️ Partial (no persistent plan) | ⚠️ Partial (basic task flow) | ⚠️ Partial (Copilot Workspace; limited) | ❌ Minimal | ❌ None |
 | **⭐ Skills / Custom Workflows** *(primary)* | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only) | ⚠️ Partial (.cursorrules per repo) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions only) | ❌ Minimal | ❌ None (restricted) |
@@ -110,6 +111,55 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Individual / Team** | $3/M (Sonnet) – $15/M (Opus) tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | ~$15/seat/mo + FedRAMP overhead |
 | **Est. Cost / Dev / Mo** | ~$50–200 (moderate use) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$15–30 |
 | **Overall Score** | **9/10** | **8/10** | **7.5/10** | **7.5/10** | **6.5/10** | **5.5/10** | **3/10** |
+
+### Full Dev Loop — Tool Coverage
+
+The ability to **write code → test an API → open a browser → test the UI → fix any issues** in a single uninterrupted agentic session is the highest-value capability evaluated. Only two tools complete this loop without manual handoffs.
+
+```mermaid
+graph LR
+    subgraph LOOP["Full Dev Loop"]
+        S1["1. Write Code\nAPI + UI"]
+        S2["2. Run API Tests\nTerminal / CLI"]
+        S3["3. Open Browser\nNavigate to UI"]
+        S4["4. Inspect UI\nVisual + functional"]
+        S5["5. Identify Issues\nErrors / layout bugs"]
+        S6["6. Fix Code\nIterate automatically"]
+        S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S1
+    end
+
+    subgraph FULL["Full Loop — Autonomous"]
+        CC2["Claude Code\nCLI + Playwright MCP\n+ Chrome Extension\n9/10"]
+        DV2["Devin\nBuilt-in browser\n+ autonomous shell\n8/10"]
+    end
+
+    subgraph PARTIAL["Partial Loop — Code + CLI Tests Only"]
+        WP2["Windsurf Pro\nCascade + Playwright\nNo visual browser loop\n5/10"]
+        CU2["Cursor\nComposer + Terminal\nNo browser interaction\n4/10"]
+    end
+
+    subgraph NONE["No Loop — Manual Testing Required"]
+        GC2["GitHub Copilot\nNo browser automation\n2/10"]
+        AQ2["Amazon Q Dev\nNo browser automation\n2/10"]
+        WF2["Windsurf FedRAMP\nUnreliable + folder bug\n1/10"]
+    end
+
+    style CC2 fill:#2e7d32,stroke:#ffffff,stroke-width:3px,color:#ffffff
+    style DV2 fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style WP2 fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style CU2 fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style GC2 fill:#b71c1c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style AQ2 fill:#b71c1c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style WF2 fill:#b71c1c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style S1 fill:#0d47a1,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style S2 fill:#0d47a1,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style S3 fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style S4 fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style S5 fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style S6 fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+```
+
+**Why this matters:** Without a complete loop, developers must manually switch to a browser, identify problems, and context-switch back to the editor. Every handoff breaks the AI's context, increases error rate, and eliminates the compound productivity gain of continuous agentic iteration.
 
 ---
 
@@ -152,13 +202,14 @@ graph TD
 
 **Key Points:**
 - Three access modes: CLI (traditional), VS Code Extension (IDE-embedded), and Mobile (Claude app on iOS/Android)
+- **Only tool (with Devin) that completes the full dev loop:** write API → run tests in terminal → open browser via Playwright MCP or Chrome Extension → inspect UI → identify errors → fix code → repeat, all without leaving the agentic session
 - Mobile access via Claude.ai app: review GitHub repos, discuss code, get AI-assisted answers anywhere
 - CLI via SSH from mobile terminal apps (e.g., Termius) enables full agentic capability from a phone
 - VS Code Extension provides inline completions and agent mode without leaving the IDE
-- Full agentic loop via CLI: terminal, browser, file system through MCP ecosystem
 - Powered by Claude Sonnet 4.6 / Opus 4.6 — top-tier code generation quality
 
 **Pros:**
+- ✅ Full dev loop: 9/10 — only tool that writes, tests, browses, and fixes in one unbroken session
 - ✅ Performance: 9/10 — best-in-class code generation
 - ✅ Reliability: 9/10 — stable API with high uptime SLAs
 - ✅ Browser automation: 9/10 — Playwright MCP + Chrome extension
@@ -279,8 +330,8 @@ graph TD
 - ✅ Familiar VS Code experience with AI deeply embedded
 
 **Cons:**
+- ❌ Full dev loop: 4/10 — Composer can write code and run terminal tests, but cannot open a browser, visually inspect the UI, or interact with web pages in the agentic loop; browser testing requires manual handoff
 - ❌ Not FedRAMP authorized
-- ⚠️ Browser automation: 4/10 — no native browser extension; relies on external tools
 - ⚠️ Reliability: 7/10 — smaller infra than Microsoft or Anthropic
 - ⚠️ Agent mode less mature than Claude Code CLI for complex terminal workflows
 - ❌ No MCP ecosystem equivalent
@@ -332,8 +383,8 @@ graph TD
 - ✅ Playwright integration for browser automation
 
 **Cons:**
+- ⚠️ Full dev loop: 5/10 — Cascade can run Playwright tests headlessly and execute terminal commands, but does not provide a visual browser interaction loop; cannot open a browser, see the rendered UI, and autonomously navigate/inspect it the way Claude Code + Chrome Extension does
 - ❌ Not FedRAMP authorized
-- ⚠️ Browser automation: 6/10 — Playwright available; less seamless than Claude Code's MCP + Chrome extension stack
 - ⚠️ No MCP ecosystem — can't extend with custom tool servers
 - ⚠️ No mobile access — desktop only
 - ⚠️ Less model flexibility than Cursor — model selection more constrained
