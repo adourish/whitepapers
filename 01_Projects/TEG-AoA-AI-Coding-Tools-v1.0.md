@@ -133,9 +133,9 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Extension Ecosystem** | ✅ Rich (MCP) | ⚠️ Proprietary | ✅ Moderate | ✅ Moderate | ✅ Rich (GH ecosystem) | ⚠️ AWS-centric | ❌ Restricted |
 | **FedRAMP Authorized** | ⚠️ Roadmap | ❌ No | ❌ No | ❌ No | ✅ Yes (GHE) | ✅ Yes (GovCloud) | ✅ Yes |
 | **Offline Capability** | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ⚠️ Limited |
-| **Pricing Model** | API usage-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
-| **Individual / Team** | $3/M (Sonnet) – $15/M (Opus) tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | Custom (Enterprise+ via Palantir FedStart) |
-| **Est. Cost / Dev / Mo** | ~$50–200 (moderate use) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$60–100+/mo (custom quote required) |
+| **Pricing Model** | Subscription (Max plan) or API token-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
+| **Individual / Team** | Subscription: Pro $20/mo · **Max 5x $100/mo** · Max 20x $200/mo. API: $3/M Sonnet – $15/M Opus tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | Custom (Enterprise+ via Palantir FedStart) |
+| **Est. Cost / Dev / Mo** | **$100/mo (Max 5x — recommended)** or $20–200+ (API, usage-based) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$60–100+/mo (custom quote required) |
 | **Overall Score** | **9/10** | **8/10** | **7.5/10** | **7.5/10** | **6.5/10** | **5.5/10** | **3/10** |
 
 ### Full Dev Loop — Tool Coverage
@@ -861,7 +861,7 @@ Understanding how each tool meters usage is critical for cost governance and for
 
 | **Tool** | **Credit / Usage Model** | **What Happens When You Hit the Limit** | **Add-On Options** |
 |---|---|---|---|
-| **Claude Code** | API token-based (pay-as-you-go) | Requests fail until usage budget is increased or reset | Increase API spend limit anytime in Anthropic Console; no hard cap — governed by team budget policy |
+| **Claude Code** | Two access paths: **(1) Claude.ai subscription** — Pro $20/mo (hits limits quickly with agentic use), **Max 5x $100/mo** (recommended for active developers), Max 20x $200/mo (heavy/principal use); **(2) Anthropic API** — pay-per-token, $3/M Sonnet tokens, $15/M Opus tokens | Subscription: pauses when usage limit hit, resets monthly. API: requests fail when budget ceiling reached | Subscription: upgrade to Max 5x ($100) or Max 20x ($200). API: increase spend limit in Anthropic Console anytime — no hard cap |
 | **Devin** | $500/seat/mo flat (ACUs — Agent Compute Units) | Task queue pauses; new tasks blocked until next cycle | Purchase additional ACUs from Cognition; expensive at scale |
 | **Cursor** | $20/seat/mo; 500 fast requests/mo (GPT-4o/Sonnet); unlimited slow requests | Drops to slower model (no interruption, just slower) | No hard block; premium model requests throttle gracefully |
 | **Windsurf Pro** | $15/seat/mo with 500 credits/mo; add-on credits available | Agent pauses / prompts to purchase credits | $10 for 250 credits (Pro); credits roll over — no expiry; Teams/Enterprise: $40 for 1,000 pooled credits |
@@ -871,7 +871,9 @@ Understanding how each tool meters usage is critical for cost governance and for
 
 ### Key Insights
 
-- **Claude Code has no hard credit cap** — usage is API cost-based, so teams set their own budget ceiling in the Anthropic Console. A developer doing heavy agentic work (Opus 4.6) will spend $100–200/month; lighter Sonnet-based use runs $20–50/month. Cost scales with output quality — the most capable model (Opus) costs ~5x more per token than Sonnet.
+- **Claude Code has two access paths — choose based on usage pattern:**
+  - **Claude.ai subscription (recommended for most developers):** Pro at $20/mo will hit usage limits quickly with any serious agentic work. **Max 5x at $100/mo is the recommended minimum for active developers** — provides 5x the Pro usage allowance and includes full Claude Code access with priority model access. Max 20x at $200/mo is for principal developers or architects doing sustained heavy use (complex multi-file refactors, long agentic sessions). Subscription resets monthly; unused allowance does not roll over.
+  - **Anthropic API (for teams with usage governance):** Pay-per-token — $3/M tokens for Sonnet 4.6, $15/M for Opus 4.6. No monthly cap; teams set their own budget ceiling in the Anthropic Console. Best for orgs that need per-developer cost visibility and budget enforcement. Heavy agentic use on Opus can reach $100–200+/month; lighter Sonnet use runs $20–50/month.
 
 - **Windsurf Pro is the most flexible for individuals** — start at $15/month (500 credits), buy add-on 250-credit packs at $10 each as needed. Credits do not expire. For teams doing sustained agentic work, model to 1,500–2,000 credits/month per active developer.
 
