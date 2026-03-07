@@ -67,7 +67,9 @@
 | **Extension Ecosystem** | ✅ Rich (MCP) | ⚠️ Proprietary | ✅ Moderate | ✅ Moderate | ✅ Rich (GH ecosystem) | ⚠️ AWS-centric | ❌ Restricted |
 | **Model Quality** | ✅ Claude 4.x | ✅ Proprietary + Claude | ✅ Configurable (Claude/GPT) | ⚠️ Variable | ⚠️ GPT-4o | ⚠️ Amazon models | ❌ Degraded |
 | **Offline Capability** | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ⚠️ Limited |
-| **Cost** | $$$ (API usage) | $$$$ (~$500/seat/mo) | $$ (~$20/mo) | $$ (~$15/mo) | $$ (~$19–39/mo) | $$ (~$19/mo) | $$ + FedRAMP |
+| **Pricing Model** | API usage-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
+| **Individual / Team** | $3/M (Sonnet) – $15/M (Opus) tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | ~$15/seat/mo + FedRAMP overhead |
+| **Est. Cost / Dev / Mo** | ~$50–200 (moderate use) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$15–30 |
 | **Overall Score** | **9/10** | **8/10** | **7.5/10** | **6.5/10** | **6.5/10** | **5.5/10** | **3/10** |
 
 ---
