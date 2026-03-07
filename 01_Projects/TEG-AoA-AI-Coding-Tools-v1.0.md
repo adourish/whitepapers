@@ -542,7 +542,127 @@ graph LR
 
 ---
 
-## Benefits Summary
+## Persona Guide
+
+### Persona Profiles
+
+| Persona | Primary Needs | Key Constraints |
+|---|---|---|
+| **Technical Architect** | Tool evaluation, compliance strategy, workflow design, skills/MCP setup | Must assess FedRAMP posture; sets standards for the team |
+| **Principal Developer** | Full agentic capability, complex multi-file tasks, mentoring via shared workflows | Needs highest model quality; drives skill/CLAUDE.md authoring |
+| **Junior Developer** | Inline completions, guided suggestions, low-friction IDE experience | Needs safety guardrails; benefits from IDE-native over CLI-first |
+| **QC / QA Engineer** | Browser automation, test generation, regression execution | Browser automation reliability is critical; agentic loop for test runners |
+| **Project Manager** | Mobile task assignment, progress visibility, planning support | Not writing code; needs lightweight access — mobile + dashboards |
+| **Business Analyst** | Documentation generation, requirements analysis, codebase Q&A | Minimal coding; needs natural language interface to repos and docs |
+
+---
+
+### Persona × Tool Matrix
+
+| **Persona** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q** | **Windsurf FedRAMP** |
+|---|---|---|---|---|---|---|---|
+| **Technical Architect** | ✅ Primary — full capability + skills/MCP design | ⚠️ Evaluate for autonomous task delegation | ✅ Complement for IDE-native workflows | ❌ Skip — no advantage over Cursor | ✅ FedRAMP strategy + GHE compliance | ⚠️ FedRAMP + AWS stacks only | ⚠️ FedRAMP only — document bug risk |
+| **Principal Developer** | ✅ Primary — CLI + MCP + full agentic loop | ⚠️ Delegate isolated high-complexity builds | ✅ Complement — IDE editing preference | ❌ Not recommended | ⚠️ FedRAMP environments only | ❌ AWS-only value | ⚠️ FedRAMP only — last resort |
+| **Junior Developer** | ⚠️ VS Code Extension — good entry point; avoid raw CLI initially | ❌ Too autonomous — masks learning | ✅ Primary — IDE-native, familiar, safe | ⚠️ Acceptable; Cursor is better at same price | ✅ Strong — lowest adoption friction, inline completions | ❌ Weak general-purpose model | ❌ Avoid — bugs + degraded model impedes learning |
+| **QC / QA Engineer** | ✅ Primary — best browser automation (Playwright MCP + Chrome ext) | ✅ Delegate autonomous test execution | ⚠️ Limited automation; use for test code authoring | ⚠️ Playwright available; less reliable | ❌ No browser automation | ❌ No browser automation | ❌ Unreliable automation + folder bug risk |
+| **Project Manager** | ✅ Mobile — review repos, plan via Claude app on iPhone/Android | ✅ Mobile — assign tasks via Slack from phone; monitor autonomously | ❌ Desktop only | ❌ Desktop only | ⚠️ GitHub Mobile — PR review only | ❌ No mobile | ❌ No mobile |
+| **Business Analyst** | ✅ Mobile + Extension — codebase Q&A, doc generation, requirements drafting | ❌ Too autonomous; no BA-facing interface | ⚠️ Code context chat; no BA-specific features | ❌ No BA value | ⚠️ github.com chat for codebase Q&A | ❌ No BA value | ❌ No BA value |
+
+**Legend:** ✅ Recommended · ⚠️ Situational / With Caveats · ❌ Not Recommended
+
+---
+
+### Persona Workflow Diagrams
+
+#### When to Use Each Tool by Role
+
+```mermaid
+graph TD
+    subgraph "Technical Architect"
+        TA1["Claude Code\nSkills + MCP design\nCompliance assessment"]
+        TA2["GitHub Copilot\nFedRAMP strategy"]
+    end
+
+    subgraph "Principal Developer"
+        PD1["Claude Code CLI\nFull agentic loop"]
+        PD2["Cursor\nIDE-native edits"]
+        PD3["Devin\nDelegate isolated builds"]
+    end
+
+    subgraph "Junior Developer"
+        JD1["Cursor\nPrimary IDE — safe, familiar"]
+        JD2["Claude Code\nVS Code Extension\n(after onboarding)"]
+        JD3["GitHub Copilot\nLowest friction entry"]
+    end
+
+    subgraph "QC / QA Engineer"
+        QC1["Claude Code\nPlaywright MCP\nChrome Extension"]
+        QC2["Devin\nAutonomous test runs"]
+    end
+
+    subgraph "Project Manager"
+        PM1["Claude Code\niOS / Android app\nRepo review + planning"]
+        PM2["Devin\nSlack mobile\nAssign tasks from phone"]
+    end
+
+    subgraph "Business Analyst"
+        BA1["Claude Code\nMobile + Extension\nDoc gen + codebase Q&A"]
+        BA2["GitHub Copilot\ngithub.com chat\nPR review context"]
+    end
+
+    style TA1 fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style TA2 fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style PD1 fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style PD2 fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style PD3 fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style JD1 fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style JD2 fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style JD3 fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style QC1 fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style QC2 fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style PM1 fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style PM2 fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style BA1 fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style BA2 fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
+```
+
+---
+
+### Per-Persona Recommendations
+
+#### Technical Architect
+- **Primary:** Claude Code — full capability evaluation, CLAUDE.md + MCP skill design, compliance posture assessment
+- **FedRAMP:** GitHub Copilot (GHE) as preferred compliant option; Amazon Q if AWS-centric
+- **Action:** Author team CLAUDE.md and skill docs; define MCP server standards; assess Windsurf FedRAMP folder bug risk before deployment
+
+#### Principal Developer
+- **Primary:** Claude Code CLI — highest model quality, full agentic loop, terminal authority
+- **Complement:** Cursor for IDE-embedded multi-file refactors when not in CLI mode
+- **Selective:** Devin for well-scoped autonomous feature builds (validate ROI at $500/seat)
+- **Action:** Co-author team skill docs; establish CLAUDE.md patterns; mentor junior devs on VS Code Extension entry path
+
+#### Junior Developer
+- **Primary:** Cursor — familiar VS Code fork, model-configurable, $20/month, safe IDE guardrails
+- **On-ramp:** Claude Code VS Code Extension — IDE-embedded entry point before adopting CLI workflows
+- **Alternative:** GitHub Copilot — lowest adoption friction if already on GHE
+- **Avoid:** Claude Code CLI until comfortable with agentic patterns; Windsurf FedRAMP entirely
+
+#### QC / QA Engineer
+- **Primary:** Claude Code — only tool with complete browser automation stack (Playwright MCP + Chrome Extension), test generation, agentic test runner execution
+- **Selective:** Devin for autonomous regression runs on well-defined test suites
+- **Avoid:** GitHub Copilot, Amazon Q, Windsurf FedRAMP — all have weak or no browser automation
+
+#### Project Manager
+- **Primary:** Claude Code mobile (iOS/Android) — review GitHub repos, discuss deliverables, track plans via Claude app without a laptop
+- **Selective:** Devin via Slack mobile — assign autonomous coding tasks from phone; monitor completion asynchronously
+- **Note:** PMs do not need a desktop AI coding tool; mobile access is the differentiator
+
+#### Business Analyst
+- **Primary:** Claude Code mobile + VS Code Extension — natural language codebase Q&A, requirements-to-doc generation, review GitHub repos on the go
+- **Complement:** GitHub Copilot via github.com — PR review context, issue summarization in browser
+- **Note:** BAs benefit most from Claude's conversational strengths; no need for full CLI agentic setup
+
+---
 
 ### For Developers
 - ✅ Claude Code: Maximum productivity — best model, full agentic loop, MCP ecosystem
