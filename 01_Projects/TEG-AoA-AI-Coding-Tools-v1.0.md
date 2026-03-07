@@ -941,10 +941,10 @@ Understanding how each tool meters usage — and how often limits reset — is c
 
 | **Tool** | **Plan** | **Cost/Mo** | **Allotment** | **Reset Period** | **Top-Up / Overage** |
 |---|---|---|---|---|---|
-| **Claude Code** | Pro | $20 | Moderate usage window — hits limits quickly with sustained agentic work | **Weekly** (usage window resets weekly within the monthly billing cycle) | Upgrade to Max 5x; no per-session top-up |
-| **Claude Code** | Max 5x | $100 | 5× Pro usage window — recommended minimum for active developers | **Weekly** (same weekly window, 5× larger) | Upgrade to Max 20x |
-| **Claude Code** | Max 20x | $200 | 20× Pro usage window — for heavy/principal use | **Weekly** (same weekly window, 20× larger) | API path for unlimited usage |
-| **Claude Code** | API (Anthropic) | Pay-per-token | Unlimited — no cap; pay for what you use | No reset — continuous | Increase spend ceiling in Anthropic Console anytime |
+| **Claude Code** | Pro | $20 | Moderate usage window — hits limits quickly with sustained agentic work | **Weekly** (usage window resets weekly within the monthly billing cycle) | ❌ **No top-up** — wait for weekly reset, upgrade tier, or switch to API |
+| **Claude Code** | Max 5x | $100 | 5× Pro usage window — recommended minimum for active developers | **Weekly** (same weekly window, 5× larger) | ❌ **No top-up** — upgrade to Max 20x or switch to API |
+| **Claude Code** | Max 20x | $200 | 20× Pro usage window — for heavy/principal use | **Weekly** (same weekly window, 20× larger) | ❌ **No top-up** — switch to API for fully uncapped usage |
+| **Claude Code** | API (Anthropic) | Pay-per-token | Unlimited — no cap; pay for what you use | No reset — continuous | ✅ Raise spend ceiling in Anthropic Console anytime |
 | **Windsurf Pro** | Pro | $15 | 500 credits/mo | **Monthly** (credits reset at billing anniversary) | **$10 per 250 credits — no expiry; roll over indefinitely** |
 | **Windsurf Pro** | Teams | $40/mo | 1,000 credits/mo pooled | **Monthly** | $10 per 250 credits (pooled) |
 | **Windsurf FedRAMP** | Enterprise (Palantir FedStart) | ~$60–100+/mo | Custom — governed by contract SLA | **Per contract terms** — typically monthly, but expansion requires procurement amendment | Contract amendment required; 4–8 week procurement cycle; no self-serve top-up |
@@ -967,7 +967,7 @@ Understanding how each tool meters usage — and how often limits reset — is c
 
 ### Key Insights
 
-- **Claude Code subscription resets weekly** (not monthly). The billing cycle is monthly, but the usage window within it resets every week — meaning you get a fresh allotment each week without waiting a full month. Pro ($20/mo) exhausts quickly with agentic work within a single weekly window. **Max 5x ($100/mo) is the recommended minimum** — gives 5× the weekly window, which covers active agentic use across a full work week without interruption.
+- **Claude Code subscription resets weekly — but there is no top-up option.** The billing cycle is monthly, but the usage window within it resets every week. When you exhaust the weekly window, your only options are: **(1) wait for the next weekly reset, (2) upgrade to a higher tier** (Pro → Max 5x → Max 20x), or **(3) switch to the API path** for pay-per-token usage with no cap. There are no add-on credit packs for Claude Code subscriptions. Pro ($20/mo) exhausts quickly with sustained agentic work. **Max 5x ($100/mo) is the recommended minimum** — the 5× window covers active agentic use across a full work week without interruption. This contrasts directly with Windsurf Pro, which allows instant top-ups at any time with no expiry.
 
 - **Claude Code API path has no reset** — pay-per-token via Anthropic Console with a self-set spending ceiling. Best for teams that need per-developer cost visibility and fine-grained budget control. Heavy Opus use can reach $100–200+/month; lighter Sonnet use runs $20–50/month.
 
