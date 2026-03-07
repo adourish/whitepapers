@@ -12,17 +12,21 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 ### Key Takeaways
 
-1. **Claude Code is the clear leader for standard environments.** It scores 9/10 across performance, reliability, and browser automation — no other tool evaluated matches it on all three. The MCP ecosystem and Chrome extension make it the only tool with a complete agentic loop out of the box.
+1. **Claude Code is the clear leader for standard environments.** It scores 9/10 across performance, reliability, and browser automation. Three access modes — CLI (traditional), VS Code Extension (IDE-embedded), and Mobile (Claude app on iOS/Android with GitHub repo access) — make it the most flexible tool evaluated. The MCP ecosystem and Chrome extension provide the only complete agentic loop out of the box.
 
-2. **FedRAMP compliance eliminates most options.** Only GitHub Copilot (via GitHub Enterprise), Amazon Q Developer (via AWS GovCloud), and Windsurf FedRAMP hold FedRAMP authorization. Of these, GitHub Copilot offers the best capability trade-off. Windsurf FedRAMP is a last resort.
+2. **Claude Code has the strongest plans and skills support of any tool evaluated.** Native task planning via TodoWrite, CLAUDE.md skill docs, MCP tool-calling, and hooks enable fully customized, repeatable AI workflows. No other tool comes close for teams with established AI skill libraries.
 
-3. **Devin is purpose-built for autonomous task execution, not daily use.** At $500/seat/month it is 10x more expensive than IDE assistants. ROI is only justifiable for well-scoped, high-complexity feature builds.
+3. **FedRAMP compliance eliminates most options.** Only GitHub Copilot (via GitHub Enterprise), Amazon Q Developer (via AWS GovCloud), and Windsurf FedRAMP hold FedRAMP authorization. Of these, GitHub Copilot offers the best capability trade-off. Windsurf FedRAMP is a last resort.
 
-4. **Cursor is the best IDE-native complement to Claude Code.** It is model-configurable (including Claude backends), cost-effective at $20/month, and ideal for teams who prefer an embedded IDE experience over terminal-first workflows.
+4. **Windsurf FedRAMP has a critical working-folder bug.** The agent intermittently escapes the project root and reads/writes files outside the intended directory — a data integrity and security risk in multi-project environments. This is a known, unresolved issue.
 
-5. **Windsurf Pro has no differentiated advantage.** It is outperformed by Cursor at similar price and is not FedRAMP compliant. Not recommended.
+5. **Devin is purpose-built for autonomous task execution, not daily use.** At $500/seat/month it is 10x more expensive than IDE assistants. ROI is only justifiable for well-scoped, high-complexity feature builds.
 
-6. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
+6. **Cursor is the best IDE-native complement to Claude Code.** It is model-configurable (including Claude backends), cost-effective at $20/month, and ideal for teams who prefer an embedded IDE experience over terminal-first workflows.
+
+7. **Windsurf Pro has no differentiated advantage.** It is outperformed by Cursor at similar price and is not FedRAMP compliant. Not recommended.
+
+8. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
 
 ### Recommendations at a Glance
 
@@ -98,6 +102,9 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Agentic CLI/Terminal** | ✅ Full | ✅ Fully Autonomous | ✅ Composer/Agent | ⚠️ Partial | ⚠️ Limited | ⚠️ Limited | ❌ Minimal |
 | **Extension Ecosystem** | ✅ Rich (MCP) | ⚠️ Proprietary | ✅ Moderate | ✅ Moderate | ✅ Rich (GH ecosystem) | ⚠️ AWS-centric | ❌ Restricted |
 | **Model Quality** | ✅ Claude 4.x | ✅ Proprietary + Claude | ✅ Configurable (Claude/GPT) | ⚠️ Variable | ⚠️ GPT-4o | ⚠️ Amazon models | ❌ Degraded |
+| **Mobile Access** | ✅ iOS/Android (Claude app + GitHub repos; CLI via SSH) | ✅ iOS/Android (Slack mobile + web UI task assignment) | ❌ Desktop only | ❌ Desktop only | ⚠️ Limited (github.com mobile; no code editing) | ❌ Desktop/IDE only | ❌ Desktop only |
+| **Plans Support** | ✅ Native (TodoWrite, task breakdown, multi-step plans) | ✅ Native (autonomous planning built-in) | ⚠️ Partial (Composer outlines steps; no persistent plan) | ⚠️ Partial (basic task flow; no formal plan tracking) | ⚠️ Partial (Copilot Workspace plan view; limited) | ❌ Minimal (no structured planning) | ❌ None |
+| **Skills / Custom Workflows** | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only; no custom skill docs) | ⚠️ Partial (.cursorrules per repo; no MCP equivalent) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions; no tool-calling skills) | ❌ Minimal (no custom skill framework) | ❌ None (restricted environment) |
 | **Offline Capability** | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ⚠️ Limited |
 | **Pricing Model** | API usage-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
 | **Individual / Team** | $3/M (Sonnet) – $15/M (Opus) tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | ~$15/seat/mo + FedRAMP overhead |
@@ -110,44 +117,46 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 ```mermaid
 graph TD
-    subgraph "Developer Workstation"
-        Dev["Developer"]
-        IDE["VSCode / Terminal"]
-        CC["Claude Code CLI"]
-        ChrExt["Claude Code Chrome Extension"]
+    subgraph "Access Methods"
+        MOB["Mobile — iOS / Android\nClaude App + GitHub repos\nor CLI via SSH terminal app"]
+        EXT["VS Code Extension\nIDE-embedded AI\nInline chat + agent mode"]
+        CLI["Claude Code CLI\nTerminal / SSH\nFull agentic loop"]
     end
 
     subgraph "AI Backend"
-        API["Anthropic API\n(Claude Sonnet/Opus 4.x)"]
+        API["Anthropic API\n(Claude Sonnet / Opus 4.x)"]
     end
 
     subgraph "Automation Layer"
-        PW["Playwright MCP"]
-        MCP["MCP Server Ecosystem"]
+        MCP["MCP Server Ecosystem\nFiles · Git · Slack · Databases"]
+        PW["Playwright MCP\n(Browser Automation)"]
+        ChrExt["Chrome Extension\n(Browser Automation)"]
     end
 
-    Dev --> IDE
-    IDE --> CC
-    CC --> API
-    CC --> MCP
+    MOB -->|"Code review\nRepo Q&A"| API
+    EXT -->|"Inline AI\nAgent edits"| API
+    CLI -->|"Agentic tasks\nTerminal commands"| API
+    CLI --> MCP
     MCP --> PW
-    IDE --> ChrExt
+    EXT --> ChrExt
     ChrExt --> PW
 
-    style Dev fill:#0d47a1,stroke:#ffffff,stroke-width:3px,color:#ffffff
-    style CC fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style API fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style PW fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style MOB fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style EXT fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style CLI fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style API fill:#2e7d32,stroke:#ffffff,stroke-width:3px,color:#ffffff
     style MCP fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style PW fill:#0d47a1,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style ChrExt fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style IDE fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
 ```
 
 **Key Points:**
-- Full agentic loop: terminal, browser, file system via MCP
-- Claude Code Chrome Extension enables browser automation alongside Playwright MCP
+- Three access modes: CLI (traditional), VS Code Extension (IDE-embedded), and Mobile (Claude app on iOS/Android)
+- Mobile access via Claude.ai app: review GitHub repos, discuss code, get AI-assisted answers anywhere
+- CLI via SSH from mobile terminal apps (e.g., Termius) enables full agentic capability from a phone
+- VS Code Extension provides inline completions and agent mode without leaving the IDE
+- Full agentic loop via CLI: terminal, browser, file system through MCP ecosystem
 - Powered by Claude Sonnet 4.6 / Opus 4.6 — top-tier code generation quality
-- MCP ecosystem extends to Slack, databases, Git, and custom tooling
 
 **Pros:**
 - ✅ Performance: 9/10 — best-in-class code generation
@@ -170,8 +179,13 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph "Cognition Cloud"
-        DV["Devin Autonomous Agent"]
+    subgraph "Access Methods"
+        MOBD["Mobile — iOS / Android\nSlack App\n(task assignment from phone)"]
+        WEBD["Web Browser\ndevin.ai Dashboard\n(monitoring + assignment)"]
+    end
+
+    subgraph "Cognition Cloud — Autonomous Execution"
+        DV["Devin Agent"]
         BR["Built-in Browser"]
         SH["Shell / Terminal"]
         FS["File System"]
@@ -181,24 +195,19 @@ graph TD
         DVAPI["Cognition AI Models\n(+ Claude/GPT integration)"]
     end
 
-    subgraph "Developer Interface"
-        Dev["Developer"]
-        SLACK["Slack / Web UI\n(Task Assignment)"]
-    end
-
-    Dev --> SLACK
-    SLACK --> DV
+    MOBD -->|"Assign task\nvia Slack"| DV
+    WEBD -->|"Assign task\nMonitor progress"| DV
     DV --> DVAPI
     DV --> BR
     DV --> SH
     DV --> FS
 
-    style Dev fill:#0d47a1,stroke:#ffffff,stroke-width:3px,color:#ffffff
+    style MOBD fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style WEBD fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style DV fill:#2e7d32,stroke:#ffffff,stroke-width:3px,color:#ffffff
     style DVAPI fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style BR fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style BR fill:#0d47a1,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style SH fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style SLACK fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style FS fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
 ```
 
@@ -230,23 +239,26 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph "Developer Workstation"
-        Dev["Developer"]
-        CUR["Cursor IDE\n(VS Code fork)"]
-        COMP["Composer / Agent Mode"]
+    subgraph "Access Methods"
+        DESKC["Desktop Only\nWindows / Mac / Linux\nNo mobile support"]
+    end
+
+    subgraph "Cursor IDE"
+        CUR["Cursor (VS Code fork)\nInline AI + Chat"]
+        COMP["Composer / Agent Mode\nMulti-file edits"]
         TERM["Integrated Terminal"]
     end
 
-    subgraph "AI Backend (Configurable)"
+    subgraph "AI Backend — Configurable"
         CAPI["Claude Sonnet/Opus\nor GPT-4o\nor Gemini"]
     end
 
-    Dev --> CUR
+    DESKC --> CUR
     CUR --> COMP
     CUR --> TERM
-    COMP --> CAPI
+    COMP -->|"Choose model\nper task"| CAPI
 
-    style Dev fill:#0d47a1,stroke:#ffffff,stroke-width:3px,color:#ffffff
+    style DESKC fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style CUR fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style COMP fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style CAPI fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
@@ -281,21 +293,24 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph "Developer Workstation"
-        Dev["Developer"]
-        WS["Windsurf IDE"]
-        PW2["Playwright (Extension)"]
+    subgraph "Access Methods"
+        DESKW["Desktop Only\nWindows / Mac / Linux\nNo mobile support"]
+    end
+
+    subgraph "Windsurf IDE"
+        WS["Windsurf (VS Code fork)\nInline AI + Chat"]
+        PW2["Playwright Extension\n(Browser Automation)"]
     end
 
     subgraph "AI Backend"
-        WSAPI["Windsurf AI Backend\n(GPT-4o / Claude mix)"]
+        WSAPI["Windsurf AI Backend\n(GPT-4o / Claude mix — variable)"]
     end
 
-    Dev --> WS
+    DESKW --> WS
     WS --> WSAPI
     WS --> PW2
 
-    style Dev fill:#0d47a1,stroke:#ffffff,stroke-width:3px,color:#ffffff
+    style DESKW fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style WS fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style WSAPI fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style PW2 fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
@@ -327,27 +342,30 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph "Developer Workstation"
-        Dev["Developer"]
-        GHIDE["VS Code / JetBrains / GitHub.com"]
+    subgraph "Access Methods"
+        GHDESK["Desktop IDE\nVS Code / JetBrains\nVisual Studio / Neovim"]
+        GHWEB["github.com\nCopilot Chat in browser\n(PR review + code Q&A)"]
+        GHMOB["GitHub Mobile App\niOS / Android\nPR review — limited Copilot chat"]
+    end
+
+    subgraph "GitHub / Microsoft Backend"
+        GHAPI["GPT-4o\n(Azure OpenAI)"]
+        GHE["GitHub Enterprise\n(FedRAMP High)"]
         CWS["Copilot Workspace\n(Agent Mode)"]
     end
 
-    subgraph "Microsoft / GitHub Backend"
-        GHAPI["GPT-4o Backend\n(Azure OpenAI)"]
-        GHE["GitHub Enterprise\n(FedRAMP High)"]
-    end
-
-    Dev --> GHIDE
-    GHIDE --> GHAPI
-    GHIDE --> CWS
+    GHDESK -->|"Inline completions\nChat + agent"| GHAPI
+    GHWEB -->|"Web-based chat\nCode review"| GHAPI
+    GHMOB -->|"PR reviews\nLimited chat"| GHAPI
+    GHDESK --> CWS
     CWS --> GHE
 
-    style Dev fill:#0d47a1,stroke:#ffffff,stroke-width:3px,color:#ffffff
-    style GHIDE fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style GHDESK fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style GHWEB fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style GHMOB fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style GHAPI fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style GHE fill:#2e7d32,stroke:#ffffff,stroke-width:3px,color:#ffffff
     style CWS fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style GHAPI fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style GHE fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
 ```
 
 **Key Points:**
@@ -379,27 +397,27 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph "Developer Workstation"
-        Dev["Developer"]
-        AWSIDE["VS Code / JetBrains\n/ AWS Console"]
-        AQA["Q Developer Agent\n(/dev command)"]
+    subgraph "Access Methods"
+        AQDESK["Desktop IDE\nVS Code / JetBrains\n(primary experience)"]
+        AQWEB["AWS Console — Web\nLimited Q chat\n(no mobile app)"]
     end
 
     subgraph "AWS Backend"
         AQAPI["Amazon AI Models\n(Amazon Nova / Bedrock)"]
+        AQA["Q Developer Agent\n(/dev command)"]
         GC["AWS GovCloud\n(FedRAMP High)"]
     end
 
-    Dev --> AWSIDE
-    AWSIDE --> AQAPI
-    AWSIDE --> AQA
+    AQDESK -->|"Inline completions\nChat + /dev agent"| AQAPI
+    AQWEB -->|"Limited Q chat\nin browser"| AQAPI
+    AQDESK --> AQA
     AQA --> GC
 
-    style Dev fill:#0d47a1,stroke:#ffffff,stroke-width:3px,color:#ffffff
-    style AWSIDE fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style AQDESK fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style AQWEB fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style AQAPI fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style AQA fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style AQAPI fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style GC fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style GC fill:#2e7d32,stroke:#ffffff,stroke-width:3px,color:#ffffff
 ```
 
 **Key Points:**
@@ -430,36 +448,37 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph "Government Network"
-        Dev["Developer"]
+    subgraph "Access Methods"
+        DESKFR["Desktop Only\nGovernment Network\nNo mobile support"]
+    end
+
+    subgraph "Government Network — FedRAMP Boundary"
         WS_FR["Windsurf FedRAMP IDE"]
-        FR_AUTH["FedRAMP Authorization Boundary"]
+        BUG["Known Bug: File Access\nAgent escapes working folder\nreads/writes outside project root"]
+        PW3["Playwright\n(Unreliable)"]
     end
 
     subgraph "Restricted AI Backend"
         FR_API["Windsurf Gov AI Backend\n(Older/degraded models)"]
     end
 
-    subgraph "Automation"
-        PW3["Playwright\n(Unreliable)"]
-    end
+    DESKFR --> WS_FR
+    WS_FR --> FR_API
+    WS_FR -.->|"limited + buggy"| PW3
+    WS_FR -.->|"unintended\nfile access"| BUG
 
-    Dev --> WS_FR
-    WS_FR --> FR_AUTH
-    FR_AUTH --> FR_API
-    WS_FR -.->|limited| PW3
-
-    style Dev fill:#0d47a1,stroke:#ffffff,stroke-width:3px,color:#ffffff
+    style DESKFR fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style WS_FR fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style FR_AUTH fill:#2e7d32,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style FR_API fill:#b71c1c,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style PW3 fill:#b71c1c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style BUG fill:#b71c1c,stroke:#ffffff,stroke-width:3px,color:#ffffff
 ```
 
 **Key Points:**
 - FedRAMP authorized — required for government network deployments where GHE/AWS Q are not options
 - AI model performance significantly degraded versus commercial counterparts
 - Browser automation available but unreliable in practice
+- **Known bug:** Agent does not reliably respect the working folder boundary — reads and writes files outside the project root, causing unintended modifications to other directories and posing a data integrity risk
 - Weakest overall option evaluated; included for completeness
 
 **Pros:**
@@ -470,6 +489,10 @@ graph TD
 - ❌ Performance: 3/10 — degraded model quality
 - ❌ Reliability: 3/10 — frequent instability
 - ❌ Browser automation: 3/10 — Playwright available but unreliable
+- ❌ **Working-folder bug:** Agent escapes project root and reads/writes files in parent or sibling directories — unresolved, poses data integrity and security risk in multi-project workspaces
+- ❌ Plans support: None — no structured task planning capability
+- ❌ Skills support: None — restricted environment blocks custom workflow tooling
+- ❌ Mobile access: None — desktop/government network only
 - ❌ Restricted extension ecosystem
 - ❌ Limited agentic/CLI capability
 - ❌ Older/smaller models — lowest code quality of all options evaluated
