@@ -12,21 +12,25 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 ### Key Takeaways
 
-1. **The full dev loop is the primary selection criterion.** The ability to write code, run an API, open a browser, test the UI, identify issues, and fix them — all in a single uninterrupted agentic session — is the highest-value capability evaluated. Only **Claude Code** and **Devin** complete this loop autonomously. Cursor and Windsurf Pro handle the code + terminal testing steps but cannot visually inspect and interact with a browser in the agentic loop; testing still requires a manual handoff. GitHub Copilot, Amazon Q, and Windsurf FedRAMP have no browser automation and require fully manual testing. **Claude Code is the clear leader**: Playwright MCP + Chrome Extension + CLI gives it a 9/10 full dev loop score, three access modes (CLI, VS Code Extension, Mobile), and the deepest automation stack of any tool evaluated.
+1. **The full dev loop is the primary selection criterion.** The ability to write code, run an API, open a browser, test the UI, identify issues, and fix them — all in a single uninterrupted agentic session — is the highest-value capability evaluated. Only **Claude Code** and **Devin** complete this loop autonomously and reliably. Cursor and Windsurf Pro handle code + terminal testing well and **CAN open a browser via Playwright**, but browser automation is unreliable in practice — frequently failing and requiring retries; browser testing often requires manual intervention. GitHub Copilot and Amazon Q have no browser automation and require fully manual testing. Windsurf FedRAMP has Playwright but it fails frequently, compounded by the known working-folder bug. **This is a limiting factor for QC/QA workflows.** **Claude Code is the clear leader**: Playwright MCP + Chrome Extension + CLI gives it a 9/10 full dev loop score, three access modes (CLI, VS Code Extension, Mobile), and the deepest automation stack of any tool evaluated.
 
-2. **Claude Code has the strongest plans and skills support of any tool evaluated.** Native task planning via TodoWrite, CLAUDE.md skill docs, MCP tool-calling, and hooks enable fully customized, repeatable AI workflows. No other tool comes close for teams with established AI skill libraries.
+2. **Script execution is the essential escape hatch for agentic AI.** The ability to write a Python, PowerShell, or Bash script and run it within a single agentic session is the key mechanism for tasks no MCP server covers — connecting to databases, calling proprietary APIs, one-off data transforms, or complex automation chains. Claude Code, Devin, Cursor, and Windsurf Pro all support full script execution autonomously. GitHub Copilot and Amazon Q can generate scripts but execution requires a manual step. Windsurf FedRAMP has severely restricted script execution in its government environment. Skills that combine script execution with AI context (e.g., CLAUDE.md skill docs + MCP tools) multiply this capability into repeatable, team-wide automation.
 
-3. **FedRAMP compliance eliminates most options.** Only GitHub Copilot (via GitHub Enterprise), Amazon Q Developer (via AWS GovCloud), and Windsurf FedRAMP hold FedRAMP authorization. Of these, GitHub Copilot offers the best capability trade-off. Windsurf FedRAMP is a last resort.
+3. **Claude Code has the strongest plans and skills support of any tool evaluated.** Native task planning via TodoWrite, CLAUDE.md skill docs, MCP tool-calling, and hooks enable fully customized, repeatable AI workflows. No other tool comes close for teams with established AI skill libraries.
 
-4. **Windsurf FedRAMP has a critical working-folder bug.** The agent intermittently escapes the project root and reads/writes files outside the intended directory — a data integrity and security risk in multi-project environments. This is a known, unresolved issue.
+4. **FedRAMP compliance eliminates most options.** Only GitHub Copilot (via GitHub Enterprise), Amazon Q Developer (via AWS GovCloud), and Windsurf FedRAMP hold FedRAMP authorization. Of these, GitHub Copilot offers the best capability trade-off. Windsurf FedRAMP is a last resort.
 
-5. **Devin is purpose-built for autonomous task execution, not daily use.** At $500/seat/month it is 10x more expensive than IDE assistants. ROI is only justifiable for well-scoped, high-complexity feature builds.
+5. **Windsurf FedRAMP has a critical working-folder bug.** The agent intermittently escapes the project root and reads/writes files outside the intended directory — a data integrity and security risk in multi-project environments. This is a known, unresolved issue.
 
-6. **Cursor is the best IDE-native complement to Claude Code.** It is model-configurable (including Claude backends), cost-effective at $20/month, and ideal for teams who prefer an embedded IDE experience over terminal-first workflows.
+6. **Devin is purpose-built for autonomous task execution, not daily use.** At $500/seat/month it is 10x more expensive than IDE assistants. ROI is only justifiable for well-scoped, high-complexity feature builds.
 
-7. **Windsurf Pro is a legitimate Tier 2 alternative.** Cascade provides full agentic capability (terminal, multi-file, browser), and it ships with frontier models (Claude Sonnet, GPT-4o). At $15/month it is $5 cheaper than Cursor. Choose Windsurf Pro for an agent-first integrated workflow; choose Cursor for maximum model flexibility and .cursorrules per-repo configuration.
+7. **Cursor is the best IDE-native complement to Claude Code.** It is model-configurable (including Claude backends), cost-effective at $20/month, and ideal for teams who prefer an embedded IDE experience over terminal-first workflows.
 
-8. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
+8. **Windsurf Pro is a legitimate Tier 2 alternative.** Cascade provides full agentic capability (terminal, multi-file, browser), and it ships with frontier models (Claude Sonnet, GPT-4o). At $15/month it is $5 cheaper than Cursor. Choose Windsurf Pro for an agent-first integrated workflow; choose Cursor for maximum model flexibility and .cursorrules per-repo configuration.
+
+9. **A cohesive AI ecosystem across all roles delivers more value than a developer-only tool.** Limiting AI tooling to developers leaves architects, PMs, BAs, and QA without AI productivity gains — and creates friction when teams need to collaborate around AI-generated work. Only **Claude Code** serves all roles from a single platform: developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP/skills design, and PMs/BAs via the mobile Claude app. Every other tool is developer-only (Cursor, Windsurf Pro) or developer-primary with partial exceptions (GitHub Copilot via github.com, Devin via Slack). **Selecting a tool that serves the whole organization, not just coders, compounds the productivity investment.**
+
+10. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
 
 ### Recommendations at a Glance
 
@@ -78,7 +82,9 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 1. AI code generation, completion, and explanation (inline and chat)
 2. Browser automation support (Playwright or equivalent) for AI agent workflows
 3. Terminal/CLI integration for agentic task execution
-4. Extension ecosystem for IDE and workflow customization
+4. Script execution capability (Python, PowerShell, Bash) for one-off automation and DB/API access without MCP servers
+5. Extension ecosystem for IDE and workflow customization
+6. Cross-role accessibility — tool must serve developers, architects, PMs, BAs, and QA; not developer-only
 
 ### Non-Functional Requirements
 1. **Security:** FedRAMP authorization required for government network use
@@ -95,10 +101,12 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 | **Criteria** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q Dev** | **Windsurf FedRAMP** |
 |---|---|---|---|---|---|---|---|
-| **⭐ Full Dev Loop** *(primary)* | ✅ 9/10 — Code → run API → open browser → inspect UI → fix, fully agentic | ✅ 8/10 — Autonomous end-to-end; harder to steer mid-loop | ⚠️ 4/10 — Codes + runs terminal tests; no visual browser interaction | ⚠️ 5/10 — Cascade runs Playwright tests; no visual browser inspection loop | ❌ 2/10 — No browser automation; testing is manual | ❌ 2/10 — No browser automation | ❌ 1/10 — Unreliable + folder bug contaminates dev environment |
+| **⭐ Full Dev Loop** *(primary)* | ✅ 9/10 — Code → run API → open browser → inspect UI → fix, fully agentic | ✅ 8/10 — Autonomous end-to-end; harder to steer mid-loop | ⚠️ 4/10 — Code + terminal tests solid; CAN open browser via Playwright but unreliable, requires retries | ⚠️ 5/10 — Cascade + Playwright CAN open browser; unreliable, requires retries; code + terminal steps solid | ❌ 2/10 — No browser automation; testing is manual | ❌ 2/10 — No browser automation | ❌ 2/10 — Playwright available; frequently fails + folder bug contaminates environment |
 | **⭐ Agentic CLI/Terminal** *(primary)* | ✅ Full (CLI + MCP) | ✅ Fully Autonomous | ✅ Composer/Agent | ✅ Full (Cascade agent) | ⚠️ Limited | ⚠️ Limited | ❌ Minimal |
 | **⭐ Plans Support** *(primary)* | ✅ Native (TodoWrite, multi-step plans) | ✅ Native (autonomous planning) | ⚠️ Partial (no persistent plan) | ⚠️ Partial (basic task flow) | ⚠️ Partial (Copilot Workspace; limited) | ❌ Minimal | ❌ None |
 | **⭐ Skills / Custom Workflows** *(primary)* | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only) | ⚠️ Partial (.cursorrules per repo) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions only) | ❌ Minimal | ❌ None (restricted) |
+| **⭐ Script Execution** *(primary)* | ✅ Full — writes + runs Python/Bash/PowerShell in session; primary escape hatch for DB, APIs, one-off automation | ✅ Full — cloud shell runs any script autonomously | ✅ Full — Composer writes scripts, terminal runs them | ✅ Full — Cascade writes + runs scripts via terminal | ⚠️ Partial — generates scripts; execution requires manual step | ⚠️ Partial — generates scripts; execution requires manual step | ❌ Minimal — restricted environment; unreliable execution |
+| **⭐ Team Ecosystem Breadth** *(primary)* | ✅ Full org — Devs (CLI/VS Code), Architects (MCP/skills design), PMs/BAs (mobile app), QA (Playwright) — one platform for all roles | ⚠️ Dev + PM — Devs code, PMs assign via Slack; BAs/QA have no interface | ❌ Dev only — no interface for PMs, BAs, or non-coders | ❌ Dev only — no interface for PMs, BAs, or non-coders | ⚠️ Dev + limited PM/BA — github.com gives PMs/BAs PR visibility; no coding alternative | ❌ Dev/AWS only — no org-wide value | ❌ Dev only (restricted) — narrowest reach of all options |
 | **Performance** | 9/10 | 8/10 | 8/10 | 7/10 | 7/10 | 6/10 | 3/10 |
 | **Reliability** | 9/10 | 7/10 | 7/10 | 6/10 | 9/10 | 8/10 | 3/10 |
 | **Browser Automation** | 9/10 | 9/10 | 4/10 | 6/10 | 3/10 | 2/10 | 3/10 |
@@ -108,8 +116,8 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **FedRAMP Authorized** | ⚠️ Roadmap | ❌ No | ❌ No | ❌ No | ✅ Yes (GHE) | ✅ Yes (GovCloud) | ✅ Yes |
 | **Offline Capability** | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ❌ No | ⚠️ Limited |
 | **Pricing Model** | API usage-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
-| **Individual / Team** | $3/M (Sonnet) – $15/M (Opus) tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | ~$15/seat/mo + FedRAMP overhead |
-| **Est. Cost / Dev / Mo** | ~$50–200 (moderate use) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$15–30 |
+| **Individual / Team** | $3/M (Sonnet) – $15/M (Opus) tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | Custom (Enterprise+ via Palantir FedStart) |
+| **Est. Cost / Dev / Mo** | ~$50–200 (moderate use) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$60–100+/mo (custom quote required) |
 | **Overall Score** | **9/10** | **8/10** | **7.5/10** | **7.5/10** | **6.5/10** | **5.5/10** | **3/10** |
 
 ### Full Dev Loop — Tool Coverage
@@ -133,15 +141,15 @@ graph LR
         DV2["Devin\nBuilt-in browser\n+ autonomous shell\n8/10"]
     end
 
-    subgraph PARTIAL["Partial Loop — Code + CLI Tests Only"]
-        WP2["Windsurf Pro\nCascade + Playwright\nNo visual browser loop\n5/10"]
-        CU2["Cursor\nComposer + Terminal\nNo browser interaction\n4/10"]
+    subgraph PARTIAL["Partial Loop — Browser Unreliable / Code + CLI Only"]
+        WP2["Windsurf Pro\nCascade + Playwright\nBrowser CAN open; unreliable\n5/10"]
+        CU2["Cursor\nComposer + Terminal\nBrowser CAN open; unreliable\n4/10"]
     end
 
-    subgraph NONE["No Loop — Manual Testing Required"]
+    subgraph NONE["No Reliable Loop — Manual Testing Required"]
         GC2["GitHub Copilot\nNo browser automation\n2/10"]
         AQ2["Amazon Q Dev\nNo browser automation\n2/10"]
-        WF2["Windsurf FedRAMP\nUnreliable + folder bug\n1/10"]
+        WF2["Windsurf FedRAMP\nPlaywright available; frequently fails\n+ folder bug\n2/10"]
     end
 
     style CC2 fill:#2e7d32,stroke:#ffffff,stroke-width:3px,color:#ffffff
@@ -383,7 +391,7 @@ graph TD
 - ✅ Playwright integration for browser automation
 
 **Cons:**
-- ⚠️ Full dev loop: 5/10 — Cascade can run Playwright tests headlessly and execute terminal commands, but does not provide a visual browser interaction loop; cannot open a browser, see the rendered UI, and autonomously navigate/inspect it the way Claude Code + Chrome Extension does
+- ⚠️ Full dev loop: 5/10 — Cascade CAN open a browser via Playwright and run tests, but browser automation is unreliable in practice — frequently fails and requires retries; code + terminal testing steps are solid, but browser inspection is not seamless; limiting for QC/QA workflows
 - ❌ Not FedRAMP authorized
 - ⚠️ No MCP ecosystem — can't extend with custom tool servers
 - ⚠️ No mobile access — desktop only
@@ -532,8 +540,9 @@ graph TD
 **Key Points:**
 - FedRAMP authorized — required for government network deployments where GHE/AWS Q are not options
 - AI model performance significantly degraded versus commercial counterparts
-- Browser automation available but unreliable in practice
+- Browser automation (Playwright) available but unreliable — frequently fails, requires retries
 - **Known bug:** Agent does not reliably respect the working folder boundary — reads and writes files outside the project root, causing unintended modifications to other directories and posing a data integrity risk
+- **Pricing:** Custom Enterprise via Palantir FedStart — expect ~$60–100+/user/month; requires government procurement contract and contract amendment to expand credits
 - Weakest overall option evaluated; included for completeness
 
 **Pros:**
@@ -800,6 +809,34 @@ graph TD
 ### Last Resort: Windsurf FedRAMP
 
 **Rationale:** Weakest capability of all options evaluated. Use only when GHE (Copilot) and Amazon Q are not viable and FedRAMP is a hard requirement.
+
+---
+
+## Credit Limits and Usage Caps
+
+Understanding how each tool meters usage is critical for cost governance and for avoiding mid-session interruptions in agentic workflows.
+
+| **Tool** | **Credit / Usage Model** | **What Happens When You Hit the Limit** | **Add-On Options** |
+|---|---|---|---|
+| **Claude Code** | API token-based (pay-as-you-go) | Requests fail until usage budget is increased or reset | Increase API spend limit anytime in Anthropic Console; no hard cap — governed by team budget policy |
+| **Devin** | $500/seat/mo flat (ACUs — Agent Compute Units) | Task queue pauses; new tasks blocked until next cycle | Purchase additional ACUs from Cognition; expensive at scale |
+| **Cursor** | $20/seat/mo; 500 fast requests/mo (GPT-4o/Sonnet); unlimited slow requests | Drops to slower model (no interruption, just slower) | No hard block; premium model requests throttle gracefully |
+| **Windsurf Pro** | $15/seat/mo with 500 credits/mo; add-on credits available | Agent pauses / prompts to purchase credits | $10 for 250 credits (Pro); credits roll over — no expiry; Teams/Enterprise: $40 for 1,000 pooled credits |
+| **GitHub Copilot** | Subscription-based; completions unlimited; agent mode has soft limits | May throttle chat/agent responses at high volume | Enterprise plan has higher limits; no per-token cost |
+| **Amazon Q Developer** | Free tier: limited; $19/seat/mo Pro: higher limits | Free tier hits daily caps quickly on agent tasks | Upgrade to Pro for production use |
+| **Windsurf FedRAMP** | Custom Enterprise pricing (Palantir FedStart); credit model same as commercial Enterprise | Custom SLA terms; credits governed by contract | Requires contract amendment to expand; slow procurement cycle |
+
+### Key Insights
+
+- **Claude Code has no hard credit cap** — usage is API cost-based, so teams set their own budget ceiling in the Anthropic Console. A developer doing heavy agentic work (Opus 4.6) will spend $100–200/month; lighter Sonnet-based use runs $20–50/month. Cost scales with output quality — the most capable model (Opus) costs ~5x more per token than Sonnet.
+
+- **Windsurf Pro is the most flexible for individuals** — start at $15/month (500 credits), buy add-on 250-credit packs at $10 each as needed. Credits do not expire. For teams doing sustained agentic work, model to 1,500–2,000 credits/month per active developer.
+
+- **Windsurf FedRAMP pricing is custom and significantly higher** than commercial plans. The FedRAMP-authorized Enterprise tier is delivered via Palantir FedStart and requires a government procurement contract. Expect ~$60–100+/user/month at minimum; actual cost requires direct quote. Factor in FedRAMP overhead, compliance fees, and slow add-on procurement — budget unpredictability is a real operational concern.
+
+- **Cursor throttles gracefully** — when fast-request credits are exhausted, the tool falls back to slower model responses rather than blocking. This is the best end-user experience for credit exhaustion, though it can slow mid-session agentic tasks.
+
+- **GitHub Copilot and Amazon Q** are subscription-flat with no per-token cost, making them the most predictable for finance, but their capability ceiling is fixed — you cannot spend more to get a better model or more throughput.
 
 ---
 
