@@ -39,7 +39,6 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | FedRAMP — general | **GitHub Copilot** (GHE) | Best capability/compliance balance |
 | FedRAMP — AWS stacks | **Amazon Q Developer** | GovCloud authorized, strong for AWS IaC |
 | FedRAMP — last resort | **Windsurf FedRAMP** | Only if GHE and Q are not viable |
-| Not recommended | **Windsurf Pro** | No differentiated value vs. Cursor |
 
 ---
 
@@ -509,36 +508,29 @@ graph TD
 ## Scoring Summary
 
 ```mermaid
-graph LR
-    subgraph "Tier 1 — Recommended"
-        CC["Claude Code\n9/10"]
+graph TD
+    subgraph T1["Tier 1 — Recommended"]
+        CC["Claude Code — 9/10\nStandard environments\nBest agentic ecosystem"]
     end
 
-    subgraph "Tier 2 — Strong Alternatives"
-        DV["Devin\n8/10 (high cost)"]
-        CU["Cursor\n7.5/10"]
+    subgraph T2["Tier 2 — Strong Alternatives"]
+        DV["Devin — 8/10\nAutonomous tasks\nHigh cost — pilot first"]
+        CU["Cursor — 7.5/10\nIDE-first, model-flexible\nComposer agent"]
+        WP["Windsurf Pro — 7.5/10\nIDE-first, agent-first\nCascade agent"]
     end
 
-    subgraph "Tier 2 — Strong Alternatives (cont.)"
-        WP["Windsurf Pro\n7.5/10 (agent-first IDE)"]
+    subgraph T3["Tier 3 — Situational"]
+        GC["GitHub Copilot — 6.5/10\nFedRAMP via GHE\nBest compliant option"]
     end
 
-    subgraph "Tier 3 — Situational"
-        GC["GitHub Copilot\n6.5/10 (FedRAMP)"]
+    subgraph T4["Tier 4 — Compliance / Niche"]
+        AQ["Amazon Q Dev — 5.5/10\nFedRAMP via GovCloud\nAWS stacks only"]
+        WF["Windsurf FedRAMP — 3/10\nFedRAMP last resort\nKnown folder bug"]
     end
 
-    subgraph "Tier 4 — Compliance / Niche"
-        AQ["Amazon Q Dev\n5.5/10 (FedRAMP)"]
-        WF["Windsurf FedRAMP\n3/10 (last resort)"]
-    end
-
-    CC -->|"Non-gov standard"| T1["Primary Choice"]
-    GC -->|"FedRAMP + GHE"| T2["Gov Networks (preferred)"]
-    AQ -->|"FedRAMP + AWS"| T3["Gov Networks (AWS stacks)"]
-    WF -->|"No other option"| T4["Gov Networks (last resort)"]
-    DV -->|"Autonomous tasks"| T5["High-value isolated work"]
-    CU -->|"Model-flexible IDE"| T6["IDE-first teams (Composer)"]
-    WP -->|"Agent-first IDE"| T7["IDE-first teams (Cascade)"]
+    T1 --> T2
+    T2 --> T3
+    T3 --> T4
 
     style CC fill:#2e7d32,stroke:#ffffff,stroke-width:3px,color:#ffffff
     style DV fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
