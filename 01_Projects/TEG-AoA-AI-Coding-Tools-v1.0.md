@@ -52,7 +52,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 |---|---|---|---|
 | **Technical Architect** | **Claude Code** | Full capability + MCP/skills design + compliance assessment + mobile | GitHub Copilot (FedRAMP strategy) |
 | **Principal Developer** | **Claude Code** | Highest model quality, full agentic loop (code → API → browser → fix), script execution | Cursor (IDE-native editing preference) / Devin (delegate isolated builds) |
-| **Junior Developer** | **Cursor** | Familiar VS Code fork, IDE-native guardrails, $20/mo, safe entry point | Claude Code VS Code Extension (after onboarding); GitHub Copilot (lowest friction) |
+| **Junior Developer** | **Claude Code** (VS Code Ext) or **Windsurf Pro** | Full agentic support from day one — juniors benefit most from AI doing the heavy lifting; VS Code Extension or Cascade provides guided agentic in a familiar IDE | Cursor (model-flexible IDE alternative); GitHub Copilot (lowest friction if GHE is in place) |
 | **QC / QA Engineer** | **Claude Code** | Only tool with reliable browser automation (Playwright MCP + Chrome Extension) for agentic test runs | Devin (autonomous regression execution) |
 | **Project Manager** | **Claude Code** (mobile) | iOS/Android app — review repos, discuss deliverables, manage plans without a laptop | Devin via Slack (assign autonomous tasks from phone) |
 | **Business Analyst** | **Claude Code** (mobile + Extension) | Natural language codebase Q&A, doc generation, requirements analysis on any device | GitHub Copilot via github.com (PR review context) |
@@ -639,7 +639,7 @@ graph TD
 |---|---|---|---|---|---|---|---|
 | **Technical Architect** | ✅ Primary — full capability + skills/MCP design | ⚠️ Evaluate for autonomous task delegation | ✅ Complement — model-flexible IDE | ✅ Complement — agent-first IDE (Cascade) | ✅ FedRAMP strategy + GHE compliance | ⚠️ FedRAMP + AWS stacks only | ⚠️ FedRAMP only — document bug risk |
 | **Principal Developer** | ✅ Primary — CLI + MCP + full agentic loop | ⚠️ Delegate isolated high-complexity builds | ✅ Complement — model-flexible IDE preference | ✅ Complement — Cascade agent-first preference | ⚠️ FedRAMP environments only | ❌ AWS-only value | ⚠️ FedRAMP only — last resort |
-| **Junior Developer** | ⚠️ VS Code Extension — good entry point; avoid raw CLI initially | ❌ Too autonomous — masks learning | ✅ Primary — IDE-native, familiar, safe | ✅ Primary — Cascade guides with full agentic; safe IDE guardrails | ✅ Strong — lowest adoption friction | ❌ Weak general-purpose model | ❌ Avoid — bugs + degraded model impedes learning |
+| **Junior Developer** | ✅ Primary — VS Code Extension gives full agentic in a familiar IDE; juniors benefit most from AI doing the heavy lifting | ❌ Too autonomous — masks learning, no feedback loop | ✅ Strong — model-flexible IDE, Composer agentic; good alternative | ✅ Primary — Cascade agentic in IDE; guided, fast, $15/mo; excellent entry point | ✅ Complement — lowest adoption friction if GHE in place | ❌ Weak general-purpose model | ❌ Avoid — bugs + degraded model impedes learning |
 | **QC / QA Engineer** | ✅ Primary — best browser automation (Playwright MCP + Chrome ext) | ✅ Delegate autonomous test execution | ⚠️ Limited automation; use for test code authoring | ⚠️ Playwright available via Cascade; less seamless than CC | ❌ No browser automation | ❌ No browser automation | ❌ Unreliable automation + folder bug risk |
 | **Project Manager** | ✅ Mobile — review repos, plan via Claude app on iPhone/Android | ✅ Mobile — assign tasks via Slack from phone; monitor autonomously | ❌ Desktop only | ❌ Desktop only | ⚠️ GitHub Mobile — PR review only | ❌ No mobile | ❌ No mobile |
 | **Business Analyst** | ✅ Mobile + Extension — codebase Q&A, doc generation, requirements drafting | ❌ Too autonomous; no BA-facing interface | ⚠️ Code context chat; no BA-specific features | ⚠️ Code context chat via Cascade; no BA-specific features | ⚠️ github.com chat for codebase Q&A | ❌ No BA value | ❌ No BA value |
@@ -666,9 +666,9 @@ graph TD
     end
 
     subgraph "Junior Developer"
-        JD1["Cursor\nPrimary IDE — safe, familiar"]
-        JD2["Claude Code\nVS Code Extension\n(after onboarding)"]
-        JD3["GitHub Copilot\nLowest friction entry"]
+        JD1["Claude Code\nVS Code Extension\nFull agentic — guided in IDE"]
+        JD2["Windsurf Pro\nCascade agentic — IDE\nAffordable + full agentic"]
+        JD3["Cursor\nAlternative — model-flexible\nComposer agentic"]
     end
 
     subgraph "QC / QA Engineer"
@@ -718,10 +718,10 @@ graph TD
 - **Action:** Co-author team skill docs; establish CLAUDE.md patterns; mentor junior devs on VS Code Extension entry path
 
 #### Junior Developer
-- **Primary:** Cursor — familiar VS Code fork, model-configurable, $20/month, safe IDE guardrails
-- **On-ramp:** Claude Code VS Code Extension — IDE-embedded entry point before adopting CLI workflows
-- **Alternative:** GitHub Copilot — lowest adoption friction if already on GHE
-- **Avoid:** Claude Code CLI until comfortable with agentic patterns; Windsurf FedRAMP entirely
+- **Primary:** Claude Code VS Code Extension or Windsurf Pro — full agentic support from day one; juniors benefit the most from AI doing the heavy lifting; VS Code Extension and Cascade both provide guided agentic inside a familiar IDE without needing CLI fluency
+- **Alternative:** Cursor — model-flexible Composer agentic; good if team prefers maximum model choice or .cursorrules per-repo configuration
+- **Complement:** GitHub Copilot — lowest adoption friction if GHE is already in place
+- **Avoid:** Claude Code raw CLI until comfortable with agentic patterns; Windsurf FedRAMP entirely (bugs + degraded model impedes learning)
 
 #### QC / QA Engineer
 - **Primary:** Claude Code — only tool with complete browser automation stack (Playwright MCP + Chrome Extension), test generation, agentic test runner execution
