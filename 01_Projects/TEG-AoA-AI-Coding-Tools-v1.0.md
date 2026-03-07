@@ -42,6 +42,8 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 15. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
 
+16. **Cost-per-task — not monthly sticker price — is the right unit for comparing AI tools, and the differences are dramatic.** At face value, most tools cost $15–20/month and appear equivalent. Normalized to a working day and a single agentic task, the spread is 33×. **Windsurf Pro** is the cheapest meaningful agentic option at **$0.75/working day** (~$0.30–0.60/agentic task) — 500 credits/month with instant $10/250-credit top-ups that never expire. **Claude Code Max 5x** costs **$5.00/working day** (~$0.67–1.00/task) — 6.7× more per day, justified by its 9.0/10 weighted AoA score; critically, it has **no top-up option** (exhaust the weekly window and you wait for reset, upgrade tier, or switch to the API path). **Devin** costs **$25.00/working day** (~$25–50/task) — a 33× premium over Windsurf Pro for a 5.1/10 weighted score. **Windsurf FedRAMP** requires a formal contract amendment (4–8 week procurement) to expand credits — the most operationally brittle cost model in the field. For teams on the API path: Claude Code Sonnet (~$0.45/task) is cheaper than the Max 5x subscription below ~200 tasks/month; above that threshold, Max 5x wins on cost-per-task. **Credit model flexibility is a hidden cost driver** — tools with no top-up or rigid procurement create wasted developer time when windows exhaust mid-sprint.
+
 ### Recommendations at a Glance
 
 #### By Deployment Environment
