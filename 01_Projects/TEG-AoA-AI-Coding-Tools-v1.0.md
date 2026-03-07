@@ -1,7 +1,7 @@
 # TEG One-Pager: AI Coding Assistant Tool Selection — Analysis of Alternatives
 
 **Date:** 2026-03-07
-**Author:** REI Systems Engineering
+**Author:** Engineering
 **Status:** Proposal
 
 ---
@@ -1000,4 +1000,4 @@ Understanding how each tool meters usage is critical for cost governance and for
 
 ---
 
-*Document owner: REI Systems Engineering | Next review: 2026-06-01*
+*Document owner: Engineering | Next review: 2026-06-01*
