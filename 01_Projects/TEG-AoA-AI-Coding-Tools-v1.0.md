@@ -52,8 +52,8 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 | Role | Primary Tool | Why | Secondary / Complement |
 |---|---|---|---|
-| **Technical Architect** | **Claude Code** | Full dev loop (code → API → browser → fix) is the primary evaluation criterion; MCP/skills design; Chrome Extension bypasses GFE-blocked sites/APIs for gov-adjacent integration testing | Windsurf Pro (agent-first IDE evaluation); GitHub Copilot (FedRAMP strategy) |
-| **Principal Developer** | **Claude Code** | Highest model quality, full agentic loop (code → API → browser → fix), script execution | Windsurf Pro (agent-first IDE preference, $15/mo); Cursor (model-flexible IDE); Devin (delegate isolated builds) |
+| **Technical Architect** | **Claude Code** | Full dev loop evaluation, estimations, architecture design, ADRs, MCP/skills design, compliance strategy; Chrome Extension bypasses GFE-blocked sites/APIs for gov-adjacent integration testing | Windsurf Pro (agent-first IDE evaluation); GitHub Copilot (FedRAMP strategy) |
+| **Principal Developer** | **Claude Code** | Full agentic loop, estimations, technical design, code reviews, script execution, skill/CLAUDE.md authoring | Windsurf Pro (agent-first IDE preference, $15/mo); Cursor (model-flexible IDE); Devin (delegate isolated builds) |
 | **Junior Developer** | **Claude Code** (VS Code Ext) or **Windsurf Pro** | Full agentic support from day one — juniors benefit most from AI doing the heavy lifting; VS Code Extension or Cascade provides guided agentic in a familiar IDE | Cursor (model-flexible IDE alternative); GitHub Copilot (lowest friction if GHE is in place) |
 | **QC / QA Engineer** | **Claude Code** | Only tool with reliable browser automation (Playwright MCP + Chrome Extension) for agentic test runs | Devin (autonomous regression execution) |
 | **Project Manager** | **Claude Code** (desktop app + VS Code Ext) | Claude.ai desktop for planning, doc review, and repo Q&A; VS Code Extension for codebase context; mobile as a complement on the go | Devin via Slack (assign autonomous tasks from phone) |
@@ -627,8 +627,8 @@ graph TD
 
 | Persona | Primary Needs | Key Constraints |
 |---|---|---|
-| **Technical Architect** | Tool evaluation, compliance strategy, workflow design, skills/MCP setup | Must assess FedRAMP posture; sets standards for the team |
-| **Principal Developer** | Full agentic capability, complex multi-file tasks, mentoring via shared workflows | Needs highest model quality; drives skill/CLAUDE.md authoring |
+| **Technical Architect** | Tool evaluation, estimation support, architecture design and ADRs, compliance strategy, workflow design, skills/MCP setup | Must assess FedRAMP posture; sets standards for the team; uses Claude Code for design artifacts and estimation analysis |
+| **Principal Developer** | Full agentic capability, complex multi-file tasks, estimations, technical design, code review analysis, mentoring via shared workflows | Needs highest model quality; drives skill/CLAUDE.md authoring; uses Claude Code for design and estimation, not just coding |
 | **Junior Developer** | Inline completions, guided suggestions, low-friction IDE experience | Needs safety guardrails; benefits from IDE-native over CLI-first |
 | **QC / QA Engineer** | Browser automation, test generation, regression execution | Browser automation reliability is critical; agentic loop for test runners |
 | **Project Manager** | Mobile task assignment, progress visibility, planning support | Not writing code; needs lightweight access — mobile + dashboards |
@@ -721,7 +721,7 @@ graph TD
 ### Per-Persona Recommendations
 
 #### Technical Architect
-- **Primary:** Claude Code — the full dev loop (code → API → browser → fix) is the primary evaluation criterion for tool selection; must be assessed hands-on, not just on paper
+- **Primary:** Claude Code — used across the full range of architect responsibilities: estimations (LOE analysis, complexity scoring, story sizing), architecture design (ADRs, design docs, diagrams-as-code), compliance strategy, and full dev loop evaluation (code → API → browser → fix); must be assessed hands-on, not just on paper
 - **Complement:** Windsurf Pro — evaluate as agent-first IDE alternative for developer teams; Cascade provides full agentic at $15/mo; understand its browser automation limitations (reliable for code + terminal, unreliable for visual inspection loops) before recommending to QA or Automation teams
 - **Complement:** GitHub Copilot (GHE) — preferred FedRAMP-compliant option; assess GHE licensing status early
 - **Key capability:** Chrome Extension enables the agent to operate through an existing authenticated browser session — critical for government-adjacent environments where sites and APIs are blocked without a GFE; direct API calls and CLI cannot bypass these controls, but the browser plugin can authorize the agent for a session
@@ -729,7 +729,7 @@ graph TD
 - **Action:** Author team CLAUDE.md and skill docs; define MCP server standards; assess Windsurf FedRAMP folder bug risk before deployment; document Chrome Extension session-auth workflow for gov integration testing
 
 #### Principal Developer
-- **Primary:** Claude Code CLI — highest model quality, full agentic loop (code → API → browser → fix), script execution, terminal authority
+- **Primary:** Claude Code CLI — used across the full range of principal responsibilities: estimations (LOE sizing, complexity analysis, spike research), technical design (design docs, API contracts, data models), code reviews, complex multi-file implementation, script execution, and skill/CLAUDE.md authoring
 - **Complement:** Windsurf Pro — agent-first IDE for developers who prefer staying in an IDE; Cascade provides full agentic including script execution at $15/mo; a strong peer to Cursor, not a downgrade
 - **Complement:** Cursor — model-flexible IDE (Claude/GPT/Gemini backends); best when per-repo .cursorrules configuration or maximum model flexibility is required
 - **Selective:** Devin for well-scoped autonomous feature builds (validate ROI at $500/seat)
