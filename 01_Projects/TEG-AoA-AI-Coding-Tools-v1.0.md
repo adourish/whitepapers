@@ -28,7 +28,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 8. **Windsurf Pro is a legitimate Tier 2 alternative.** Cascade provides full agentic capability (terminal, multi-file, browser), and it ships with frontier models (Claude Sonnet, GPT-4o). At $15/month it is $5 cheaper than Cursor. Choose Windsurf Pro for an agent-first integrated workflow; choose Cursor for maximum model flexibility and .cursorrules per-repo configuration.
 
-9. **The Chrome Extension bypasses government integration blockers.** Government networks frequently block external sites without a GFE browser session. The Claude Code Chrome Extension operates through an already-authenticated browser, letting the agent access blocked portals and GFE-gated APIs that a CLI cannot reach. Windsurf Pro and Cursor cannot leverage an existing authenticated browser session.
+9. **The Chrome Extension is useful to access web apps that were not designed for agentic AI or have firewall restrictions.** By operating through an existing authenticated browser session, the agent can interact with portals, internal tools, and GFE-gated APIs that a CLI or direct API call cannot reach. Windsurf Pro and Cursor do not have an equivalent.
 
 10. **A layered ecosystem is required — no single tool covers every role or scenario.** Claude Code has no top-up option: exhaust the weekly window mid-sprint and the team waits. This makes a secondary tool mandatory, not optional. Developers fall back to Windsurf Pro or Cursor; QA needs an alternative when Playwright fails; FedRAMP environments need a compliant stack. The right org strategy: **primary + backup + compliant option** per role.
 
