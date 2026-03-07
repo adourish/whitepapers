@@ -6,6 +6,38 @@
 
 ---
 
+## Executive Summary
+
+Seven AI coding assistant platforms were evaluated across performance, reliability, browser automation, FedRAMP compliance, agentic capability, and cost. The field splits cleanly into two decision contexts: **standard development environments** and **FedRAMP-regulated government networks**.
+
+### Key Takeaways
+
+1. **Claude Code is the clear leader for standard environments.** It scores 9/10 across performance, reliability, and browser automation — no other tool evaluated matches it on all three. The MCP ecosystem and Chrome extension make it the only tool with a complete agentic loop out of the box.
+
+2. **FedRAMP compliance eliminates most options.** Only GitHub Copilot (via GitHub Enterprise), Amazon Q Developer (via AWS GovCloud), and Windsurf FedRAMP hold FedRAMP authorization. Of these, GitHub Copilot offers the best capability trade-off. Windsurf FedRAMP is a last resort.
+
+3. **Devin is purpose-built for autonomous task execution, not daily use.** At $500/seat/month it is 10x more expensive than IDE assistants. ROI is only justifiable for well-scoped, high-complexity feature builds.
+
+4. **Cursor is the best IDE-native complement to Claude Code.** It is model-configurable (including Claude backends), cost-effective at $20/month, and ideal for teams who prefer an embedded IDE experience over terminal-first workflows.
+
+5. **Windsurf Pro has no differentiated advantage.** It is outperformed by Cursor at similar price and is not FedRAMP compliant. Not recommended.
+
+6. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
+
+### Recommendations at a Glance
+
+| Environment | Recommended Tool | Rationale |
+|---|---|---|
+| Standard development | **Claude Code** | 9/10 across all criteria; best agentic ecosystem |
+| IDE-first / complement | **Cursor** | Model-flexible, $20/mo, strong multi-file agent |
+| Autonomous task execution | **Devin** (selective) | High cost — pilot before committing |
+| FedRAMP — general | **GitHub Copilot** (GHE) | Best capability/compliance balance |
+| FedRAMP — AWS stacks | **Amazon Q Developer** | GovCloud authorized, strong for AWS IaC |
+| FedRAMP — last resort | **Windsurf FedRAMP** | Only if GHE and Q are not viable |
+| Not recommended | **Windsurf Pro** | No differentiated value vs. Cursor |
+
+---
+
 ## Problem Statement
 
 **Current Situation:**
