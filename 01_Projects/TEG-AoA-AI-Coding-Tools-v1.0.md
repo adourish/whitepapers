@@ -154,7 +154,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 ### Weighted Scoring Matrix
 
-Criteria are weighted by organizational impact. The ten ⭐ primary criteria account for **84%** of the total score. Cost/Value is included as a secondary criterion at 5% — lower cost scores higher (10 = cheapest with meaningful capability; 1 = most expensive). Scores use each tool's recommended active-developer plan.
+Criteria are weighted by organizational impact. The ten ⭐ primary criteria account for **84%** of the total score. Cost/Value is included as a secondary criterion at 5% — scoring considers three factors: **(1) monthly plan price**, **(2) credit allotment adequacy** (how many credits/requests/tokens the plan provides for active agentic work before hitting limits), and **(3) top-up flexibility** (can you add credits instantly, or must you wait for reset or go through procurement). 10 = cheapest with sufficient allotment and flexible top-up; 1 = most expensive or most inflexible. Scores use each tool's recommended active-developer plan. See the Credit Limits section and Relativistic Cost Analysis for full per-unit breakdowns.
 
 | **Criterion** | **Weight** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q** | **Windsurf FedRAMP** |
 |---|---|---|---|---|---|---|---|---|
@@ -175,7 +175,7 @@ Criteria are weighted by organizational impact. The ten ⭐ primary criteria acc
 | Extension Ecosystem | 1% | 9 | 4 | 7 | 7 | 8 | 4 | 2 |
 | **Weighted Total** | **100%** | **9.0** | **5.1** | **4.5** | **4.7** | **4.3** | **3.3** | **2.2** |
 
-> **How Cost/Value reshapes the rankings:** Windsurf Pro jumps from 4th to 2nd (tied) by scoring 10/10 on cost ($15/mo, top-up available). Cursor and GitHub Copilot both earn 9/10 on cost ($20 and $19/mo flat), lifting them slightly. Devin's 1/10 on cost ($500/mo) pushes it further down. Claude Code earns 5/10 — the Max 5x plan ($100/mo) is mid-range cost; the Pro plan ($20) is cheaper but undersized for active agentic work. Windsurf FedRAMP earns 4/10 — expensive, inflexible, and requires contract procurement to expand.
+> **How Cost/Value reshapes the rankings:** Windsurf Pro jumps from 4th to 2nd (tied) by scoring 10/10 — $15/mo, 500 credits/month, and instant $10/250-credit top-ups that never expire. Cursor earns 9/10 — $20/mo with 500 fast requests/month (graceful fallback on exhaustion, no hard block). GitHub Copilot earns 9/10 — $19/mo flat with unlimited completions. Amazon Q earns 9/10 — $19/mo flat (free tier available). Devin's 1/10 ($500/mo, opaque ACU allotment, ~$25–50/task) pushes it to last place by cost. Claude Code earns 5/10 — the Max 5x plan ($100/mo) provides a 5× weekly window adequate for active developers, but the **no top-up constraint** and $5.00/working day cost put it mid-range; the Pro plan ($20) is cheaper but its allotment exhausts quickly. Windsurf FedRAMP earns 4/10 — ~$60–100+/mo with contract-governed allotment, no self-serve top-up, and a 4–8 week procurement cycle to expand — the most operationally inflexible cost model in the field.
 
 ### Full Dev Loop — Tool Coverage
 
