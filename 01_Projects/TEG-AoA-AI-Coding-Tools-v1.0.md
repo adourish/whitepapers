@@ -965,6 +965,87 @@ Understanding how each tool meters usage — and how often limits reset — is c
 | GitHub Copilot | Flat subscription | — | No token-level billing; completions unlimited |
 | Amazon Q Pro | Flat $19/mo | — | No token-level billing |
 
+### Relativistic Cost Analysis
+
+Normalizing cost across all options on a common unit of measure makes trade-offs tangible. Three lenses are most useful: cost per working day, cost per agentic task (estimated), and value efficiency (AoA score per $100 spent).
+
+#### Cost Per Developer Per Working Day
+
+*Assumes 20 working days/month. Windsurf FedRAMP uses $80/mo midpoint estimate.*
+
+| **Tool** | **Plan** | **$/Mo** | **$/Working Day** | **$/Week** | **Cost Index** *(vs cheapest)* |
+|---|---|---|---|---|---|
+| Windsurf Pro | Pro | $15 | **$0.75** | $3.75 | **1.0×** (baseline) |
+| GitHub Copilot | Individual | $19 | $0.95 | $4.75 | 1.3× |
+| Amazon Q | Pro | $19 | $0.95 | $4.75 | 1.3× |
+| Claude Code | Pro | $20 | $1.00 | $5.00 | 1.3× |
+| Cursor | Pro | $20 | $1.00 | $5.00 | 1.3× |
+| Windsurf FedRAMP | Enterprise | ~$80 | ~$4.00 | ~$20 | ~5.3× |
+| Claude Code | Max 5x | $100 | $5.00 | $25.00 | 6.7× |
+| Claude Code | Max 20x | $200 | $10.00 | $50.00 | 13.3× |
+| Devin | Seat | $500 | $25.00 | $125.00 | **33.3×** |
+
+> **Context:** At $5/day, Claude Code Max 5x costs less than a coffee. At $25/day, Devin costs more than lunch. The flat-rate tools (GitHub Copilot, Amazon Q) are cheapest per day but their capability ceiling is fixed — you cannot pay more to get better results.
+
+---
+
+#### Estimated Cost Per Agentic Task
+
+*One "agentic task" = a multi-step session such as implementing a feature, generating a test suite, or a full code review. Assumes ~100K input + 10K output tokens per task for API tools. Subscription-based tools estimated from allotment ÷ typical monthly task volume.*
+
+| **Tool** | **Plan** | **Est. Tasks/Mo (allotment)** | **Est. $/Task** | **Notes** |
+|---|---|---|---|---|
+| GitHub Copilot | Individual | Unlimited completions | ~$0 (flat) | Completions unlimited; agent depth limited |
+| Amazon Q | Pro | Unlimited (soft-limited) | ~$0 (flat) | AWS tasks; limited general value |
+| Windsurf Pro | Pro | ~25–50 agentic tasks | ~$0.30–0.60 | 500 credits ÷ ~10–20 credits/task |
+| Claude Code | API — Sonnet 4.6 | Unlimited | ~$0.45/task* | 100K input × $3/M + 10K output × $15/M |
+| Claude Code | API — Opus 4.6 | Unlimited | ~$0.75/task* | 100K input × $5/M + 10K output × $25/M |
+| Cursor | Pro | ~100–167 tasks | ~$0.12–0.20 | 500 fast requests ÷ ~3–5 req/task |
+| Claude Code | Pro | ~20–30 tasks | ~$0.67–1.00 | Weekly window ÷ ~5–8 tasks/week |
+| Claude Code | Max 5x | ~100–150 tasks | ~$0.67–1.00 | 5× window; same $/task ratio as Pro |
+| Devin | Seat | ~10–20 complex tasks | **~$25–50/task** | $500 flat ÷ estimated autonomous task count |
+
+*\*API estimates based on 100K input + 10K output tokens. Actual cost varies significantly with session depth — a simple Q&A is $0.05; a long multi-file refactor can be $2–5.*
+
+> **Key insight:** Devin costs **50–100× more per task** than Claude Code API on Sonnet for equivalent autonomous work — and its task quality ceiling is lower on the weighted scoring model (5.5 vs 9.2). Windsurf Pro has the lowest estimated cost per task among tools with meaningful agentic capability.
+
+---
+
+#### Value Efficiency — AoA Score per $100/Month
+
+*Higher = more capability per dollar. Uses the weighted AoA score from the Options Analysis.*
+
+| **Tool** | **Plan** | **AoA Score** | **$/Mo** | **Score per $100** | **Rank** |
+|---|---|---|---|---|---|
+| Claude Code | Pro | 9.2 | $20 | **46.0** | 🥇 1st |
+| Windsurf Pro | Pro | 4.5 | $15 | 30.0 | 🥈 2nd |
+| GitHub Copilot | Individual | 4.2 | $19 | 22.1 | 🥉 3rd |
+| Cursor | Pro | 4.4 | $20 | 22.0 | 4th |
+| Amazon Q | Pro | 3.0 | $19 | 15.8 | 5th |
+| Claude Code | Max 5x | 9.2 | $100 | 9.2 | 6th |
+| Claude Code | Max 20x | 9.2 | $200 | 4.6 | 7th |
+| Windsurf FedRAMP | Enterprise | 2.1 | ~$80 | 2.6 | 8th |
+| Devin | Seat | 5.5 | $500 | **1.1** | 9th |
+
+> **Reading this table:** Claude Code Pro ($20/mo) has the best score-per-dollar of any option — **but only if the weekly usage window is sufficient for your workload.** For active agentic developers who exhaust it mid-week, the effective score-per-dollar drops because blocked time is wasted time. Max 5x ($100/mo) is the honest recommendation for full-time agentic use — score-per-dollar drops to 9.2 but the window holds across the week. Devin at 1.1 score-per-$100 is the worst value in the field by a wide margin.
+
+---
+
+#### Claude Code: API vs Subscription Break-Even
+
+*At what monthly spend level does the Max 5x subscription ($100/mo) match the API path cost?*
+
+| **Usage Level** | **API Cost (Sonnet)** | **API Cost (Opus)** | **Max 5x Worth It?** |
+|---|---|---|---|
+| Light (~50 tasks/mo) | ~$23 | ~$38 | ❌ API cheaper |
+| Moderate (~100 tasks/mo) | ~$45 | ~$75 | ❌ API still cheaper |
+| Active (~200 tasks/mo) | ~$90 | ~$150 | ✅ Max 5x competitive on Sonnet |
+| Heavy (~300 tasks/mo) | ~$135 | ~$225 | ✅ Max 5x cheaper than Sonnet API |
+
+> **Rule of thumb:** If you're running fewer than ~200 agentic tasks per month, the API path is likely cheaper. Above 200 tasks/month (≈10 tasks/day), Max 5x subscription becomes cost-competitive with Sonnet and significantly cheaper than Opus. The subscription also removes the per-token anxiety of watching every session's cost — a non-trivial productivity benefit.
+
+---
+
 ### Key Insights
 
 - **Claude Code subscription resets weekly — but there is no top-up option.** The billing cycle is monthly, but the usage window within it resets every week. When you exhaust the weekly window, your only options are: **(1) wait for the next weekly reset, (2) upgrade to a higher tier** (Pro → Max 5x → Max 20x), or **(3) switch to the API path** for pay-per-token usage with no cap. There are no add-on credit packs for Claude Code subscriptions. Pro ($20/mo) exhausts quickly with sustained agentic work. **Max 5x ($100/mo) is the recommended minimum** — the 5× window covers active agentic use across a full work week without interruption. This contrasts directly with Windsurf Pro, which allows instant top-ups at any time with no expiry.
