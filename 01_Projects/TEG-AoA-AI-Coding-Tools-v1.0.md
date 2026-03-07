@@ -640,7 +640,7 @@ graph TD
 | **Technical Architect** | ✅ Primary — full capability + skills/MCP design | ⚠️ Evaluate for autonomous task delegation | ✅ Complement — model-flexible IDE | ✅ Complement — agent-first IDE (Cascade) | ✅ FedRAMP strategy + GHE compliance | ⚠️ FedRAMP + AWS stacks only | ⚠️ FedRAMP only — document bug risk |
 | **Principal Developer** | ✅ Primary — CLI + MCP + full agentic loop | ⚠️ Delegate isolated high-complexity builds | ✅ Complement — model-flexible IDE preference | ✅ Complement — Cascade agent-first preference | ⚠️ FedRAMP environments only | ❌ AWS-only value | ⚠️ FedRAMP only — last resort |
 | **Junior Developer** | ✅ Primary — VS Code Extension gives full agentic in a familiar IDE; juniors benefit most from AI doing the heavy lifting | ❌ Too autonomous — masks learning, no feedback loop | ✅ Strong — model-flexible IDE, Composer agentic; good alternative | ✅ Primary — Cascade agentic in IDE; guided, fast, $15/mo; excellent entry point | ✅ Complement — lowest adoption friction if GHE in place | ❌ Weak general-purpose model | ❌ Avoid — bugs + degraded model impedes learning |
-| **QC / QA Engineer** | ✅ Primary — best browser automation (Playwright MCP + Chrome ext) | ✅ Delegate autonomous test execution | ⚠️ Limited automation; use for test code authoring | ⚠️ Playwright available via Cascade; less seamless than CC | ❌ No browser automation | ❌ No browser automation | ❌ Unreliable automation + folder bug risk |
+| **QC / QA Engineer** | ✅ Primary — best browser automation (Playwright MCP + Chrome ext); fastest, most reliable agentic test loop | ✅ Delegate autonomous test execution | ⚠️ Limited automation; use for test code authoring only | ⚠️ Windsurf Pro Cascade + Playwright WILL work for browser testing but slower, less reliable, and requires retries — acceptable fallback, not recommended primary | ❌ No browser automation | ❌ No browser automation | ❌ Unreliable automation + folder bug risk |
 | **Project Manager** | ✅ Desktop app + VS Code Ext — Claude.ai desktop for planning + doc review; VS Code Ext for repo context; mobile as complement | ✅ Slack desktop — assign tasks, monitor progress; mobile as complement | ❌ Developer tool only | ❌ Developer tool only | ⚠️ github.com — PR visibility; limited PM utility | ❌ No PM value | ❌ No PM value |
 | **Business Analyst** | ✅ Desktop app + VS Code Ext — Claude.ai desktop for doc gen, requirements drafting, codebase Q&A; mobile as complement | ❌ Too autonomous; no BA-facing interface | ⚠️ Code context chat; no BA-specific features | ⚠️ Code context chat via Cascade; no BA-specific features | ⚠️ github.com chat for codebase Q&A | ❌ No BA value | ❌ No BA value |
 
@@ -724,9 +724,10 @@ graph TD
 - **Avoid:** Claude Code raw CLI until comfortable with agentic patterns; Windsurf FedRAMP entirely (bugs + degraded model impedes learning)
 
 #### QC / QA Engineer
-- **Primary:** Claude Code — only tool with complete browser automation stack (Playwright MCP + Chrome Extension), test generation, agentic test runner execution
-- **Selective:** Devin for autonomous regression runs on well-defined test suites
-- **Avoid:** GitHub Copilot, Amazon Q, Windsurf FedRAMP — all have weak or no browser automation
+- **Primary:** Claude Code — only tool with a complete, reliable browser automation stack (Playwright MCP + Chrome Extension); fastest agentic test loop; writes tests, runs them, opens the browser, inspects the UI, and fixes issues in one session
+- **Fallback:** Windsurf Pro — Cascade + Playwright WILL open a browser and execute tests, but it is slower, less reliable, and frequently requires retries; acceptable if Claude Code is unavailable, but expect friction and manual intervention for complex UI flows
+- **Selective:** Devin for autonomous regression runs on well-defined, repeatable test suites
+- **Avoid:** Cursor (browser automation unreliable, no dedicated test loop), GitHub Copilot, Amazon Q, Windsurf FedRAMP — all have weak or no browser automation
 
 #### Project Manager
 - **Primary:** Claude Code desktop app (Claude.ai) + VS Code Extension — desktop is the main working surface for planning sessions, doc review, delivery status Q&A, and repo context; VS Code Extension for in-codebase discussions without requiring CLI knowledge
