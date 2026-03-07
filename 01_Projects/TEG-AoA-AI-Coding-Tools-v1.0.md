@@ -30,7 +30,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 9. **Browser automation via Chrome Extension bypasses federal government integration blockers.** Government networks frequently block external sites and APIs without a GFE (Government Furnished Equipment) browser session. The Claude Code Chrome Extension solves this by operating through an already-authenticated browser — the agent can be authorized for a session using the browser's existing credentials and cookies, allowing it to interact with blocked sites, authorized portals, and GFE-gated APIs that a direct API call or CLI cannot reach. This is a significant differentiator for government-adjacent work and a practical workaround for integration testing in restricted environments. Windsurf Pro and Cursor can open a browser via Playwright but cannot leverage an existing authenticated session the same way.
 
-10. **A cohesive AI ecosystem across all roles delivers more value than a developer-only tool.** Limiting AI tooling to developers leaves architects, PMs, BAs, and QA without AI productivity gains — and creates friction when teams need to collaborate around AI-generated work. Only **Claude Code** serves all roles from a single platform: developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP/skills design, and PMs/BAs via the mobile Claude app. Every other tool is developer-only (Cursor, Windsurf Pro) or developer-primary with partial exceptions (GitHub Copilot via github.com, Devin via Slack). **Selecting a tool that serves the whole organization, not just coders, compounds the productivity investment.**
+10. **A cohesive AI ecosystem across all roles delivers more value than a developer-only tool.** Limiting AI tooling to developers leaves architects, PMs, BAs, and QA without AI productivity gains — and creates friction when teams need to collaborate around AI-generated work. Only **Claude Code** serves all roles from a single platform: developers via CLI and VS Code Extension, QA via Playwright automation, architects via MCP/skills design, Automation Engineers via pipeline scripting and E2E browser testing, and PMs/BAs via the Claude.ai desktop app and VS Code Extension (with mobile as a complement). Every other tool is developer-only (Cursor, Windsurf Pro) or developer-primary with partial exceptions (GitHub Copilot via github.com, Devin via Slack). **Selecting a tool that serves the whole organization, not just coders, compounds the productivity investment.**
 
 11. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
 
@@ -52,8 +52,8 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 | Role | Primary Tool | Why | Secondary / Complement |
 |---|---|---|---|
-| **Technical Architect** | **Claude Code** | Full dev loop (code → API → browser → fix) is the primary evaluation criterion; MCP/skills design; Chrome Extension bypasses GFE-blocked sites/APIs for gov-adjacent integration testing | GitHub Copilot (FedRAMP strategy) |
-| **Principal Developer** | **Claude Code** | Highest model quality, full agentic loop (code → API → browser → fix), script execution | Cursor (IDE-native editing preference) / Devin (delegate isolated builds) |
+| **Technical Architect** | **Claude Code** | Full dev loop (code → API → browser → fix) is the primary evaluation criterion; MCP/skills design; Chrome Extension bypasses GFE-blocked sites/APIs for gov-adjacent integration testing | Windsurf Pro (agent-first IDE evaluation); GitHub Copilot (FedRAMP strategy) |
+| **Principal Developer** | **Claude Code** | Highest model quality, full agentic loop (code → API → browser → fix), script execution | Windsurf Pro (agent-first IDE preference, $15/mo); Cursor (model-flexible IDE); Devin (delegate isolated builds) |
 | **Junior Developer** | **Claude Code** (VS Code Ext) or **Windsurf Pro** | Full agentic support from day one — juniors benefit most from AI doing the heavy lifting; VS Code Extension or Cascade provides guided agentic in a familiar IDE | Cursor (model-flexible IDE alternative); GitHub Copilot (lowest friction if GHE is in place) |
 | **QC / QA Engineer** | **Claude Code** | Only tool with reliable browser automation (Playwright MCP + Chrome Extension) for agentic test runs | Devin (autonomous regression execution) |
 | **Project Manager** | **Claude Code** (desktop app + VS Code Ext) | Claude.ai desktop for planning, doc review, and repo Q&A; VS Code Extension for codebase context; mobile as a complement on the go | Devin via Slack (assign autonomous tasks from phone) |
@@ -124,7 +124,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **⭐ Plans Support** *(primary)* | ✅ Native (TodoWrite, multi-step plans) | ✅ Native (autonomous planning) | ⚠️ Partial (no persistent plan) | ⚠️ Partial (basic task flow) | ⚠️ Partial (Copilot Workspace; limited) | ❌ Minimal | ❌ None |
 | **⭐ Skills / Custom Workflows** *(primary)* | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only) | ⚠️ Partial (.cursorrules per repo) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions only) | ❌ Minimal | ❌ None (restricted) |
 | **⭐ Script Execution** *(primary)* | ✅ Full — writes + runs Python/Bash/PowerShell in session; primary escape hatch for DB, APIs, one-off automation | ✅ Full — cloud shell runs any script autonomously | ✅ Full — Composer writes scripts, terminal runs them | ✅ Full — Cascade writes + runs scripts via terminal | ⚠️ Partial — generates scripts; execution requires manual step | ⚠️ Partial — generates scripts; execution requires manual step | ❌ Minimal — restricted environment; unreliable execution |
-| **⭐ Team Ecosystem Breadth** *(primary)* | ✅ Full org — Devs (CLI/VS Code), Architects (MCP/skills design), PMs/BAs (mobile app), QA (Playwright) — one platform for all roles | ⚠️ Dev + PM — Devs code, PMs assign via Slack; BAs/QA have no interface | ❌ Dev only — no interface for PMs, BAs, or non-coders | ❌ Dev only — no interface for PMs, BAs, or non-coders | ⚠️ Dev + limited PM/BA — github.com gives PMs/BAs PR visibility; no coding alternative | ❌ Dev/AWS only — no org-wide value | ❌ Dev only (restricted) — narrowest reach of all options |
+| **⭐ Team Ecosystem Breadth** *(primary)* | ✅ Full org — Devs (CLI/VS Code), Architects (MCP/skills design), PMs/BAs (desktop app + VS Code Ext, mobile as complement), QA/Automation (Playwright) — one platform for all roles | ⚠️ Dev + PM — Devs code, PMs assign via Slack; BAs/QA have no interface | ❌ Dev only — no interface for PMs, BAs, or non-coders | ❌ Dev only — no interface for PMs, BAs, or non-coders | ⚠️ Dev + limited PM/BA — github.com gives PMs/BAs PR visibility; no coding alternative | ❌ Dev/AWS only — no org-wide value | ❌ Dev only (restricted) — narrowest reach of all options |
 | **Performance** | 9/10 | 8/10 | 8/10 | 7/10 | 7/10 | 6/10 | 3/10 |
 | **Reliability** | 9/10 | 7/10 | 7/10 | 6/10 | 9/10 | 8/10 | 3/10 |
 | **Browser Automation** | 9/10 | 9/10 | 4/10 | 6/10 | 3/10 | 2/10 | 3/10 |
@@ -722,15 +722,18 @@ graph TD
 
 #### Technical Architect
 - **Primary:** Claude Code — the full dev loop (code → API → browser → fix) is the primary evaluation criterion for tool selection; must be assessed hands-on, not just on paper
+- **Complement:** Windsurf Pro — evaluate as agent-first IDE alternative for developer teams; Cascade provides full agentic at $15/mo; understand its browser automation limitations (reliable for code + terminal, unreliable for visual inspection loops) before recommending to QA or Automation teams
+- **Complement:** GitHub Copilot (GHE) — preferred FedRAMP-compliant option; assess GHE licensing status early
 - **Key capability:** Chrome Extension enables the agent to operate through an existing authenticated browser session — critical for government-adjacent environments where sites and APIs are blocked without a GFE; direct API calls and CLI cannot bypass these controls, but the browser plugin can authorize the agent for a session
-- **FedRAMP:** GitHub Copilot (GHE) as preferred compliant option; Amazon Q if AWS-centric
+- **FedRAMP:** GitHub Copilot (GHE) as preferred compliant option; Amazon Q if AWS-centric; Windsurf FedRAMP as last resort only
 - **Action:** Author team CLAUDE.md and skill docs; define MCP server standards; assess Windsurf FedRAMP folder bug risk before deployment; document Chrome Extension session-auth workflow for gov integration testing
 
 #### Principal Developer
-- **Primary:** Claude Code CLI — highest model quality, full agentic loop, terminal authority
-- **Complement:** Cursor for IDE-embedded multi-file refactors when not in CLI mode
+- **Primary:** Claude Code CLI — highest model quality, full agentic loop (code → API → browser → fix), script execution, terminal authority
+- **Complement:** Windsurf Pro — agent-first IDE for developers who prefer staying in an IDE; Cascade provides full agentic including script execution at $15/mo; a strong peer to Cursor, not a downgrade
+- **Complement:** Cursor — model-flexible IDE (Claude/GPT/Gemini backends); best when per-repo .cursorrules configuration or maximum model flexibility is required
 - **Selective:** Devin for well-scoped autonomous feature builds (validate ROI at $500/seat)
-- **Action:** Co-author team skill docs; establish CLAUDE.md patterns; mentor junior devs on VS Code Extension entry path
+- **Action:** Co-author team skill docs; establish CLAUDE.md patterns; mentor junior devs on VS Code Extension or Windsurf Pro entry path
 
 #### Junior Developer
 - **Primary:** Claude Code VS Code Extension or Windsurf Pro — full agentic support from day one; juniors benefit the most from AI doing the heavy lifting; VS Code Extension and Cascade both provide guided agentic inside a familiar IDE without needing CLI fluency
@@ -766,13 +769,13 @@ graph TD
 ---
 
 ### For Developers
-- ✅ Claude Code: Maximum productivity — best model, full agentic loop, MCP ecosystem
-- ✅ Devin: Maximum autonomy — hands-off execution, high cost justified for right tasks
-- ✅ Cursor: Best IDE-native AI experience; model-configurable
-- ⚠️ GitHub Copilot: Good inline completions; low adoption friction; weak automation
-- ✅ Windsurf Pro: Strong Tier 2 alternative — Cascade provides full agentic, frontier models, $15/mo; peer to Cursor not inferior
-- ⚠️ Amazon Q: Strong only on AWS-centric code
-- ❌ Windsurf FedRAMP: Productivity loss; use only when required
+- ✅ Claude Code: Maximum productivity — best model, full agentic loop (code → API → browser → fix), MCP ecosystem, script execution
+- ✅ Devin: Maximum autonomy — hands-off execution; high cost justified for the right tasks
+- ✅ Windsurf Pro: Strong Tier 2 — Cascade agent-first IDE, frontier models, full script execution, $15/mo; best for developers who prefer IDE over CLI; peer to Cursor not inferior
+- ✅ Cursor: Best IDE for model flexibility — Claude/GPT/Gemini backends, .cursorrules per repo, $20/mo; complement to both Claude Code and Windsurf Pro
+- ⚠️ GitHub Copilot: Good inline completions; lowest adoption friction; weak agentic automation; best for FedRAMP or GHE-native teams
+- ⚠️ Amazon Q: Strong only on AWS-centric code; limited general-purpose value
+- ❌ Windsurf FedRAMP: Productivity loss; use only when required by compliance
 
 ### For Engineering Management
 - ✅ Claude Code: Highest ROI in standard environments
