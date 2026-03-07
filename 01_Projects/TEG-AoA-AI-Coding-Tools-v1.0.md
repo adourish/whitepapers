@@ -147,9 +147,9 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **⭐ Team Ecosystem Breadth** *(primary)* | ✅ Full org — Devs (CLI/VS Code), Architects (MCP/skills design), PMs/BAs (desktop app + VS Code Ext, mobile as complement), QA/Automation (Playwright) — one platform for all roles | ⚠️ Dev + PM — Devs code, PMs assign via Slack; BAs/QA have no interface | ❌ Dev only — no interface for PMs, BAs, or non-coders | ❌ Dev only — no interface for PMs, BAs, or non-coders | ⚠️ Dev + limited PM/BA — github.com gives PMs/BAs PR visibility; no coding alternative | ❌ Dev/AWS only — no org-wide value | ❌ Dev only (restricted) — narrowest reach of all options |
 | **⭐ Agentic Governance & Orchestration** *(primary)* | ✅ Full — native subagents parallelize workloads (analyze + test + implement simultaneously); hook system intercepts every lifecycle event (PreToolUse, PostToolUse, UserPromptSubmit, SubagentStart/Stop) for approval gates, audit trails, and junior dev guardrails; runs natively in VS Code or terminal with low CPU overhead | ⚠️ Partial — single autonomous agent; webhook notifications for task completion only; no lifecycle hooks or subagent model | ❌ None — no subagents, no hook system | ❌ None — no subagents, no hook system | ❌ None | ❌ None | ❌ None — restricted environment; no lifecycle governance |
 | **⭐ Permission & Safety Model** *(primary)* | ✅ Full — granular per-session permission modes: plan (design before executing), acceptEdits (auto-approve file changes), dontAsk (CI/CD unattended), bypassPermissions (fully autonomous); per-tool allowlists via settings; CLAUDE.md safety rules per project | ⚠️ Partial — human-in-loop approval at task start and key decision points; limited granularity during mid-execution | ⚠️ Partial — file-level confirmation prompts; no structured permission modes or governance model | ⚠️ Partial — confirmation prompts for destructive edits; no structured permission framework | ⚠️ Partial — accept/reject suggestions; enterprise policy controls at org level; no agentic permission model | ⚠️ Partial — accept/reject; basic enterprise guardrails | ❌ Minimal — restricted environment limits configurability; no permission modes |
-| **Cost / Value** *(10 = best value; scored on recommended active-dev plan; see Relativistic Cost Analysis for full breakdown)* | 5/10 — **Max 5x $100/mo** recommended; 5× weekly usage window; **no top-up** (wait for weekly reset or switch to API); $5.00/working day (6.7× baseline); est. **~$0.67–1.00/agentic task**; premium cost justified by highest weighted score (9.0/10) | 1/10 — **$500/seat/mo**; ACU allotment opaque; monthly reset; add-on ACUs expensive; $25.00/working day (**33.3× baseline**); est. **~$25–50/agentic task** — 50–100× more than CC API on Sonnet | 9/10 — **$20/mo**; 500 fast requests/mo, unlimited slow; monthly reset; graceful model fallback on exhaustion (no hard block); $1.00/working day (1.3× baseline); est. **~$0.12–0.20/agentic task** | 10/10 — **$15/mo**; 500 credits/mo; monthly reset; **$10/250 top-up credits — no expiry, roll over indefinitely**; cheapest meaningful agentic option; $0.75/working day (**1.0× baseline**); est. **~$0.30–0.60/agentic task** | 9/10 — **$19/mo**; unlimited completions; agent soft limits refresh monthly; $0.95/working day (1.3× baseline); est. **~$0/agentic task** (flat subscription — no per-task cost) | 9/10 — **$19/mo** (or free tier with daily caps); Pro allotment monthly; $0.95/working day (1.3× baseline); est. **~$0/agentic task** (flat — but capability ceiling is lowest of scored tools) | 5/10 — **~$60–100+/mo** custom contract; allotment contract-governed; **no self-serve top-up**; expanding limits requires 4–8 wk procurement amendment; ~$4.00/working day (~5.3× baseline); enterprise SLA included in contract |
-| **Performance** | 9/10 — subagents parallelize; low CPU; native CLI or VS Code | 8/10 | 8/10 | 7/10 | 7/10 | 6/10 | 4/10 — fork architecture adds CPU overhead vs commercial release; functional in FedRAMP env but slower |
-| **Reliability** | 9/10 | 7/10 | 7/10 | 6/10 | 9/10 | 8/10 | 5/10 — enterprise contract with SLA; stable deployment though slower |
+| **Cost / Value** *(10 = best value; scored on recommended active-dev plan; see Relativistic Cost Analysis for full breakdown)* | 5/10 — **Max 5x $100/mo** recommended; 5× weekly usage window; **no top-up** (wait for weekly reset or switch to API); $5.00/working day (6.7× baseline); est. **~$0.67–1.00/agentic task**; premium cost justified by highest weighted score (8.8/10) | 1/10 — **$500/seat/mo**; ACU allotment opaque; monthly reset; add-on ACUs expensive; $25.00/working day (**33.3× baseline**); est. **~$25–50/agentic task** — 50–100× more than CC API on Sonnet | 9/10 — **$20/mo**; 500 fast requests/mo, unlimited slow; monthly reset; graceful model fallback on exhaustion (no hard block); $1.00/working day (1.3× baseline); est. **~$0.12–0.20/agentic task** | 10/10 — **$15/mo**; 500 credits/mo; monthly reset; **$10/250 top-up credits — no expiry, roll over indefinitely**; cheapest meaningful agentic option; $0.75/working day (**1.0× baseline**); est. **~$0.30–0.60/agentic task** | 9/10 — **$19/mo**; unlimited completions; agent soft limits refresh monthly; $0.95/working day (1.3× baseline); est. **~$0/agentic task** (flat subscription — no per-task cost) | 9/10 — **$19/mo** (or free tier with daily caps); Pro allotment monthly; $0.95/working day (1.3× baseline); est. **~$0/agentic task** (flat — but capability ceiling is lowest of scored tools) | 5/10 — **~$60–100+/mo** custom contract; allotment contract-governed; **no self-serve top-up**; expanding limits requires 4–8 wk procurement amendment; ~$4.00/working day (~5.3× baseline); enterprise SLA included in contract |
+| **Performance** | 8/10 — subagents parallelize workloads; low CPU; native VS Code extension or plain terminal | 8/10 | 8/10 | 8/10 — polished UI; native VS Code fork; smooth experience but can feel slower under heavy agentic load | 7/10 | 6/10 | 7/10 — native VS Code support; capable but fork architecture adds CPU overhead; known folder bug affects workflow |
+| **Reliability** | 9/10 | 7/10 | 7/10 | 6/10 | 9/10 | 8/10 | 5/10 — enterprise SLA included; however isolated FedRAMP servers occasionally go down or run slower than commercial infrastructure; outages take longer to resolve than commercial cloud |
 | **Browser Automation** | 9/10 | 9/10 | 4/10 | 6/10 | 3/10 | 2/10 | 3/10 |
 | **Model Quality** | ✅ Claude 4.x | ✅ Proprietary + Claude | ✅ Configurable (Claude/GPT) | ✅ Frontier models (Claude, GPT-4o) | ⚠️ GPT-4o only | ⚠️ Amazon models | ❌ Degraded |
 | **Mobile Access** | ✅ iOS/Android (Claude app + GitHub repos; CLI via SSH) | ✅ iOS/Android (Slack mobile + web UI task assignment) | ❌ Desktop only | ❌ Desktop only | ⚠️ Limited (github.com mobile; no code editing) | ❌ Desktop/IDE only | ❌ Desktop only |
@@ -159,7 +159,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Pricing Model** | Subscription (Max plan) or API token-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
 | **Individual / Team** | Subscription: Pro $20/mo · **Max 5x $100/mo** · Max 20x $200/mo. API: $3/M Sonnet – $15/M Opus tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | Custom (Enterprise+ via Palantir FedStart) |
 | **Est. Cost / Dev / Mo** | **$100/mo (Max 5x — recommended)** or $20–200+ (API, usage-based) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$60–100+/mo (custom quote required) |
-| **Weighted Score** *(see matrix below)* | **8.9 / 10** | **5.4 / 10** | **5.0 / 10** | **5.1 / 10** | **4.7 / 10** | **3.6 / 10** | **2.5 / 10** |
+| **Weighted Score** *(see matrix below)* | **8.8 / 10** | **5.4 / 10** | **5.0 / 10** | **5.2 / 10** | **4.7 / 10** | **3.6 / 10** | **2.8 / 10** |
 
 ---
 
@@ -181,7 +181,7 @@ Normalizing all tools to a common unit exposes trade-offs that monthly price alo
 
 *\*API cost for ~100K input + 10K output tokens (Sonnet 4.6). A simple Q&A is ~$0.05; a deep multi-file refactor can be $2–5.*
 
-> **Bottom line:** Windsurf Pro delivers the best cost-per-task of any tool with meaningful agentic capability. Claude Code Max 5x costs 6.7× more per day but scores 8.9/10 vs Windsurf Pro's 5.1/10 — a legitimate premium for teams needing the full dev loop, subagents, and org-wide skill sharing. Devin at 33.3× the baseline is only justifiable for well-scoped autonomous task delegation. The **API path for Claude Code** undercuts Max 5x below ~200 tasks/month (~10 tasks/day).
+> **Bottom line:** Windsurf Pro delivers the best cost-per-task of any tool with meaningful agentic capability. Claude Code Max 5x costs 6.7× more per day but scores 8.8/10 vs Windsurf Pro's 5.2/10 — a legitimate premium for teams needing the full dev loop, subagents, and org-wide skill sharing. Devin at 33.3× the baseline is only justifiable for well-scoped autonomous task delegation. The **API path for Claude Code** undercuts Max 5x below ~200 tasks/month (~10 tasks/day).
 
 ---
 
@@ -200,12 +200,12 @@ Criteria are weighted by organizational impact. Nine ⭐ primary criteria accoun
 | ⭐ Skills / Custom Workflows | 7% | 10 | 3 | 5 | 5 | 5 | 2 | 1 |
 | ⭐ Plans Support | 1% | 9 | 9 | 4 | 4 | 4 | 2 | 1 |
 | ⭐ **Permission & Safety Model** | **5%** | **10** | **5** | **4** | **4** | **4** | **3** | **3** |
-| **Performance** | **10%** | **9** | **8** | **8** | **7** | **7** | **6** | **4** |
+| **Performance** | **10%** | **8** | **8** | **8** | **8** | **7** | **6** | **7** |
 | Reliability | 3% | 9 | 7 | 7 | 6 | 9 | 8 | 5 |
 | FedRAMP Compliance | 5% | 3 | 1 | 1 | 1 | 9 | 9 | 8 |
 | **Cost / Value** | **5%** | **5** | **1** | **9** | **10** | **9** | **9** | **5** |
 | Extension Ecosystem | 1% | 9 | 4 | 7 | 7 | 8 | 4 | 2 |
-| **Weighted Total** | **100%** | **8.9** | **5.4** | **5.0** | **5.1** | **4.7** | **3.6** | **2.5** |
+| **Weighted Total** | **100%** | **8.8** | **5.4** | **5.0** | **5.2** | **4.7** | **3.6** | **2.8** |
 
 > **How Cost/Value reshapes the rankings:** Windsurf Pro jumps from 4th to 2nd (tied) by scoring 10/10 — $15/mo, 500 credits/month, and instant $10/250-credit top-ups that never expire. Cursor earns 9/10 — $20/mo with 500 fast requests/month (graceful fallback on exhaustion, no hard block). GitHub Copilot earns 9/10 — $19/mo flat with unlimited completions. Amazon Q earns 9/10 — $19/mo flat (free tier available). Devin's 1/10 ($500/mo, opaque ACU allotment, ~$25–50/task) pushes it to last place by cost. Claude Code earns 5/10 — the Max 5x plan ($100/mo) provides a 5× weekly window adequate for active developers, but the **no top-up constraint** and $5.00/working day cost put it mid-range; the Pro plan ($20) is cheaper but its allotment exhausts quickly. Windsurf FedRAMP earns 5/10 — ~$60–100+/mo with contract-governed allotment and no self-serve top-up, but the enterprise contract includes SLA support, which has value in regulated environments.
 
@@ -605,12 +605,12 @@ graph TD
 
 ## Scoring Summary
 
-*Scores are weighted across 16 criteria — ⭐ primary criteria account for 84% of the total. Cost/Value (5%) scores lower cost higher. Scores use each tool's recommended active-developer plan.*
+*Scores are weighted across 14 criteria — nine ⭐ primary criteria account for 79% of the total. Performance is weighted at 10%. Cost/Value (5%) scores lower cost higher. Scores use each tool's recommended active-developer plan.*
 
 ```mermaid
 graph TD
-    subgraph T1["Tier 1 — Recommended (8.9)"]
-        CC["Claude Code — 8.9
+    subgraph T1["Tier 1 — Recommended (8.8)"]
+        CC["Claude Code — 8.8
 Full dev loop + skill sharing + agentic governance
 + low CPU + subagents + org breadth
 Salesforce: best choice for Apex/LWC orchestration"]
@@ -620,7 +620,7 @@ Salesforce: best choice for Apex/LWC orchestration"]
         DV["Devin — 5.4
 Strong autonomy + CLI
 No governance/skills; $500/mo; no FedRAMP"]
-        WP["Windsurf Pro — 5.1
+        WP["Windsurf Pro — 5.2
 Best value — $15/mo + top-ups
 Salesforce: strong Apex/LWC support; dev-only"]
         CU["Cursor — 5.0
@@ -628,14 +628,14 @@ Model-flexible IDE — $20/mo flat
 No agentic governance; dev-only"]
     end
 
-    subgraph T3["Tier 3 — Situational (2.5–4.7)"]
+    subgraph T3["Tier 3 — Situational (2.8–4.7)"]
         GC["GitHub Copilot — 4.7
 FedRAMP via GHE — best compliant option
 $19/mo flat; limited agentic depth"]
         AQ["Amazon Q Dev — 3.6
 FedRAMP via GovCloud — $19/mo
 AWS stacks only; no agentic depth"]
-        WF["Windsurf FedRAMP — 2.5
+        WF["Windsurf FedRAMP — 2.8
 FedRAMP compliant; Salesforce capable
 $60–100+/mo; fork CPU overhead; folder bug"]
     end
@@ -649,7 +649,8 @@ $60–100+/mo; fork CPU overhead; folder bug"]
     style CU fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style GC fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style AQ fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style WF fill:#b71c1c,stroke:#ffffff,stroke-width:2px,color:#ffffff```
+    style WF fill:#b71c1c,stroke:#ffffff,stroke-width:2px,color:#ffffff
+```
 
 ---
 
