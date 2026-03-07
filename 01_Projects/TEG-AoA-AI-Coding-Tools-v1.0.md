@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-Seven AI coding assistant platforms were evaluated across performance, reliability, browser automation, skill sharing, FedRAMP compliance, agentic capability, and cost. The field splits cleanly into two decision contexts: **standard development environments** and **FedRAMP-regulated government networks**.
+Seven AI coding assistant platforms were evaluated across performance, reliability, browser automation, skill sharing, subagent orchestration, hook-based lifecycle customization, permission models, FedRAMP compliance, agentic capability, and cost. The field splits cleanly into two decision contexts: **standard development environments** and **FedRAMP-regulated government networks**.
 
 ### Key Takeaways
 
@@ -36,7 +36,11 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 12. **Skill sharing across roles is a premier force-multiplier — and only Claude Code makes it first-class.** A BA-trained document generation skill, a QC-trained Playwright test skill, or an architect-authored estimation workflow can all be committed as plain markdown CLAUDE.md files to a shared git repo and immediately pulled by any team member. This creates a living, version-controlled org skill library. No other tool evaluated provides a structured, cross-role skill sharing mechanism: Cursor shares .cursorrules per repo (code-only scope), Windsurf Pro shares workspace rules per project, Devin has no persistent skill library, and GitHub Copilot offers only Enterprise-wide custom instructions without versioned, role-specific docs. The ability to train a skill once and share it org-wide — across BA, dev, QC, architect, and automation roles — compounds every individual productivity gain into a team-wide capability.
 
-13. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
+13. **Subagent / multi-agent orchestration is a structural differentiator — and only Claude Code has it.** The Agent tool lets Claude spawn parallel specialized subagents within a single session — each with its own toolset, permissions, and context window. A principal developer can spawn one subagent to analyze the codebase, a second to draft tests, and a third to write the implementation in parallel. No other tool evaluated offers a native multi-agent model: Devin is a single autonomous agent (4/10), and Cursor, Windsurf Pro, GitHub Copilot, Amazon Q, and Windsurf FedRAMP score 1/10 (no subagent capability at all). This is the highest-leverage capability for complex, long-running engineering workflows.
+
+14. **Hooks give teams enterprise-grade governance and observability over AI actions — unique to Claude Code.** The hook system provides lifecycle callbacks at every significant event: PreToolUse (intercept and approve/reject tool calls before execution), PostToolUse (audit every file edit, API call, or script run), SubagentStart/Stop (track parallel workstreams), UserPromptSubmit (validate or transform prompts before they reach the model), and more. Teams can implement audit trails, approval gates for destructive operations, CI/CD pipeline integration, and custom alerting — all without modifying Claude Code itself. No other tool in the evaluation has a comparable hook system.
+
+15. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
 
 ### Recommendations at a Glance
 
@@ -131,6 +135,9 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **⭐ Skills / Custom Workflows** *(primary)* | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only) | ⚠️ Partial (.cursorrules per repo) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions only) | ❌ Minimal | ❌ None (restricted) |
 | **⭐ Script Execution** *(primary)* | ✅ Full — writes + runs Python/Bash/PowerShell in session; primary escape hatch for DB, APIs, one-off automation | ✅ Full — cloud shell runs any script autonomously | ✅ Full — Composer writes scripts, terminal runs them | ✅ Full — Cascade writes + runs scripts via terminal | ⚠️ Partial — generates scripts; execution requires manual step | ⚠️ Partial — generates scripts; execution requires manual step | ❌ Minimal — restricted environment; unreliable execution |
 | **⭐ Team Ecosystem Breadth** *(primary)* | ✅ Full org — Devs (CLI/VS Code), Architects (MCP/skills design), PMs/BAs (desktop app + VS Code Ext, mobile as complement), QA/Automation (Playwright) — one platform for all roles | ⚠️ Dev + PM — Devs code, PMs assign via Slack; BAs/QA have no interface | ❌ Dev only — no interface for PMs, BAs, or non-coders | ❌ Dev only — no interface for PMs, BAs, or non-coders | ⚠️ Dev + limited PM/BA — github.com gives PMs/BAs PR visibility; no coding alternative | ❌ Dev/AWS only — no org-wide value | ❌ Dev only (restricted) — narrowest reach of all options |
+| **⭐ Subagents / Multi-Agent Orchestration** *(primary)* | ✅ Full — native Agent tool spawns parallel specialized subagents; each subagent gets its own toolset, permissions, and context; enables parallelized research, code review, and build delegation across a single session | ⚠️ Partial — single autonomous agent; can delegate sub-tasks internally but no formal parallel subagent spawning | ❌ None — single-context, no subagent spawning | ❌ None — single Cascade context; no subagent model | ❌ None — no multi-agent capability | ❌ None | ❌ None |
+| **⭐ Hooks & Lifecycle Customization** *(primary)* | ✅ Full — rich hook system: PreToolUse, PostToolUse, PostToolUseFailure, UserPromptSubmit, SessionStart/End, SubagentStart/Stop, PreCompact, PermissionRequest; enables audit logging, approval gates, custom workflow automation, and CI/CD integration at every lifecycle event | ⚠️ Minimal — webhook notifications for task completion only; no granular tool-lifecycle hooks | ❌ None — no hook system; no lifecycle event access | ❌ None — no hook system | ❌ None | ❌ None | ❌ None |
+| **⭐ Permission & Safety Model** *(primary)* | ✅ Full — granular per-session permission modes: plan (design before executing), acceptEdits (auto-approve file changes), dontAsk (CI/CD unattended), bypassPermissions (fully autonomous); per-tool allowlists via settings; CLAUDE.md safety rules per project | ⚠️ Partial — human-in-loop approval at task start and key decision points; limited granularity during mid-execution | ⚠️ Partial — file-level confirmation prompts; no structured permission modes or governance model | ⚠️ Partial — confirmation prompts for destructive edits; no structured permission framework | ⚠️ Partial — accept/reject suggestions; enterprise policy controls at org level; no agentic permission model | ⚠️ Partial — accept/reject; basic enterprise guardrails | ❌ Minimal — restricted environment limits configurability; no permission modes |
 | **Performance** | 9/10 | 8/10 | 8/10 | 7/10 | 7/10 | 6/10 | 3/10 |
 | **Reliability** | 9/10 | 7/10 | 7/10 | 6/10 | 9/10 | 8/10 | 3/10 |
 | **Browser Automation** | 9/10 | 9/10 | 4/10 | 6/10 | 3/10 | 2/10 | 3/10 |
@@ -142,29 +149,32 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Pricing Model** | Subscription (Max plan) or API token-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
 | **Individual / Team** | Subscription: Pro $20/mo · **Max 5x $100/mo** · Max 20x $200/mo. API: $3/M Sonnet – $15/M Opus tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | Custom (Enterprise+ via Palantir FedStart) |
 | **Est. Cost / Dev / Mo** | **$100/mo (Max 5x — recommended)** or $20–200+ (API, usage-based) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$60–100+/mo (custom quote required) |
-| **Weighted Score** *(see matrix below)* | **9.0 / 10** | **5.9 / 10** | **5.0 / 10** | **5.1 / 10** | **4.7 / 10** | **3.3 / 10** | **2.1 / 10** |
+| **Weighted Score** *(see matrix below)* | **9.2 / 10** | **5.5 / 10** | **4.4 / 10** | **4.5 / 10** | **4.2 / 10** | **3.0 / 10** | **2.1 / 10** |
 
 ### Weighted Scoring Matrix
 
-Criteria are weighted by organizational impact. The seven ⭐ primary criteria account for **80%** of the total score. Skill Sharing carries the second-highest weight (15%) — just below Full Dev Loop (20%) — because a skill trained once and shared org-wide multiplies every individual productivity gain into a team-wide capability.
+Criteria are weighted by organizational impact. The ten ⭐ primary criteria account for **84%** of the total score. Skill Sharing carries the second-highest weight (12%) — just below Full Dev Loop (17%). Subagents, Hooks, and Permission Model are newly added ⭐ primary criteria that collectively account for 18% of the score, reflecting the value of advanced agentic orchestration and enterprise governance capability.
 
 | **Criterion** | **Weight** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q** | **Windsurf FedRAMP** |
 |---|---|---|---|---|---|---|---|---|
-| ⭐ Full Dev Loop | 20% | 9 | 8 | 4 | 5 | 2 | 2 | 2 |
-| ⭐ **Skill Sharing & Team Knowledge Transfer** | **15%** | **10** | **1** | **4** | **4** | **5** | **2** | **1** |
-| ⭐ Team Ecosystem Breadth | 12% | 10 | 5 | 2 | 2 | 5 | 2 | 2 |
-| ⭐ Agentic CLI / Terminal | 10% | 9 | 9 | 8 | 8 | 4 | 4 | 2 |
-| ⭐ Script Execution | 10% | 9 | 9 | 9 | 9 | 4 | 4 | 2 |
-| ⭐ Skills / Custom Workflows | 8% | 10 | 3 | 5 | 5 | 5 | 2 | 1 |
-| ⭐ Plans Support | 5% | 9 | 9 | 4 | 4 | 4 | 2 | 1 |
-| Performance | 5% | 9 | 8 | 8 | 7 | 7 | 6 | 3 |
-| Reliability | 5% | 9 | 7 | 7 | 6 | 9 | 8 | 3 |
+| ⭐ Full Dev Loop | 17% | 9 | 8 | 4 | 5 | 2 | 2 | 2 |
+| ⭐ **Skill Sharing & Team Knowledge Transfer** | **12%** | **10** | **1** | **4** | **4** | **5** | **2** | **1** |
+| ⭐ Team Ecosystem Breadth | 10% | 10 | 5 | 2 | 2 | 5 | 2 | 2 |
+| ⭐ **Subagents / Multi-Agent Orchestration** | **7%** | **10** | **4** | **1** | **1** | **1** | **1** | **1** |
+| ⭐ Agentic CLI / Terminal | 8% | 9 | 9 | 8 | 8 | 4 | 4 | 2 |
+| ⭐ Script Execution | 8% | 9 | 9 | 9 | 9 | 4 | 4 | 2 |
+| ⭐ Skills / Custom Workflows | 7% | 10 | 3 | 5 | 5 | 5 | 2 | 1 |
+| ⭐ **Hooks & Lifecycle Customization** | **6%** | **10** | **2** | **1** | **1** | **1** | **1** | **1** |
+| ⭐ Plans Support | 4% | 9 | 9 | 4 | 4 | 4 | 2 | 1 |
+| ⭐ **Permission & Safety Model** | **5%** | **10** | **5** | **4** | **4** | **4** | **3** | **3** |
+| Performance | 4% | 9 | 8 | 8 | 7 | 7 | 6 | 3 |
+| Reliability | 4% | 9 | 7 | 7 | 6 | 9 | 8 | 3 |
 | FedRAMP Compliance | 5% | 3 | 1 | 1 | 1 | 9 | 9 | 8 |
-| Extension Ecosystem | 3% | 9 | 4 | 7 | 7 | 8 | 4 | 2 |
-| Mobile Access | 2% | 8 | 8 | 1 | 1 | 4 | 1 | 1 |
-| **Weighted Total** | **100%** | **9.0** | **5.9** | **5.0** | **5.1** | **4.7** | **3.3** | **2.1** |
+| Extension Ecosystem | 2% | 9 | 4 | 7 | 7 | 8 | 4 | 2 |
+| Mobile Access | 1% | 8 | 8 | 1 | 1 | 4 | 1 | 1 |
+| **Weighted Total** | **100%** | **9.2** | **5.5** | **4.4** | **4.5** | **4.2** | **3.0** | **2.1** |
 
-> **Why Skill Sharing (15%) reshapes the rankings:** Tools with no structured skill sharing — Devin (1/10) and Windsurf FedRAMP (1/10) — absorb a near-maximum 15% penalty. Devin drops from an apparent 8/10 capability score to 5.9 weighted because its autonomous power has no team-multiplying skill layer. Cursor and Windsurf Pro both score 4/10 on skill sharing (per-repo rules only; no cross-role library) and cluster at 5.0–5.1. GitHub Copilot earns 5/10 via Enterprise custom instructions but lacks versioned, role-specific skill docs. Only Claude Code scores 10/10 — CLAUDE.md skill docs are plain markdown in git, shareable org-wide to any role instantly.
+> **Why Subagents (7%) and Hooks (6%) tighten the gap further:** Every tool except Claude Code scores 1–2/10 on both subagents and hooks — neither Cursor, Windsurf Pro, GitHub Copilot, nor Amazon Q has a multi-agent model or a tool lifecycle hook system. Devin earns a 4/10 on subagents (some internal delegation) and 2/10 on hooks (task-completion webhooks only). Claude Code's 10/10 on both, combined with 10/10 on Skill Sharing and Permission Model, creates a structural advantage no other tool in the field can match. The result: Claude Code (9.2) sits nearly 4 points above its nearest competitor (Devin at 5.5).
 
 ### Full Dev Loop — Tool Coverage
 
@@ -613,27 +623,27 @@ graph TD
 
 ## Scoring Summary
 
-*Scores are weighted across 12 criteria — ⭐ primary criteria account for 80% of the total. Skill Sharing carries 15% weight (second only to Full Dev Loop at 20%).*
+*Scores are weighted across 15 criteria — ⭐ primary criteria account for 84% of the total. Skill Sharing (12%), Subagents (7%), Hooks (6%), and Permission Model (5%) are the differentiating factors that separate Claude Code from the field.*
 
 ```mermaid
 graph TD
-    subgraph T1["Tier 1 — Recommended (9.0)"]
-        CC["Claude Code — 9.0\nFull dev loop + skill sharing + org breadth\nBest weighted score across all criteria"]
+    subgraph T1["Tier 1 — Recommended (9.2)"]
+        CC["Claude Code — 9.2\nFull dev loop + skill sharing + subagents\n+ hooks + permission model + org breadth"]
     end
 
-    subgraph T2["Tier 2 — Capable Alternatives (5.0–5.9)"]
-        DV["Devin — 5.9\nStrong autonomy + CLI\nNo skill sharing; high cost; no FedRAMP"]
-        WP["Windsurf Pro — 5.1\nCascade agent-first IDE\nWeak skill sharing; dev-only"]
-        CU["Cursor — 5.0\nModel-flexible IDE\nWeak skill sharing; dev-only"]
+    subgraph T2["Tier 2 — Capable but Limited (4.4–5.5)"]
+        DV["Devin — 5.5\nStrong autonomy + CLI\nNo hooks/skills; high cost; no FedRAMP"]
+        WP["Windsurf Pro — 4.5\nCascade agent-first IDE\nNo subagents/hooks; dev-only"]
+        CU["Cursor — 4.4\nModel-flexible IDE\nNo subagents/hooks; dev-only"]
     end
 
-    subgraph T3["Tier 3 — Situational (4.7)"]
-        GC["GitHub Copilot — 4.7\nFedRAMP via GHE — best compliant option\nLimited agentic; partial skill sharing"]
+    subgraph T3["Tier 3 — Situational (4.2)"]
+        GC["GitHub Copilot — 4.2\nFedRAMP via GHE — best compliant option\nNo agentic depth; partial skill sharing"]
     end
 
-    subgraph T4["Tier 4 — Compliance / Niche (2.1–3.3)"]
-        AQ["Amazon Q Dev — 3.3\nFedRAMP via GovCloud\nAWS stacks only; no skill sharing"]
-        WF["Windsurf FedRAMP — 2.1\nFedRAMP last resort\nNo skill sharing; known folder bug"]
+    subgraph T4["Tier 4 — Compliance / Niche (2.1–3.0)"]
+        AQ["Amazon Q Dev — 3.0\nFedRAMP via GovCloud\nAWS stacks only; no agentic depth"]
+        WF["Windsurf FedRAMP — 2.1\nFedRAMP last resort\nNo skill sharing/hooks; known folder bug"]
     end
 
     T1 --> T2
