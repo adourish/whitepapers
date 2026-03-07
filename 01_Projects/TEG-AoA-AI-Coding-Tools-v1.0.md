@@ -24,7 +24,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 
 6. **Cursor is the best IDE-native complement to Claude Code.** It is model-configurable (including Claude backends), cost-effective at $20/month, and ideal for teams who prefer an embedded IDE experience over terminal-first workflows.
 
-7. **Windsurf Pro has no differentiated advantage.** It is outperformed by Cursor at similar price and is not FedRAMP compliant. Not recommended.
+7. **Windsurf Pro is a legitimate Tier 2 alternative.** Cascade provides full agentic capability (terminal, multi-file, browser), and it ships with frontier models (Claude Sonnet, GPT-4o). At $15/month it is $5 cheaper than Cursor. Choose Windsurf Pro for an agent-first integrated workflow; choose Cursor for maximum model flexibility and .cursorrules per-repo configuration.
 
 8. **Amazon Q Developer is only competitive in AWS-centric stacks.** Its model quality trails the field for general-purpose coding but adds meaningful value for CDK, CloudFormation, and Lambda patterns under FedRAMP.
 
@@ -33,7 +33,8 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | Environment | Recommended Tool | Rationale |
 |---|---|---|
 | Standard development | **Claude Code** | 9/10 across all criteria; best agentic ecosystem |
-| IDE-first / complement | **Cursor** | Model-flexible, $20/mo, strong multi-file agent |
+| IDE-first — model flexible | **Cursor** | Model-configurable, $20/mo, .cursorrules per repo |
+| IDE-first — agent-first | **Windsurf Pro** | Cascade full agentic, frontier models, $15/mo |
 | Autonomous task execution | **Devin** (selective) | High cost — pilot before committing |
 | FedRAMP — general | **GitHub Copilot** (GHE) | Best capability/compliance balance |
 | FedRAMP — AWS stacks | **Amazon Q Developer** | GovCloud authorized, strong for AWS IaC |
@@ -99,9 +100,9 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Reliability** | 9/10 | 7/10 | 7/10 | 6/10 | 9/10 | 8/10 | 3/10 |
 | **Browser Automation** | 9/10 | 9/10 | 4/10 | 6/10 | 3/10 | 2/10 | 3/10 |
 | **FedRAMP Authorized** | ⚠️ Roadmap | ❌ No | ❌ No | ❌ No | ✅ Yes (GHE) | ✅ Yes (GovCloud) | ✅ Yes |
-| **Agentic CLI/Terminal** | ✅ Full | ✅ Fully Autonomous | ✅ Composer/Agent | ⚠️ Partial | ⚠️ Limited | ⚠️ Limited | ❌ Minimal |
+| **Agentic CLI/Terminal** | ✅ Full | ✅ Fully Autonomous | ✅ Composer/Agent | ✅ Full (Cascade agent) | ⚠️ Limited | ⚠️ Limited | ❌ Minimal |
 | **Extension Ecosystem** | ✅ Rich (MCP) | ⚠️ Proprietary | ✅ Moderate | ✅ Moderate | ✅ Rich (GH ecosystem) | ⚠️ AWS-centric | ❌ Restricted |
-| **Model Quality** | ✅ Claude 4.x | ✅ Proprietary + Claude | ✅ Configurable (Claude/GPT) | ⚠️ Variable | ⚠️ GPT-4o | ⚠️ Amazon models | ❌ Degraded |
+| **Model Quality** | ✅ Claude 4.x | ✅ Proprietary + Claude | ✅ Configurable (Claude/GPT) | ✅ Frontier models (Claude, GPT-4o) | ⚠️ GPT-4o only | ⚠️ Amazon models | ❌ Degraded |
 | **Mobile Access** | ✅ iOS/Android (Claude app + GitHub repos; CLI via SSH) | ✅ iOS/Android (Slack mobile + web UI task assignment) | ❌ Desktop only | ❌ Desktop only | ⚠️ Limited (github.com mobile; no code editing) | ❌ Desktop/IDE only | ❌ Desktop only |
 | **Plans Support** | ✅ Native (TodoWrite, task breakdown, multi-step plans) | ✅ Native (autonomous planning built-in) | ⚠️ Partial (Composer outlines steps; no persistent plan) | ⚠️ Partial (basic task flow; no formal plan tracking) | ⚠️ Partial (Copilot Workspace plan view; limited) | ❌ Minimal (no structured planning) | ❌ None |
 | **Skills / Custom Workflows** | ✅ Full (CLAUDE.md, MCP tools, skill docs, hooks) | ⚠️ Limited (task instructions only; no custom skill docs) | ⚠️ Partial (.cursorrules per repo; no MCP equivalent) | ⚠️ Partial (workspace rules; limited) | ⚠️ Partial (custom instructions; no tool-calling skills) | ❌ Minimal (no custom skill framework) | ❌ None (restricted environment) |
@@ -109,7 +110,7 @@ Seven AI coding assistant platforms were evaluated across performance, reliabili
 | **Pricing Model** | API usage-based | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month | Per seat/month |
 | **Individual / Team** | $3/M (Sonnet) – $15/M (Opus) tokens | $500/seat/mo | $20/seat/mo | $15/seat/mo | $19/seat/mo (Ind.) / $39/seat/mo (Ent.) | $19/seat/mo (free tier avail.) | ~$15/seat/mo + FedRAMP overhead |
 | **Est. Cost / Dev / Mo** | ~$50–200 (moderate use) | $500 (fixed) | $20 | $15 | $19–39 | $19 (or free) | ~$15–30 |
-| **Overall Score** | **9/10** | **8/10** | **7.5/10** | **6.5/10** | **6.5/10** | **5.5/10** | **3/10** |
+| **Overall Score** | **9/10** | **8/10** | **7.5/10** | **7.5/10** | **6.5/10** | **5.5/10** | **3/10** |
 
 ---
 
@@ -317,24 +318,28 @@ graph TD
 ```
 
 **Key Points:**
-- IDE-first experience (forked from VS Code)
-- Supports Playwright for browser automation but without a dedicated extension layer
-- AI backend model varies; quality inconsistent compared to Claude Code and Cursor
+- IDE-first experience (forked from VS Code) with Cascade — a purpose-built full agentic system
+- Cascade handles multi-file edits, terminal command execution, and web browsing autonomously
+- Ships with frontier models: Claude Sonnet, GPT-4o — model quality is not a limitation
+- Priced at $15/month — $5 cheaper than Cursor with comparable agentic capability
+- Primary differentiator vs. Cursor: Windsurf is agent-first (Cascade); Cursor is model-flexible (Composer)
 
 **Pros:**
-- ✅ Performance: 7/10 — capable for most tasks
-- ✅ Familiar IDE experience for VS Code users
-- ✅ Subscription pricing predictable (~$15/month)
-- ✅ Playwright integration available
+- ✅ Performance: 7/10 — strong, backed by frontier models
+- ✅ Agentic: Full — Cascade agent runs terminal, multi-file edits, and browser tasks
+- ✅ Model quality: Frontier (Claude Sonnet, GPT-4o) — not variable or degraded
+- ✅ Familiar VS Code experience with deep agent integration
+- ✅ $15/month — competitive price, $5 less than Cursor
+- ✅ Playwright integration for browser automation
 
 **Cons:**
-- ❌ Reliability: 6/10 — occasional model inconsistencies
-- ⚠️ Browser automation: 6/10 — Playwright only, no Chrome extension layer
 - ❌ Not FedRAMP authorized
-- ⚠️ AI model backend is variable (not always Claude)
-- ⚠️ Weaker extension ecosystem vs. Claude Code and Cursor
+- ⚠️ Browser automation: 6/10 — Playwright available; less seamless than Claude Code's MCP + Chrome extension stack
+- ⚠️ No MCP ecosystem — can't extend with custom tool servers
+- ⚠️ No mobile access — desktop only
+- ⚠️ Less model flexibility than Cursor — model selection more constrained
 
-**Best For:** Teams wanting an IDE-integrated AI experience without agentic terminal requirements; moderate automation needs. Largely superseded by Cursor at similar price.
+**Best For:** Developers who want a strong agent-first IDE experience at a lower price point than Cursor. A legitimate alternative to Cursor; choose based on whether you prefer Cascade's integrated agentic flow (Windsurf) or maximum model flexibility (Cursor).
 
 ---
 
@@ -514,8 +519,11 @@ graph LR
         CU["Cursor\n7.5/10"]
     end
 
+    subgraph "Tier 2 — Strong Alternatives (cont.)"
+        WP["Windsurf Pro\n7.5/10 (agent-first IDE)"]
+    end
+
     subgraph "Tier 3 — Situational"
-        WP["Windsurf Pro\n6.5/10"]
         GC["GitHub Copilot\n6.5/10 (FedRAMP)"]
     end
 
@@ -529,12 +537,13 @@ graph LR
     AQ -->|"FedRAMP + AWS"| T3["Gov Networks (AWS stacks)"]
     WF -->|"No other option"| T4["Gov Networks (last resort)"]
     DV -->|"Autonomous tasks"| T5["High-value isolated work"]
-    CU -->|"IDE-first teams"| T6["Complement to Claude Code"]
+    CU -->|"Model-flexible IDE"| T6["IDE-first teams (Composer)"]
+    WP -->|"Agent-first IDE"| T7["IDE-first teams (Cascade)"]
 
     style CC fill:#2e7d32,stroke:#ffffff,stroke-width:3px,color:#ffffff
     style DV fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style CU fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
-    style WP fill:#e65100,stroke:#ffffff,stroke-width:2px,color:#ffffff
+    style WP fill:#00695c,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style GC fill:#1565c0,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style AQ fill:#6a1b9a,stroke:#ffffff,stroke-width:2px,color:#ffffff
     style WF fill:#b71c1c,stroke:#ffffff,stroke-width:2px,color:#ffffff
@@ -561,12 +570,12 @@ graph LR
 
 | **Persona** | **Claude Code** | **Devin** | **Cursor** | **Windsurf Pro** | **GitHub Copilot** | **Amazon Q** | **Windsurf FedRAMP** |
 |---|---|---|---|---|---|---|---|
-| **Technical Architect** | ✅ Primary — full capability + skills/MCP design | ⚠️ Evaluate for autonomous task delegation | ✅ Complement for IDE-native workflows | ❌ Skip — no advantage over Cursor | ✅ FedRAMP strategy + GHE compliance | ⚠️ FedRAMP + AWS stacks only | ⚠️ FedRAMP only — document bug risk |
-| **Principal Developer** | ✅ Primary — CLI + MCP + full agentic loop | ⚠️ Delegate isolated high-complexity builds | ✅ Complement — IDE editing preference | ❌ Not recommended | ⚠️ FedRAMP environments only | ❌ AWS-only value | ⚠️ FedRAMP only — last resort |
-| **Junior Developer** | ⚠️ VS Code Extension — good entry point; avoid raw CLI initially | ❌ Too autonomous — masks learning | ✅ Primary — IDE-native, familiar, safe | ⚠️ Acceptable; Cursor is better at same price | ✅ Strong — lowest adoption friction, inline completions | ❌ Weak general-purpose model | ❌ Avoid — bugs + degraded model impedes learning |
-| **QC / QA Engineer** | ✅ Primary — best browser automation (Playwright MCP + Chrome ext) | ✅ Delegate autonomous test execution | ⚠️ Limited automation; use for test code authoring | ⚠️ Playwright available; less reliable | ❌ No browser automation | ❌ No browser automation | ❌ Unreliable automation + folder bug risk |
+| **Technical Architect** | ✅ Primary — full capability + skills/MCP design | ⚠️ Evaluate for autonomous task delegation | ✅ Complement — model-flexible IDE | ✅ Complement — agent-first IDE (Cascade) | ✅ FedRAMP strategy + GHE compliance | ⚠️ FedRAMP + AWS stacks only | ⚠️ FedRAMP only — document bug risk |
+| **Principal Developer** | ✅ Primary — CLI + MCP + full agentic loop | ⚠️ Delegate isolated high-complexity builds | ✅ Complement — model-flexible IDE preference | ✅ Complement — Cascade agent-first preference | ⚠️ FedRAMP environments only | ❌ AWS-only value | ⚠️ FedRAMP only — last resort |
+| **Junior Developer** | ⚠️ VS Code Extension — good entry point; avoid raw CLI initially | ❌ Too autonomous — masks learning | ✅ Primary — IDE-native, familiar, safe | ✅ Primary — Cascade guides with full agentic; safe IDE guardrails | ✅ Strong — lowest adoption friction | ❌ Weak general-purpose model | ❌ Avoid — bugs + degraded model impedes learning |
+| **QC / QA Engineer** | ✅ Primary — best browser automation (Playwright MCP + Chrome ext) | ✅ Delegate autonomous test execution | ⚠️ Limited automation; use for test code authoring | ⚠️ Playwright available via Cascade; less seamless than CC | ❌ No browser automation | ❌ No browser automation | ❌ Unreliable automation + folder bug risk |
 | **Project Manager** | ✅ Mobile — review repos, plan via Claude app on iPhone/Android | ✅ Mobile — assign tasks via Slack from phone; monitor autonomously | ❌ Desktop only | ❌ Desktop only | ⚠️ GitHub Mobile — PR review only | ❌ No mobile | ❌ No mobile |
-| **Business Analyst** | ✅ Mobile + Extension — codebase Q&A, doc generation, requirements drafting | ❌ Too autonomous; no BA-facing interface | ⚠️ Code context chat; no BA-specific features | ❌ No BA value | ⚠️ github.com chat for codebase Q&A | ❌ No BA value | ❌ No BA value |
+| **Business Analyst** | ✅ Mobile + Extension — codebase Q&A, doc generation, requirements drafting | ❌ Too autonomous; no BA-facing interface | ⚠️ Code context chat; no BA-specific features | ⚠️ Code context chat via Cascade; no BA-specific features | ⚠️ github.com chat for codebase Q&A | ❌ No BA value | ❌ No BA value |
 
 **Legend:** ✅ Recommended · ⚠️ Situational / With Caveats · ❌ Not Recommended
 
@@ -669,14 +678,15 @@ graph TD
 - ✅ Devin: Maximum autonomy — hands-off execution, high cost justified for right tasks
 - ✅ Cursor: Best IDE-native AI experience; model-configurable
 - ⚠️ GitHub Copilot: Good inline completions; low adoption friction; weak automation
-- ⚠️ Windsurf Pro: Functional but outclassed by Cursor at similar price
+- ✅ Windsurf Pro: Strong Tier 2 alternative — Cascade provides full agentic, frontier models, $15/mo; peer to Cursor not inferior
 - ⚠️ Amazon Q: Strong only on AWS-centric code
 - ❌ Windsurf FedRAMP: Productivity loss; use only when required
 
 ### For Engineering Management
 - ✅ Claude Code: Highest ROI in standard environments
 - ⚠️ Devin: Very high cost — ROI only for well-scoped autonomous tasks
-- ✅ Cursor: Strong ROI, predictable cost, complements Claude Code
+- ✅ Cursor: Strong ROI, model-flexible, $20/mo — complements Claude Code
+- ✅ Windsurf Pro: Strong ROI, agent-first Cascade, $15/mo — legitimate peer to Cursor
 - ✅ GitHub Copilot: Best enterprise cost/compliance balance (if GHE in place)
 - ⚠️ Amazon Q: Good ROI for AWS shops only
 - ⚠️ Windsurf FedRAMP: Compliance necessity; accept productivity cost
@@ -732,9 +742,15 @@ graph TD
 
 ---
 
-### Not Recommended: Windsurf Pro
+### Alternative: Windsurf Pro (Agent-First IDE)
 
-**Rationale:** Outperformed by Cursor at similar price. Not FedRAMP compliant. No differentiated capability.
+**Best For:** Developers who want a fully integrated agentic IDE experience. Cascade provides genuine full agentic capability — terminal, multi-file edits, browser — with frontier models at $15/month. A strong peer to Cursor, not a downgrade from it.
+
+**Windsurf Pro vs. Cursor — choose based on:**
+- Windsurf Pro: prefer the agent-first Cascade flow, tighter built-in agentic loop, lower price
+- Cursor: prefer maximum model flexibility, .cursorrules per-repo config, Composer multi-model switching
+
+**Trade-off:** No MCP ecosystem, no mobile, not FedRAMP authorized.
 
 ---
 
