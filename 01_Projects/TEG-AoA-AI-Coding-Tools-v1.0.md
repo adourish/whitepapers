@@ -1,7 +1,7 @@
 # TEG One-Pager: AI Coding Assistant Tool Selection — Analysis of Alternatives
 
 **Date:** 2026-03-07
-**Author:** Engineering
+**Author:** Anthony Dourish
 **Status:** Proposal
 
 ---
