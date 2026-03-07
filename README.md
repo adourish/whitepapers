@@ -27,16 +27,21 @@ Papers that are no longer active but retained for historical reference.
 ## Naming Convention
 
 ```
-YYYY-MM-DD Short-Descriptive-Title.md
+Short-Descriptive-Title-vX.Y.md
 ```
 
+- Use hyphenated title casing — no date prefix
+- Version with `-v1.0`, `-v1.1`, `-v2.0` etc.
+- Increment minor version for content updates; major version for structural rewrites
+- Date is tracked via git commit history
+
 Examples:
-- `2026-03-07 TEG-AoA-AI-Coding-Tools.md`
-- `2025-11-15 Architecture-Decision-Salesforce-Repository-Strategy.md`
+- `TEG-AoA-AI-Coding-Tools-v1.0.md`
+- `Architecture-Decision-Salesforce-Repository-Strategy-v1.0.md`
 
 ## Contributing
 
 1. Place new papers in the appropriate PARA folder
-2. Follow the naming convention (date prefix + hyphenated title)
+2. Follow the naming convention (versioned, no date prefix)
 3. Use the TEG one-pager template for proposals and AoA documents
 4. Move completed papers to `04_Archive/` when superseded
