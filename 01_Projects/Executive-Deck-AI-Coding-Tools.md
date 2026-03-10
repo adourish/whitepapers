@@ -15,7 +15,7 @@
 graph TB
     subgraph "Phase 1: Requirements & Design"
         RSD["RSD Folder<br/>DOCX requirements<br/>+ wireframes + diagrams"]
-        AI_SYNC["Agentic AI Automation<br/>Download RSD → Extract wireframes<br/>Convert DOCX → Markdown<br/>Sync content bidirectionally"]
+        AI_SYNC["Agentic AI Automation<br/>(Devin use case)<br/>Download RSD → Extract wireframes<br/>Convert DOCX → Markdown<br/>Sync content bidirectionally"]
         BA["BA/PM<br/>Feature markdown files<br/>+ diagrams + wireframes"]
         ARCH["Architects/Principals<br/>Technical approach docs<br/>TEG one-pager format"]
     end
