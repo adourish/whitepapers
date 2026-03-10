@@ -48,7 +48,11 @@ graph TB
 
 ### Why Claude Code Outperforms
 
+<br/>
+
 #### Native SDK Access = Unmatched Performance
+
+<br/>
 
 ```mermaid
 graph TB
