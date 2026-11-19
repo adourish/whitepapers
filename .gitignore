@@ -1,0 +1,13 @@
+# Private word list for tools/check_papers.py: never commit it
+tools/private-terms.txt
+
+# Build and run output
+target/
+__pycache__/
+*.pyc
+**/results/logs/
+_word_build.md
+~$*
+.DS_Store
+.idea/
+.vscode/

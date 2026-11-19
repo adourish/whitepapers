@@ -1,0 +1,140 @@
+######## Repeat 1 of 3
+Pizza shop connection pool lab
+Java 21.0.12.1 (Oracle Corporation), platform threads
+Pool 5 connections, wait for a connection 2000 ms, 40 ms per database round trip,
+10 pizzas per order, the till tries 5 times, 1000 ms apart.
+
+== 1. One person, pizzas already have a ready time (control)
+   Took 2.0 s. Longest single request 2.0 s.
+   Pool: at most 2 of 5 connections in use, at most 0 requests waiting for one.
+   Requests: 1 finished, 0 failed, 0 till retries, 0 of 1 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished. Note: one request used 2 connections at once.
+
+== 2. 6 people, first send, no ready times yet (control)
+   Took 3.0 s. Longest single request 3.0 s.
+   Pool: at most 5 of 5 connections in use, at most 1 requests waiting for one.
+   Requests: 6 finished, 0 failed, 0 till retries, 0 of 6 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished.
+
+== 3. 6 people, second send, pizzas already have a ready time (the problem)
+   Took 21.6 s. Longest single request 21.6 s.
+   Pool: at most 5 of 5 connections in use, at most 6 requests waiting for one.
+   Requests: 5 finished, 5 failed, 4 till retries, 1 of 6 people gave up.
+   History snapshots lost (error ignored): 50.
+   Result: PROBLEM - the pool ran out: requests waited for a second connection that never came.
+
+== 4. One person updates 50 pizzas; the kitchen screen changes one of them meanwhile
+   The big update took 9.6 s.
+   The kitchen screen waited 9.2 s to change one pizza (blocked by the big update's lock).
+   Result: BLOCKED - the kitchen screen had to wait for the whole update to finish.
+
+== 5. Fix: same as 3, snapshot on the same connection
+   Took 3.9 s. Longest single request 3.9 s.
+   Pool: at most 5 of 5 connections in use, at most 1 requests waiting for one.
+   Requests: 6 finished, 0 failed, 0 till retries, 0 of 6 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished.
+
+== 6. Fix under heavier load: 12 people, second send
+   Took 5.9 s. Longest single request 3.9 s.
+   Pool: at most 5 of 5 connections in use, at most 7 requests waiting for one.
+   Requests: 12 finished, 2 failed, 2 till retries, 0 of 12 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: BUSY - the pool was full for a moment and some requests had to try again, but everyone got through.
+
+
+######## Repeat 2 of 3
+Pizza shop connection pool lab
+Java 21.0.12.1 (Oracle Corporation), platform threads
+Pool 5 connections, wait for a connection 2000 ms, 40 ms per database round trip,
+10 pizzas per order, the till tries 5 times, 1000 ms apart.
+
+== 1. One person, pizzas already have a ready time (control)
+   Took 2.0 s. Longest single request 2.0 s.
+   Pool: at most 2 of 5 connections in use, at most 0 requests waiting for one.
+   Requests: 1 finished, 0 failed, 0 till retries, 0 of 1 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished. Note: one request used 2 connections at once.
+
+== 2. 6 people, first send, no ready times yet (control)
+   Took 2.9 s. Longest single request 2.9 s.
+   Pool: at most 5 of 5 connections in use, at most 1 requests waiting for one.
+   Requests: 6 finished, 0 failed, 0 till retries, 0 of 6 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished.
+
+== 3. 6 people, second send, pizzas already have a ready time (the problem)
+   Took 21.6 s. Longest single request 21.6 s.
+   Pool: at most 5 of 5 connections in use, at most 6 requests waiting for one.
+   Requests: 5 finished, 5 failed, 4 till retries, 1 of 6 people gave up.
+   History snapshots lost (error ignored): 50.
+   Result: PROBLEM - the pool ran out: requests waited for a second connection that never came.
+
+== 4. One person updates 50 pizzas; the kitchen screen changes one of them meanwhile
+   The big update took 9.6 s.
+   The kitchen screen waited 9.1 s to change one pizza (blocked by the big update's lock).
+   Result: BLOCKED - the kitchen screen had to wait for the whole update to finish.
+
+== 5. Fix: same as 3, snapshot on the same connection
+   Took 3.9 s. Longest single request 3.9 s.
+   Pool: at most 5 of 5 connections in use, at most 1 requests waiting for one.
+   Requests: 6 finished, 0 failed, 0 till retries, 0 of 6 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished.
+
+== 6. Fix under heavier load: 12 people, second send
+   Took 5.8 s. Longest single request 3.9 s.
+   Pool: at most 5 of 5 connections in use, at most 7 requests waiting for one.
+   Requests: 12 finished, 2 failed, 2 till retries, 0 of 12 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: BUSY - the pool was full for a moment and some requests had to try again, but everyone got through.
+
+
+######## Repeat 3 of 3
+Pizza shop connection pool lab
+Java 21.0.12.1 (Oracle Corporation), platform threads
+Pool 5 connections, wait for a connection 2000 ms, 40 ms per database round trip,
+10 pizzas per order, the till tries 5 times, 1000 ms apart.
+
+== 1. One person, pizzas already have a ready time (control)
+   Took 2.0 s. Longest single request 2.0 s.
+   Pool: at most 2 of 5 connections in use, at most 0 requests waiting for one.
+   Requests: 1 finished, 0 failed, 0 till retries, 0 of 1 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished. Note: one request used 2 connections at once.
+
+== 2. 6 people, first send, no ready times yet (control)
+   Took 2.9 s. Longest single request 2.9 s.
+   Pool: at most 5 of 5 connections in use, at most 1 requests waiting for one.
+   Requests: 6 finished, 0 failed, 0 till retries, 0 of 6 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished.
+
+== 3. 6 people, second send, pizzas already have a ready time (the problem)
+   Took 21.6 s. Longest single request 21.6 s.
+   Pool: at most 5 of 5 connections in use, at most 6 requests waiting for one.
+   Requests: 5 finished, 5 failed, 4 till retries, 1 of 6 people gave up.
+   History snapshots lost (error ignored): 50.
+   Result: PROBLEM - the pool ran out: requests waited for a second connection that never came.
+
+== 4. One person updates 50 pizzas; the kitchen screen changes one of them meanwhile
+   The big update took 9.5 s.
+   The kitchen screen waited 9.1 s to change one pizza (blocked by the big update's lock).
+   Result: BLOCKED - the kitchen screen had to wait for the whole update to finish.
+
+== 5. Fix: same as 3, snapshot on the same connection
+   Took 3.9 s. Longest single request 3.9 s.
+   Pool: at most 5 of 5 connections in use, at most 1 requests waiting for one.
+   Requests: 6 finished, 0 failed, 0 till retries, 0 of 6 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: OK - every request finished.
+
+== 6. Fix under heavier load: 12 people, second send
+   Took 5.9 s. Longest single request 3.9 s.
+   Pool: at most 5 of 5 connections in use, at most 7 requests waiting for one.
+   Requests: 12 finished, 2 failed, 2 till retries, 0 of 12 people gave up.
+   History snapshots lost (error ignored): 0.
+   Result: BUSY - the pool was full for a moment and some requests had to try again, but everyone got through.
+
